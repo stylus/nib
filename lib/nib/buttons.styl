@@ -6,7 +6,7 @@
 // a, button, and input's are supported.
 
 -reset()
-  display: block
+  display: inline-block
   text-decoration: none
 
 // minimalistic flat button with white inset.
@@ -23,10 +23,9 @@ minimal-button(bg = #e3e3e3, intensity = 100%)
   font-size: 12px
   font-weight: bold
   line-height: 1
-  padding: 8px 0 9px
+  padding: 8px 20px 9px 20px
   text-align: center
   text-shadow: 0 1px 0 rgba(white, 1 + intensity)
-  width: 150px
 
   &:hover
   &.hover
@@ -56,10 +55,9 @@ smooth-button(bg = #7fbf4d)
   font-size: 11px
   font-weight: bold
   line-height: 1
-  padding: 7px 0 8px 0
+  padding: 7px 15px 8px 15px
   text-align: center
   text-shadow: 0 -1px 0 darken(bg, 15%)
-  width: 150px
   color: #fff
 
   &:hover
@@ -92,10 +90,9 @@ download-button(bg = #377ad0)
   font-size: 11px
   font-weight: normal
   line-height: 1
-  padding: 3px 0 5px 0
+  padding: 3px 10px 5px 10px
   text-align: center
   text-shadow: 0 -1px 1px bg - 10%
-  width: 112px
 
   &:hover
   &.hover

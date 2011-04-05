@@ -2,6 +2,7 @@
 legacy-support-for-ie ?= true
 support-for-webkit ?= true
 support-for-moz ?= true
+support-for-ie ?= true
 
 vendor(prop, args)
   -webkit-{prop}: args if support-for-webkit
@@ -23,8 +24,6 @@ display()
     {'*vertical-align'}: auto if legacy-support-for-ie
   else
     display: arguments
-
-support-for-ie ?= true
 
 opacity(n)
   opacity: n
