@@ -1,0 +1,19 @@
+
+-pos(type, pos)
+  position type
+  if length(pos) == 2
+    {pos[0]} 0
+    {pos[1]} 0
+  else if length(pos) == 4
+    a = pos[0..1]
+    b = pos[2..3]
+    {a[0]} a[1]
+    {b[0]} b[1]
+  else
+    error('invalid arguments. ' + type + ': <pos> [n] <pos> [n];')
+
+fixed()
+  -pos(fixed, arguments)
+
+absolute()
+  -pos(absolute, arguments)

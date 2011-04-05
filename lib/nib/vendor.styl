@@ -1,0 +1,32 @@
+
+legacy-support-for-ie ?= true
+support-for-webkit ?= true
+support-for-moz ?= true
+
+vendor(prop, args)
+  -webkit-{prop}: args if support-for-webkit
+  -moz-{prop}: args if support-for-moz
+  {prop}: args
+
+border-radius()
+  vendor('border-radius', arguments)
+
+box-shadow()
+  vendor('box-shadow', arguments)
+
+display()
+  if inline-block == arguments[0]
+    display: -moz-inline-box
+    -moz-box-orient: vertical
+    display: inline-block
+    vertical-align: middle
+    {'*vertical-align'}: auto if legacy-support-for-ie
+  else
+    display: arguments
+
+support-for-ie ?= true
+
+opacity(n)
+  opacity: n
+  if support-for-ie
+    filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=%s)' % round(n * 100)

@@ -1,0 +1,37 @@
+
+@import 'nib/buttons'
+@import 'nib/iconic'
+
+iconic-stroke('iconic')
+
+.minimal
+  minimal-button()
+  // TODO: make this a mixin
+  &:before
+    color rgba(0,0,0,0.5)
+    position relative
+    left -13px
+    top 2px
+    line-height 10px
+    content 'j'
+    font-family 'IconicStroke'
+    font-size 18px
+    font-weight normal
+
+.minimal-alternate
+  minimal-button(#7fbf4d, intensity: 50%)
+
+.smooth
+  smooth-button()
+
+.smooth-alternate
+  smooth-button(#1AADAB)
+
+.download
+  download-button()
+
+.download-alternate
+  download-button(#0FB8FC)
+
+.bold
+  bold-button()

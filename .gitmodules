@@ -1,0 +1,6 @@
+[submodule "support/stylus"]
+	path = support/stylus
+	url = https://visionmedia@github.com/LearnBoost/stylus.git
+[submodule "support/connect"]
+	path = support/connect
+	url = git://github.com/senchalabs/connect.git

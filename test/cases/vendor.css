@@ -1,0 +1,15 @@
+#login {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-box-shadow: 1px 1px 5px #eee;
+  -moz-box-shadow: 1px 1px 5px #eee;
+  box-shadow: 1px 1px 5px #eee;
+}
+#login {
+  opacity: 0.5;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+}
+#login {
+  opacity: 0.75;
+}
