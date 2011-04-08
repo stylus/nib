@@ -1,0 +1,22 @@
+html
+  head 
+    title Nib
+    link(rel='stylesheet', href='/test.css')
+    link(rel='stylesheet', href='/buttons.css')
+  body
+    h2 Buttons
+    table#buttons
+      tbody
+        tr
+          td blur
+          td: a(href='#').minimal Minimal
+        tr
+          td hover
+          td: input(type='button', value='Minimal').minimal.hover
+        tr 
+          td active
+          td: button.minimal.active Minimal
+        tr
+          td focus
+          td: button.minimal.focus Minimal
+      
