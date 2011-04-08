@@ -1,0 +1,27 @@
+html
+  head 
+    title Nib
+    link(rel='stylesheet', href='/test.css')
+    link(rel='stylesheet', href='/buttons.css')
+  body
+    h2 Buttons
+    table#buttons
+      tbody
+      - var buttons = ['minimal', 'minimal-alternate', 'smooth', 'smooth-alternate']
+      - buttons.push('download', 'download-alternate', 'bold', 'bold-alternate')
+      - buttons.push('bold-alternate-2', 'pill')
+      - each button in buttons
+        - var name = button.split('-').join(' ')
+        tr
+          td blur
+          td: a(href='#', class=button)= name
+        tr
+          td hover
+          td: input(type='button', value=name, class=button).hover
+        tr 
+          td active
+          td: button(class=button).active= name
+        tr
+          td focus
+          td: button(class=button).focus= name
+      
