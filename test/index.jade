@@ -7,16 +7,21 @@ html
     h2 Buttons
     table#buttons
       tbody
+      - var buttons = ['minimal', 'minimal-alternate', 'smooth', 'smooth-alternate']
+      - buttons.push('download', 'download-alternate', 'bold', 'bold-alternate')
+      - buttons.push('bold-alternate-2', 'pill')
+      - each button in buttons
+        - var name = button.split('-').join(' ')
         tr
           td blur
-          td: a(href='#').minimal Minimal
+          td: a(href='#', class=button)= name
         tr
           td hover
-          td: input(type='button', value='Minimal').minimal.hover
+          td: input(type='button', value=button, class=button).hover
         tr 
           td active
-          td: button.minimal.active Minimal
+          td: button(class=button).active= name
         tr
           td focus
-          td: button.minimal.focus Minimal
+          td: button(class=button).focus= name
       

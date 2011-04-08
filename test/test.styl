@@ -9,7 +9,14 @@ body
 table
   border-collapse: collapse
   td
-    &:first-child
-      font: 12px helvetica, arial
     padding: 3px 10px
     border-left: 1px solid #eee
+    &:first-child
+      font: 12px helvetica, arial
+  tr:nth-child(4n)
+    border-bottom: 1px solid #eee
+    td
+      padding-bottom: 15px
+  tr:nth-child(4n+1)
+    td
+      padding-top: 15px
