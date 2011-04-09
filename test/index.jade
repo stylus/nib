@@ -14,21 +14,27 @@ html
     h2 Buttons
     table#buttons
       tbody
-      - var buttons = ['minimal', 'minimal-alternate', 'smooth', 'smooth-alternate']
-      - buttons.push('download', 'download-alternate', 'bold', 'bold-alternate')
-      - buttons.push('bold-alternate-2', 'pill')
-      - each button in buttons
-        - var name = button.split('-').join(' ')
+      - var buttons = []
+      - buttons.push(['minimal', 'minimal-alternate'])
+      - buttons.push(['smooth', 'smooth-alternate'])
+      - buttons.push(['download', 'download-alternate'])
+      - buttons.push(['bold', 'bold-alternate', 'bold-alternate-2'])
+      - buttons.push(['pill'])
+      - each names in buttons
         tr
           td blur
-          td: a(href='#', class=button).button= name
+          - each name in names
+            td: a(href='#', class=name).button= name
         tr
           td hover
-          td: input(type='button', value=name, class=button).hover
+          - each name in names
+            td: input(type='button', value=name, class=name).hover
         tr 
           td active
-          td: button(class=button).active= name
+          - each name in names
+            td: button(class=name).active= name
         tr
           td focus
-          td: button(class=button).focus= name
+          - each name in names
+            td: button(class=name).focus= name
       
