@@ -6,11 +6,4 @@ ul li {
   -moz-box-orient: vertical;
   display: inline-block;
   vertical-align: middle;
-  *vertical-align: auto;
-}
-ul li {
-  display: -moz-inline-box;
-  -moz-box-orient: vertical;
-  display: inline-block;
-  vertical-align: middle;
 }

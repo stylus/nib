@@ -1,15 +1,15 @@
 
 /*
+ * Support for ie defaulting to true.
+ */
+
+support-for-ie = true
+
+/*
  * Alias "nowrap" as "no-wrap".
  */
 
 no-wrap = unquote('nowrap')
-
-/*
- * Legacy support for internet explorer.
- */
-
-legacy-support-for-ie ?= true
 
 /*
  * Default vendor prefixes.
@@ -69,7 +69,6 @@ display()
     -moz-box-orient: vertical
     display: inline-block
     vertical-align: middle
-    {'*vertical-align'}: auto if legacy-support-for-ie
   else
     display: arguments
 
