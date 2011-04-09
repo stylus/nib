@@ -11,9 +11,6 @@ vendor(prop, args, prefixes = default-vendor-prefixes)
     {'-' + prefix + '-' + prop}: args
   {prop}: args
 
-border-radius()
-  vendor('border-radius', arguments)
-
 box-shadow()
   vendor('box-shadow', arguments)
 
@@ -40,3 +37,34 @@ opacity(n)
 
 whitespace()
   white-space: arguments
+
+/*
+ * Examples:
+ *
+ *    border-radius: top 5px
+ *    border-radius: left 5px
+ *    border-radius: top left 5px
+ *    border-radius: bottom right 5px
+ *
+ */
+
+border-radius()
+  for arg in arguments
+    if arg is a 'ident'
+      pos = pos is defined ? pos arg : arg
+    else if arg is a 'unit'
+      if pos is defined
+        if length(pos) == 2
+          y = pos[0]
+          x = pos[1]
+          -webkit-border-{y + '-' + x}-radius: arg
+        else if pos in (top bottom)
+          -webkit-border-{pos}-left-radius: arg
+          -webkit-border-{pos}-right-radius: arg
+        else
+          -webkit-border-top-{pos}-radius: arg
+          -webkit-border-bottom-{pos}-radius: arg
+      else
+        args = args is defined ? args arg : arg
+  if args is defined
+    vendor('border-radius', args)
