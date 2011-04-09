@@ -40,6 +40,24 @@ opacity(n)
 whitespace()
   white-space: arguments
 
+-apply-border-radius(pos)
+  if length(pos) == 3
+    // border-radius: <top | buttom> <left | right> <n>
+    y = pos[0]
+    x = pos[1]
+    vendor('border-radius-%s%s' % pos, pos[2], only: moz)
+    vendor('border-%s-%s-radius' % pos, pos[2], ignore: moz)
+  else if pos[0] in (top bottom)
+    // border-radius: <top | bottom> <n>
+    -apply-border-radius(pos[0] left pos[1])
+    -apply-border-radius(pos[0] right pos[1])
+  else if pos[0] in (left right)
+    // border-radius: <left | right> <n>
+    unshift(pos, top);
+    -apply-border-radius(pos)
+    pos[0] = bottom
+    -apply-border-radius(pos)
+
 /*
  * Examples:
  *
@@ -51,26 +69,15 @@ whitespace()
  */
 
 border-radius()
-  args = ()
   pos = ()
   augmented = false
   for arg in arguments
     if arg is a 'ident'
       append(pos, arg)
       augmented = true
-    else if arg is a 'unit' and augmented
-      if length(pos) == 2
-        y = pos[0]
-        x = pos[1]
-        -webkit-border-{y + '-' + x}-radius: arg
-        -moz-border-radius-{y + x}: arg
-        border-{y + '-' + x}-radius: arg
-      else if pos in (top bottom)
-        -webkit-border-{pos}-left-radius: arg
-        -webkit-border-{pos}-right-radius: arg
-      else
-        -webkit-border-top-{pos}-radius: arg
-        -webkit-border-bottom-{pos}-radius: arg
     else
-      append(args, arg)
-  vendor('border-radius', args) unless augmented
+      append(pos, arg)
+      if augmented
+        -apply-border-radius(pos)
+        pos = ()
+  vendor('border-radius', pos) unless augmented
