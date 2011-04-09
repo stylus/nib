@@ -3,6 +3,13 @@ html
     title Nib
     link(rel='stylesheet', href='/test.css')
     link(rel='stylesheet', href='/buttons.css')
+    script(src='/jquery.min.js')
+    script
+      $(function(){
+        $(':button, :submit, a.button').click(function(){
+          return false;
+        });
+      });
   body
     h2 Buttons
     table#buttons
@@ -14,7 +21,7 @@ html
         - var name = button.split('-').join(' ')
         tr
           td blur
-          td: a(href='#', class=button)= name
+          td: a(href='#', class=button).button= name
         tr
           td hover
           td: input(type='button', value=name, class=button).hover
