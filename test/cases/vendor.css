@@ -14,3 +14,8 @@
   opacity: 0.75;
   white-space: nowrap;
 }
+#login {
+  -webkit-border-top-left-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  border-top-left-radius: 5px;
+}

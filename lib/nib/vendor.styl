@@ -49,22 +49,26 @@ whitespace()
  */
 
 border-radius()
+  args = ()
+  pos = ()
+  augmented = false
   for arg in arguments
     if arg is a 'ident'
-      pos = pos is defined ? pos arg : arg
-    else if arg is a 'unit'
-      if pos is defined
-        if length(pos) == 2
-          y = pos[0]
-          x = pos[1]
-          -webkit-border-{y + '-' + x}-radius: arg
-        else if pos in (top bottom)
-          -webkit-border-{pos}-left-radius: arg
-          -webkit-border-{pos}-right-radius: arg
-        else
-          -webkit-border-top-{pos}-radius: arg
-          -webkit-border-bottom-{pos}-radius: arg
+      append(pos, arg)
+      augmented = true
+    else if arg is a 'unit' and augmented
+      if length(pos) == 2
+        y = pos[0]
+        x = pos[1]
+        -webkit-border-{y + '-' + x}-radius: arg
+        -moz-border-radius-{y + x}: arg
+        border-{y + '-' + x}-radius: arg
+      else if pos in (top bottom)
+        -webkit-border-{pos}-left-radius: arg
+        -webkit-border-{pos}-right-radius: arg
       else
-        args = args is defined ? args arg : arg
-  if args is defined
-    vendor('border-radius', args)
+        -webkit-border-top-{pos}-radius: arg
+        -webkit-border-bottom-{pos}-radius: arg
+    else
+      append(args, arg)
+  vendor('border-radius', args) unless augmented
