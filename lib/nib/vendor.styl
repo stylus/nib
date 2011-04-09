@@ -1,4 +1,6 @@
 
+no-wrap = unquote('nowrap')
+
 legacy-support-for-ie ?= true
 support-for-webkit ?= true
 support-for-moz ?= true
@@ -33,3 +35,5 @@ opacity(n)
   if support-for-ie
     filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=%s)' % round(n * 100)
 
+whitespace()
+  white-space: arguments
