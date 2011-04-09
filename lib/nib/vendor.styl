@@ -3,13 +3,15 @@ no-wrap = unquote('nowrap')
 
 legacy-support-for-ie ?= true
 
-default-vendor-prefixes = webkit moz
+vendor-prefixes = webkit moz official
 
-vendor(prop, args, prefixes = default-vendor-prefixes)
-  for prefix in prefixes
-    // TODO: fix {prefix}-{prop}
-    {'-' + prefix + '-' + prop}: args
-  {prop}: args
+vendor(prop, args, only = null, ignore = null)
+  for prefix in vendor-prefixes
+    unless (only and !(prefix in only)) or (ignore and prefix in ignore)
+      if official == prefix
+        {prop}: args
+      else
+        {'-' + prefix + '-' + prop}: args
 
 box-shadow()
   vendor('box-shadow', arguments)
