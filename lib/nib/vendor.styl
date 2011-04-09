@@ -40,6 +40,10 @@ opacity(n)
 whitespace()
   white-space: arguments
 
+/*
+ * Helper for border-radius().
+ */
+
 -apply-border-radius(pos)
   if length(pos) == 3
     // border-radius: <top | buttom> <left | right> <n>
@@ -59,6 +63,9 @@ whitespace()
     -apply-border-radius(pos)
 
 /*
+ * border-radius supporting vendor prefixes and
+ * augmented behavior.
+ * 
  * Examples:
  *
  *    border-radius: 2px 5px
