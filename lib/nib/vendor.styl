@@ -22,6 +22,10 @@ user-select()
 background-size()
   vendor('background-size', arguments)
 
+/*
+ * Vendor "display: inline-box" support
+ */
+
 display()
   if inline-block == arguments[0]
     display: -moz-inline-box
@@ -32,10 +36,18 @@ display()
   else
     display: arguments
 
+/*
+ * Opacity with conditional IE support.
+ */
+
 opacity(n)
   opacity: n
   if support-for-ie
     filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=%s)' % round(n * 100)
+
+/*
+ * Alias the "white-space" property.
+ */
 
 whitespace()
   white-space: arguments
