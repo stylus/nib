@@ -15,6 +15,9 @@ border-radius()
 box-shadow()
   vendor('box-shadow', arguments)
 
+user-select()
+  vendor('user-select', arguments)
+
 display()
   if inline-block == arguments[0]
     display: -moz-inline-box
@@ -29,3 +32,4 @@ opacity(n)
   opacity: n
   if support-for-ie
     filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=%s)' % round(n * 100)
+
