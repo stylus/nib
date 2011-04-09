@@ -1,9 +1,27 @@
 
+/*
+ * Alias "nowrap" as "no-wrap".
+ */
+
 no-wrap = unquote('nowrap')
+
+/*
+ * Legacy support for internet explorer.
+ */
 
 legacy-support-for-ie ?= true
 
-vendor-prefixes = webkit moz official
+/*
+ * Default vendor prefixes.
+ */
+
+vendor-prefixes ?= webkit moz official
+
+/*
+ * Vendor support for the given prop / arguments,
+ * optionally specifying the only prefixes to utilize,
+ * or those which should be ignored.
+ */
 
 vendor(prop, args, only = null, ignore = null)
   for prefix in vendor-prefixes
@@ -13,11 +31,23 @@ vendor(prop, args, only = null, ignore = null)
       else
         {'-' + prefix + '-' + prop}: args
 
+/*
+ * Vendor "box-shadow" support.
+ */
+
 box-shadow()
   vendor('box-shadow', arguments)
 
+/*
+ * Vendor "user-size" support.
+ */
+
 user-select()
   vendor('user-select', arguments)
+
+/*
+ * Vendor "background-size" support.
+ */
 
 background-size()
   vendor('background-size', arguments)
