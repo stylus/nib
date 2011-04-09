@@ -2,13 +2,13 @@
 no-wrap = unquote('nowrap')
 
 legacy-support-for-ie ?= true
-support-for-webkit ?= true
-support-for-moz ?= true
-support-for-ie ?= true
 
-vendor(prop, args)
-  -webkit-{prop}: args if support-for-webkit
-  -moz-{prop}: args if support-for-moz
+default-vendor-prefixes = webkit moz
+
+vendor(prop, args, prefixes = default-vendor-prefixes)
+  for prefix in prefixes
+    // TODO: fix {prefix}-{prop}
+    {'-' + prefix + '-' + prop}: args
   {prop}: args
 
 border-radius()
@@ -19,6 +19,9 @@ box-shadow()
 
 user-select()
   vendor('user-select', arguments)
+
+background-size()
+  vendor('background-size', arguments)
 
 display()
   if inline-block == arguments[0]
