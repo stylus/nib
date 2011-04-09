@@ -73,19 +73,21 @@ whitespace()
  *    border-radius: left 5px
  *    border-radius: top left 5px
  *    border-radius: top left 10px bottom right 5px
+ *    border-radius: top left 10px, bottom right 5px
  *
  */
 
 border-radius()
   pos = ()
   augmented = false
-  for arg in arguments
-    if arg is a 'ident'
-      append(pos, arg)
-      augmented = true
-    else
-      append(pos, arg)
-      if augmented
-        -apply-border-radius(pos)
-        pos = ()
+  for args in arguments
+    for arg in args
+      if arg is a 'ident'
+        append(pos, arg)
+        augmented = true
+      else
+        append(pos, arg)
+        if augmented
+          -apply-border-radius(pos)
+          pos = ()
   vendor('border-radius', pos) unless augmented
