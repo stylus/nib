@@ -1,16 +1,32 @@
 
-nowrap = no-wrap
+/*
+ * Alias of "no-wrap".
+ */
+
+nowrap = unquote('no-wrap')
+
+/*
+ * Alias of "white-space".
+ */
 
 whitespace()
   white-space: arguments
+
+/*
+ * Hide text.
+ */
 
 hide-text()
   text-indent: -999999999em
   overflow: hidden
   text-align: left
 
+/*
+ * Ellipsis with wrapping disabled by default.
+ */
+
 ellipsis(no-wrap = true)
   if no-wrap
-    white-space nowrap
-  overflow hidden
-  text-overflow ellipsis
+    white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
