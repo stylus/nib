@@ -95,19 +95,6 @@ transition()
   vendor('transition', arguments, only: webkit)
 
 /*
- * Vendor "display: inline-box" support
- */
-
-display()
-  if inline-block == arguments[0]
-    display: -moz-inline-box
-    -moz-box-orient: vertical
-    display: inline-block
-    vertical-align: middle
-  else
-    display: arguments
-
-/*
  * Opacity with conditional IE support.
  */
 
