@@ -20,6 +20,8 @@ function compile(str, path) {
   return stylus(str)
     .set('filename', path)
     .define('create-gradient-image', nib.gradient.create)
+    .define('gradient-data-uri', nib.gradient.dataURL)
+    .define('add-color-stop', nib.gradient.addColorStop)
     .include(nib.path);
 }
 
