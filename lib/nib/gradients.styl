@@ -78,6 +78,12 @@ linear-gradient(start, stops...)
   val = current-property[1]
   stops = normalize-stops(stops)
 
+  // gradient image
+  if start[0] is a 'unit'
+    img = linear-gradient-image(start, stops)
+    start = start[1]
+    add-property(prop, replace(val, '__CALL__', img))
+
   // webkit
   end = grad-point(opposite-position(start))
   webkit = '-webkit-gradient(linear, %s, %s, %s)' % (grad-point(start) end join-stops(stops, webkit-stop))
@@ -92,6 +98,7 @@ linear-gradient(start, stops...)
   'linear-gradient(%s, %s)' % (start stops)
 
 linear-gradient-image(start, stops...)
+  stops = stops[0] if length(stops) == 1
   error('gradient image size required') unless start[0] is a 'unit'
   size = start[0]
   start = start[1] or 'top'
