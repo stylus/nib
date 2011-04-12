@@ -98,4 +98,5 @@ linear-gradient-image(start, stops...)
   grad = create-gradient-image(size, start)
   stops = normalize-stops(stops)
   add-color-stop(grad, stop[0], stop[1]) for stop in stops
+  p(grad)
   'url(%s)' % gradient-data-uri(grad)
