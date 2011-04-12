@@ -62,12 +62,12 @@ join-stops(stops, translate)
 // webkit translation function
 
 webkit-stop(color, pos)
-  s('color-stop(%d, %s)', pos / 100, color)
+  'color-stop(%d, %s)' % (pos / 100 color)
 
 // mozilla translation function
 
 moz-stop(color, pos)
-  s('%s %s', color, pos)
+  '%s %s' % (color pos) 
 
 // create a linear gradient with the given start
 // position, followed by color stops
