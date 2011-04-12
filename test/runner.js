@@ -1,11 +1,13 @@
 
+require.paths.unshift(__dirname + '/../support');
+
 /**
  * Module dependencies.
  */
 
 var fs = require('fs')
   , nib = require('../')
-  , stylus = require('../support/stylus');
+  , stylus = require('stylus');
 
 console.error();
 
