@@ -1,16 +1,9 @@
 
--pos(type, pos)
-  position type
-  if length(pos) == 2
-    {pos[0]} 0
-    {pos[1]} 0
-  else if length(pos) == 4
-    a = pos[0..1]
-    b = pos[2..3]
-    {a[0]} a[1]
-    {b[0]} b[1]
-  else
-    error('invalid arguments. ' + type + ': <pos> [n] <pos> [n];')
+-pos(type, args)
+  i = 0
+  position: type
+  {args[i]}: args[i + 1] is a 'unit' ? args[i += 1] : 0
+  {args[i += 1]}: args[i + 1] is a 'unit' ? args[i += 1] : 0
 
 fixed()
   -pos(fixed, arguments)
