@@ -90,3 +90,10 @@ linear-gradient(start, stops...)
 
   // literal
   s('linear-gradient(%s, %s)', start, stops)
+
+linear-gradient-image(start, stops...)
+  error('gradient image size required') unless start[0] is a 'unit'
+  size = start[0]
+  start = start[1] or 'top'
+  p(start)
+  p(size)
