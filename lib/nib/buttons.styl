@@ -83,11 +83,11 @@ smooth-button(bg = #7fbf4d)
 
 // small pill-shaped blue apple download inspired button.
 
-download-button(bg = #377ad0)
+download-button(bg = #377ad0, height = 20px)
   -reset()
   dark = bg - 8%
   background: light = hsl(bg) + hsl(0,30%,10%) - hsl(5,0,0)
-  background: linear-gradient(top, light, bg)
+  background: linear-gradient(height top, light, bg)
   border: 1px solid dark
   border-radius: 16px
   color #fff
@@ -102,7 +102,7 @@ download-button(bg = #377ad0)
   &:hover
   &.hover
     background: darker
-    background: linear-gradient(top, light, dark)
+    background: linear-gradient(height top, light, dark)
     border: 1px solid dark
     cursor: pointer
     text-shadow: 0 -1px 1px bg - 12%
