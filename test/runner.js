@@ -4,6 +4,7 @@
  */
 
 var fs = require('fs')
+  , nib = require('../')
   , stylus = require('../support/stylus');
 
 console.error();
@@ -41,7 +42,7 @@ function readFile(path, fn){
 function testFile(path, styl, expected, fn) {
   stylus(styl)
     .set('filename', path)
-    .set('paths', [__dirname + '/../lib'])
+    .include(nib.path)
     .render(function(err, css){
       if (err) throw err;
       if (css.trim() == expected.trim()) {
