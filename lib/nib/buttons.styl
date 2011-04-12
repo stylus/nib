@@ -48,11 +48,11 @@ minimal-button(bg = #e3e3e3, text = #333, text-shadow = #fff)
 
 // smooth flat button, defaulting to green.
 
-smooth-button(bg = #7fbf4d)
+smooth-button(bg = #7fbf4d, height = 28px)
   -reset()
   dark = bg - 10%
   background: bg
-  background: linear-gradient(top, bg, dark)
+  background: linear-gradient(height top, bg, dark)
   border: 1px solid dark - 5%
   border-bottom: 1px solid dark
   border-radius: 3px
@@ -70,7 +70,7 @@ smooth-button(bg = #7fbf4d)
   &.hover
     dark -= 5%
     background: dark
-    background: linear-gradient(top, bg, dark)
+    background: linear-gradient(height top, bg, dark)
     cursor: pointer
 
   &:active
@@ -78,7 +78,7 @@ smooth-button(bg = #7fbf4d)
     dark -= 5%
     border: 1px solid dark
     border-bottom: 1px solid dark
-    background: linear-gradient(bottom, bg, dark)
+    background: linear-gradient(height bottom, bg, dark)
     box-shadow: inset 0 0 8px 4px rgba(black, 0.15), 0 1px 0 0 #eee
 
 // small pill-shaped blue apple download inspired button.
