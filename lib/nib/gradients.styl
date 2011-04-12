@@ -1,5 +1,7 @@
 
-// replace str with val
+/*
+ * Replace the given str with val in the expr.
+ */
 
 replace(expr, str, val)
   expr = clone(expr)
@@ -8,7 +10,10 @@ replace(expr, str, val)
       expr[i] = val
   expr
 
-// normalize gradient point (webkit)
+
+/*
+ * Normalize gradient points.
+ */
 
 grad-point(pos)
   if length(pos) == 1
@@ -19,7 +24,9 @@ grad-point(pos)
   else
     pos
 
-// implicit color stop position
+/*
+ * Implicit color stop position.
+ */
 
 pos-in-stops(i, stops)
   len = length(stops)
@@ -30,9 +37,13 @@ pos-in-stops(i, stops)
   else
     0%
 
-// normalize color stops
-//   - (color pos) -> (pos color)
-//   - (color) -> (implied-pos color)
+/*
+ * Normalize color stops:
+ * 
+ *   - (color pos) -> (pos color)
+ *   - (color) -> (implied-pos color)
+ * 
+ */
 
 normalize-stops(stops)
   stops = clone(stops)
@@ -47,7 +58,9 @@ normalize-stops(stops)
       stop[0] = pos
   stops
 
-// join color stops with the given translation function
+/*
+ * Join color stops with the given translation function.
+ */
 
 join-stops(stops, translate)
   str = ''
@@ -59,18 +72,32 @@ join-stops(stops, translate)
     str += translate(color, pos)
   unquote(str)
 
-// webkit translation function
+/*
+ * Webkit color stop.
+ */
 
 webkit-stop(color, pos)
   'color-stop(%d, %s)' % (pos / 100 color)
 
-// mozilla translation function
+/*
+ * Mozilla color stop.
+ */
 
 moz-stop(color, pos)
   '%s %s' % (color pos) 
 
-// create a linear gradient with the given start
-// position, followed by color stops
+/*
+ * Create a linear gradient with the given start position
+ * and variable number of color stops.
+ * 
+ * Examples:
+ * 
+ *    background: linear-gradient(top, red, green, blue)
+ *    background: linear-gradient(bottom, red, green 50%, blue)
+ *    background: linear-gradient(bottom, red, 50% green, blue)
+ *    background: linear-gradient(bottom, red, 50% green, 90% white, blue)
+ * 
+ */
 
 linear-gradient(start, stops...)
   error('color stops required') unless length(stops)
@@ -96,6 +123,11 @@ linear-gradient(start, stops...)
 
   // literal
   'linear-gradient(%s, %s)' % (start stops)
+
+/*
+ * Create a linear gradient image with the given start position
+ * and variable number of color stops.
+ */
 
 linear-gradient-image(start, stops...)
   stops = stops[0] if length(stops) == 1
