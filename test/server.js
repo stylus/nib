@@ -17,7 +17,7 @@ var server = connect();
 function compile(str, path) {
   return stylus(str)
     .set('filename', path)
-    .define('create-gradient', nib.gradient.create)
+    .define('create-gradient-image', nib.gradient.create)
     .include(nib.path);
 }
 
