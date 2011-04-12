@@ -80,16 +80,16 @@ linear-gradient(start, stops...)
 
   // webkit
   end = grad-point(opposite-position(start))
-  webkit = s('-webkit-gradient(linear, %s, %s, %s)', grad-point(start), end, join-stops(stops, webkit-stop))
+  webkit = '-webkit-gradient(linear, %s, %s, %s)' % (grad-point(start) end join-stops(stops, webkit-stop))
   add-property(prop, replace(val, '__CALL__', webkit))
 
   // moz
   stops = join-stops(stops, moz-stop)
-  moz = s('-moz-linear-gradient(%s, %s)', start, stops)
+  moz = '-moz-linear-gradient(%s, %s)' % (start stops)
   add-property(prop, replace(val, '__CALL__', moz))
 
   // literal
-  s('linear-gradient(%s, %s)', start, stops)
+  'linear-gradient(%s, %s)' % (start stops)
 
 linear-gradient-image(start, stops...)
   error('gradient image size required') unless start[0] is a 'unit'
@@ -98,5 +98,4 @@ linear-gradient-image(start, stops...)
   grad = create-gradient-image(size, start)
   stops = normalize-stops(stops)
   add-color-stop(grad, stop[0], stop[1]) for stop in stops
-  p(grad)
   'url(%s)' % gradient-data-uri(grad)
