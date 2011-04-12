@@ -1,9 +1,0 @@
-ul li {
-  display: none;
-}
-ul li {
-  display: -moz-inline-box;
-  -moz-box-orient: vertical;
-  display: inline-block;
-  vertical-align: middle;
-}
