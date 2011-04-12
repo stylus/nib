@@ -19,8 +19,7 @@ var server = connect();
 function compile(str, path) {
   return stylus(str)
     .set('filename', path)
-    .use(nib())
-    .include(nib.path);
+    .use(nib());
 }
 
 server.use(stylus.middleware({

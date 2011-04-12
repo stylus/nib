@@ -44,7 +44,7 @@ function readFile(path, fn){
 function testFile(path, styl, expected, fn) {
   stylus(styl)
     .set('filename', path)
-    .include(nib.path)
+    .use(nib())
     .render(function(err, css){
       if (err) throw err;
       if (css.trim() == expected.trim()) {
