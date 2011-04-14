@@ -24,7 +24,7 @@
  */
 
 fixed()
-  -pos(fixed, arguments)
+  -pos('fixed', arguments)
 
 /*
  * Position utility.
@@ -43,4 +43,23 @@ fixed()
  */
 
 absolute()
-  -pos(absolute, arguments)
+  -pos('absolute', arguments)
+
+/*
+ * Position utility.
+ * 
+ * Synopsis:
+ * 
+ *   absolute: <pos> [n] <pos> [n]
+ * 
+ * Examples:
+ * 
+ *     relative: top left
+ *     relative: top 5px left
+ *     relative: top left 5px
+ *     relative: top 5px left 5px
+ * 
+ */
+
+relative()
+  -pos('relative', arguments)
