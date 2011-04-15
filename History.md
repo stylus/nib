@@ -2,8 +2,10 @@
 0.0.6 / 2011-04-15 
 ==================
 
+  * Added `has-canvas` global
   * Added `clearfix()` [Isaac Johnston]
   * Added `relative()`
+  * Fixed; ignore size unit for `linear-gradient()` when node-canvas is not available
 
 0.0.5 / 2011-04-12 
 ==================
