@@ -48,6 +48,11 @@ to be continued....
 
   - Introduction [screencast](http://www.screenr.com/M6a)
 
+## Contributors
+
+  - TJ Holowaychuk
+  - Isaac Johnston
+
 ## License 
 
 (The MIT License)
