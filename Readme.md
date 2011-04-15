@@ -9,7 +9,7 @@
 
     $ npm install nib
 
-## Example Usage
+## JavaScript API
 
  Below is an example of how to utilize nib and stylus with the connect framework (or express).
 
@@ -30,6 +30,19 @@
           src: __dirname
         , compile: compile
       }));
+
+## Stylus API
+
+  To gain access to everything nib has to offer, simply add:
+  
+      @import 'nib'
+
+  Or you may also pick and choose based on the directory structure in `./lib`, for example:
+  
+      @import 'nib/gradients'
+      @import 'nib/buttons'
+
+to be continued....
 
 ## License 
 
