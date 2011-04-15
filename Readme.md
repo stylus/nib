@@ -9,6 +9,10 @@
 
     $ npm install nib
 
+ If the image generation features of Nib are desired, such as generating the linear gradient images, install [node-canvas](http://github.com/learnboost/node-canvas):
+ 
+     $ npm install canvas
+
 ## JavaScript API
 
  Below is an example of how to utilize nib and stylus with the connect framework (or express).
