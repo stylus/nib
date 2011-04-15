@@ -1,104 +1,32 @@
 // Based on [Eric Meyer's reset](http://meyerweb.com/eric/thoughts/2007/05/01/reset-reloaded/)
 
 global-reset()
-  html,
-  body,
-  div,
-  span,
-  applet,
-  object,
-  iframe,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  blockquote,
-  pre,
-  a,
-  abbr,
-  acronym,
-  address,
-  big,
-  cite,
-  code,
-  del,
-  dfn,
-  em,
-  font,
-  img,
-  ins,
-  kbd,
-  q,
-  s,
-  samp,
-  small,
-  strike,
-  strong,
-  sub,
-  sup,
-  tt,
-  var,
-  dl,
-  dt,
-  dd,
-  ol,
-  ul,
-  li,
-  fieldset,
-  form,
-  label,
-  legend,
-  table,
-  caption,
-  tbody,
-  tfoot,
-  thead,
-  tr,
-  th,
-  td
+  html, body, div, span, applet, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  a, abbr, acronym, address, big, cite, code,
+  del, dfn, em, font, img, ins, kbd, q, s, samp,
+  small, strike, strong, sub, sup, tt, var,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td
     reset-box-model()
     reset-font()
+  body
+    reset-body()
+  ol, ul
+    list-style: none
+  table
+    reset-table()
+  caption, th, td
+    reset-table-cell()
+  a img
+    border: none
 
 nested-reset()
-  div,
-  span,
-  object,
-  iframe,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  pre,
-  a,
-  abbr,
-  acronym,
-  address,
-  code,
-  del,
-  dfn,
-  em,
-  img,
-  dl,
-  dt,
-  dd,
-  ol,
-  ul,
-  li,
-  fieldset,
-  form,
-  label,
-  legend,
-  caption,
-  tbody,
-  tfoot,
-  thead,
-  tr
+  div, span, object, iframe, h1, h2, h3, h4, h5, h6, p,
+  pre, a, abbr, acronym, address, code, del, dfn, em, img,
+  dl, dt, dd, ol, ul, li, fieldset, form, label,
+  legend, caption, tbody, tfoot, thead, tr
     reset-box-model()
     reset-font()
   table
@@ -117,8 +45,8 @@ reset-box-model()
 reset-font()
   font-weight: inherit
   font-style: inherit
-  font-size: 100%
   font-family: inherit
+  font-size: 100%
   vertical-align: baseline
 
 reset-body()
@@ -127,7 +55,7 @@ reset-body()
   background: white
 
 reset-table()
-  border-collaspse: separate
+  border-collapse: separate
   border-spacing: 0
   vertical-align: middle
 
@@ -135,3 +63,10 @@ reset-table-cell()
   text-align: left
   font-weight: normal
   vertical-align: middle
+
+reset-html5()
+  article, aside, canvas, details, figcaption,
+  figure, footer, header, hgroup, menu, nav,
+  section, summary
+    reset-box-model()
+    display: block
