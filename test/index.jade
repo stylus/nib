@@ -1,9 +1,10 @@
 html
-  head 
+  head
     title Nib
     link(rel='stylesheet', href='/test.css')
     link(rel='stylesheet', href='/gradients.css')
     link(rel='stylesheet', href='/buttons.css')
+    link(rel='stylesheet', href='/clearfix.css')
     script(src='/jquery.min.js')
     script
       $(function(){
@@ -38,7 +39,7 @@ html
           td hover
           - each name in names
             td: input(type='button', value=name, class=name).hover
-        tr 
+        tr
           td active
           - each name in names
             td: button(class=name).active= name
@@ -46,4 +47,11 @@ html
           td focus
           - each name in names
             td: button(class=name).focus= name
-      
+    h2 Clearfix
+    div#clearfix
+      div
+        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut commodo
+        | turpis quis mauris tempus commodo a non tellus. Sed eu convallis
+        | mauris. Donec scelerisque lacus quis orci viverra tincidunt. Nunc sed
+        | risus lectus. Proin vulputate elit sed eros consectetur interdum.
+      | Suspendisse potenti.
