@@ -52,6 +52,22 @@ to be continued....
 
   - Introduction [screencast](http://www.screenr.com/M6a)
 
+## Testing
+
+ You will need `node-canvas` installed:
+ 
+    $ npm install canvas
+
+ Run the automated test cases:
+ 
+    $ make test
+
+ For visual testing run the test server:
+ 
+    $ make test-server
+
+ Then visit `localhost:3000` in your browser.
+
 ## Contributors
 
   - TJ Holowaychuk
