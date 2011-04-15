@@ -44,6 +44,10 @@
 
 to be continued....
 
+## More Information
+
+  - Introduction [screencast](http://www.screenr.com/M6a)
+
 ## License 
 
 (The MIT License)
