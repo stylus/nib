@@ -107,9 +107,10 @@ linear-gradient(start, stops...)
 
   // gradient image
   if start[0] is a 'unit'
-    img = linear-gradient-image(start, stops)
+    if has-canvas
+      img = linear-gradient-image(start, stops)
+      add-property(prop, replace(val, '__CALL__', img))
     start = start[1]
-    add-property(prop, replace(val, '__CALL__', img))
 
   // webkit
   end = grad-point(opposite-position(start))
@@ -130,6 +131,7 @@ linear-gradient(start, stops...)
  */
 
 linear-gradient-image(start, stops...)
+  error('node-canvas is required for linear-gradient-image()') unless has-canvas
   stops = stops[0] if length(stops) == 1
   error('gradient image size required') unless start[0] is a 'unit'
   size = start[0]
