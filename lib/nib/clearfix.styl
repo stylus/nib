@@ -10,14 +10,12 @@
  */
 
 clearfix()
-  &:before,
-  &:after {
-    content: "\0020";
-    display: block;
-    height: 0;
-    overflow: hidden;
-  }
-  &:after {
-    clear: both;
-  }
-  zoom: 1;
+  &:before
+  &:after
+    content: "\0020"
+    display: block
+    height: 0
+    overflow: hidden
+  &:after
+    clear: both
+  zoom: 1
