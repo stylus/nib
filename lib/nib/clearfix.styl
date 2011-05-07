@@ -26,6 +26,4 @@ clearfix()
     display: table
   &:after
     clear: both
-  /* For IE 6/7 support trigger hasLayout */
-  if support-for-ie
-    zoom: 1
+  zoom: 1 if support-for-ie
