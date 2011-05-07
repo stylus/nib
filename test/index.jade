@@ -48,10 +48,20 @@ html
           - each name in names
             td: button(class=name).focus= name
     h2 Clearfix
-    div#clearfix
+    div#clearfix-left-only
       div
         | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut commodo
         | turpis quis mauris tempus commodo a non tellus. Sed eu convallis
         | mauris. Donec scelerisque lacus quis orci viverra tincidunt. Nunc sed
         | risus lectus. Proin vulputate elit sed eros consectetur interdum.
-      | Suspendisse potenti.
+    div#clearfix-left-right
+      div.left
+        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut commodo
+        | turpis quis mauris tempus commodo a non tellus. Sed eu convallis
+        | mauris. Donec scelerisque lacus quis orci viverra tincidunt. Nunc sed
+        | risus lectus. Proin vulputate elit sed eros consectetur interdum.
+      div.right
+        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut commodo
+        | turpis quis mauris tempus commodo a non tellus. Sed eu convallis
+        | mauris. Donec scelerisque lacus quis orci viverra tincidunt. Nunc sed
+        | risus lectus. Proin vulputate elit sed eros consectetur interdum.

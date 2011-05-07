@@ -3,10 +3,8 @@
 }
 #clearfix:before,
 #clearfix:after {
-  content: "\0020";
-  display: block;
-  height: 0;
-  overflow: hidden;
+  content: "";
+  display: table;
 }
 #clearfix:after {
   clear: both;
