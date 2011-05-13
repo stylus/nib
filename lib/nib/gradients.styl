@@ -73,17 +73,17 @@ join-stops(stops, translate)
   unquote(str)
 
 /*
- * Webkit color stop.
+ * Legacy Webkit color stop.
  */
 
 webkit-stop(color, pos)
   'color-stop(%d, %s)' % (pos / 100 color)
 
 /*
- * Mozilla color stop.
+ * Standard color stop.
  */
 
-moz-stop(color, pos)
+std-stop(color, pos)
   '%s %s' % (color pos) 
 
 /*
@@ -112,17 +112,19 @@ linear-gradient(start, stops...)
       add-property(prop, replace(val, '__CALL__', img))
     start = start[1]
 
-  // webkit
+  // legacy webkit
   end = grad-point(opposite-position(start))
-  webkit = '-webkit-gradient(linear, %s, %s, %s)' % (grad-point(start) end join-stops(stops, webkit-stop))
-  add-property(prop, replace(val, '__CALL__', webkit))
+  webkit-legacy = '-webkit-gradient(linear, %s, %s, %s)' % (grad-point(start) end join-stops(stops, webkit-stop))
+  add-property(prop, replace(val, '__CALL__', webkit-legacy))
 
-  // moz
-  stops = join-stops(stops, moz-stop)
-  moz = '-moz-linear-gradient(%s, %s)' % (start stops)
-  add-property(prop, replace(val, '__CALL__', moz))
+  // vendor prefixed
+  stops = join-stops(stops, std-stop)
+  prefixes ?= webkit moz ms o 
+  for prefix in prefixes
+    gradient = '-%s-linear-gradient(%s, %s)' % (prefix start stops)   
+    add-property(prop, replace(val, '__CALL__', gradient))
 
-  // literal
+  // standard 
   'linear-gradient(%s, %s)' % (start stops)
 
 /*
