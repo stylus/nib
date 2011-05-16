@@ -119,8 +119,7 @@ linear-gradient(start, stops...)
 
   // vendor prefixed
   stops = join-stops(stops, std-stop)
-  prefixes ?= webkit moz ms o 
-  for prefix in prefixes
+  for prefix in vendor-prefixes
     gradient = '-%s-linear-gradient(%s, %s)' % (prefix start stops)   
     add-property(prop, replace(val, '__CALL__', gradient))
 
