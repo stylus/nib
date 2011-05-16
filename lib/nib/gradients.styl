@@ -1,4 +1,6 @@
 
+@import 'config'
+
 /*
  * Replace the given str with val in the expr.
  */
@@ -120,8 +122,9 @@ linear-gradient(start, stops...)
   // vendor prefixed
   stops = join-stops(stops, std-stop)
   for prefix in vendor-prefixes
-    gradient = '-%s-linear-gradient(%s, %s)' % (prefix start stops)   
-    add-property(prop, replace(val, '__CALL__', gradient))
+    unless prefix == official
+      gradient = '-%s-linear-gradient(%s, %s)' % (prefix start stops)   
+      add-property(prop, replace(val, '__CALL__', gradient))
 
   // standard 
   'linear-gradient(%s, %s)' % (start stops)
