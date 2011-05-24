@@ -54,9 +54,9 @@ to be continued....
 
 ## Testing
 
- You will need `node-canvas` installed:
+ You will first need to install the dependencies:
  
-    $ npm install canvas
+    $ npm install -d
 
  Run the automated test cases:
  
