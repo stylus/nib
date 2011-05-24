@@ -1,4 +1,11 @@
 
+0.0.8 / 2011-05-24 
+==================
+
+  * Added _config.styl_
+  * Added linear gradients for Opera, IE10 and WebKit (non-legacy)
+  * Moved `no-wrap` back to _vendor.styl_
+
 0.0.7 / 2011-04-24 
 ==================
 
