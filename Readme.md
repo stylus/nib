@@ -1,4 +1,3 @@
-
 # Nib
 
   Stylus mixins, utilities, components, and gradient image generation. CSS is your bitch!
@@ -7,45 +6,55 @@
 
 ## Installation
 
-    $ npm install nib
+```bash
+$ npm install nib
+```
 
  If the image generation features of Nib are desired, such as generating the linear gradient images, install [node-canvas](http://github.com/learnboost/node-canvas):
  
-     $ npm install canvas
+```bash 
+$ npm install canvas
+```
 
 ## JavaScript API
 
  Below is an example of how to utilize nib and stylus with the connect framework (or express).
 
-      var connect = require('connect')
-        , stylus = require('stylus')
-        , nib = require('nib');
+```javascript
+var connect = require('connect')
+  , stylus = require('stylus')
+  , nib = require('nib');
 
-      var server = connect();
+var server = connect();
 
-      function compile(str, path) {
-        return stylus(str)
-          .set('filename', path)
-          .set('compress', true)
-          .use(nib());
-      }
+function compile(str, path) {
+  return stylus(str)
+	.set('filename', path)
+	.set('compress', true)
+	.use(nib());
+}
 
-      server.use(stylus.middleware({
-          src: __dirname
-        , compile: compile
-      }));
+server.use(stylus.middleware({
+	src: __dirname
+  , compile: compile
+}));
+```
 
 ## Stylus API
 
   To gain access to everything nib has to offer, simply add:
-  
-      @import 'nib'
 
+  ```css
+  @import 'nib'
+  ```
+  
   Or you may also pick and choose based on the directory structure in `./lib`, for example:
   
-      @import 'nib/gradients'
-      @import 'nib/buttons'
-
+  ```css
+  @import 'nib/gradients'
+  @import 'nib/buttons'
+  ```
+  
 to be continued....
 
 ## More Information
@@ -56,16 +65,22 @@ to be continued....
 
  You will first need to install the dependencies:
  
+ ```bash
     $ npm install -d
-
+ ```
+ 
  Run the automated test cases:
  
+ ```bash
     $ make test
-
+ ```
+ 
  For visual testing run the test server:
  
+ ```bash
     $ make test-server
-
+ ```
+ 
  Then visit `localhost:3000` in your browser.
 
 ## Contributors
