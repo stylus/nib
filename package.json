@@ -4,7 +4,7 @@
   "version": "0.0.8",
   "repository": {
     "type": "git",
-    "url": "git://github.com/visionmedia/tablet.git"
+    "url": "git://github.com/visionmedia/nib.git"
   },
   "devDependencies": {
       "connect": "1.4.1"
