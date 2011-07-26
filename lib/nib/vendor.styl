@@ -26,42 +26,49 @@ vendor(prop, args, only = null, ignore = null)
  */
 
 box-shadow()
-  vendor('box-shadow', arguments)
+  vendor('box-shadow', arguments, arguments, only: webkit moz official)
 
 /*
  * Vendor "user-size" support.
  */
 
 user-select()
-  vendor('user-select', arguments)
+  vendor('user-select', arguments, arguments, only: webkit moz official)
 
 /*
  * Vendor "column-count" support.
  */
 
 column-count()
-  vendor('column-count', arguments)
+  vendor('column-count', arguments, arguments, only: webkit moz official)
 
 /*
  * Vendor "column-gap" support.
  */
 
 column-gap()
-  vendor('column-gap', arguments)
+  vendor('column-gap', arguments, only: webkit moz official)
 
+/*
+ * Vendor "background-clip" support.
+ */
+
+background-clip()
+  vendor('background-clip', arguments, only: webkit moz official)
+  
 /*
  * Vendor "background-size" support.
  */
 
 background-size()
-  vendor('background-size', arguments)
+  vendor('background-size', arguments, only: webkit moz o official)
 
 /*
  * Vendor "box-sizing" support.
  */
 
 box-sizing()
-  vendor('box-sizing', arguments)
+  vendor('box-sizing', arguments, only: webkit moz official)
 
 /*
  * Vendor "transform" support.
@@ -75,7 +82,7 @@ transform()
  */
 
 border-image()
-  vendor('border-image', arguments)
+  vendor('border-image', arguments, only: webkit moz o official)
 
 /*
  * Vendor "transition" support.
@@ -133,28 +140,28 @@ whitespace()
  */
 
 box-orient()
-  vendor('box-orient', arguments)
+  vendor('box-orient', arguments, only: webkit moz ms official)
 
 /*
  * Vendor "box-flex" support.
  */
 
 box-flex()
-  vendor('box-flex', arguments)
+  vendor('box-flex', arguments, only: webkit moz ms official)
 
 /*
  * Vendor "box-align" support.
  */
 
 box-align()
-  vendor('box-align', arguments)
+  vendor('box-align', arguments, only: webkit moz ms official)
 
 /*
  * Vendor "box-pack" support.
  */
 
 box-pack()
-  vendor('box-pack', arguments)
+  vendor('box-pack', arguments, only: webkit moz ms official)
 
 
 /*
@@ -207,4 +214,4 @@ border-radius()
         if augmented
           -apply-border-radius(pos)
           pos = ()
-  vendor('border-radius', pos) unless augmented
+  vendor('border-radius', pos, only: webkit moz official) unless augmented
