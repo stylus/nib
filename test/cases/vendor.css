@@ -11,3 +11,51 @@ button {
   opacity: 0.75;
   white-space: nowrap;
 }
+section {
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  box-orient: vertical;
+}
+section div {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+}
+section {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  box-pack: center;
+}
+button {
+  -o-transition: all 0.1s ease-in-out 1s;
+  -webkit-transition: all 0.1s ease-in-out 1s;
+  -moz-transition: all 0.1s ease-in-out 1s;
+  transition: all 0.1s ease-in-out 1s;
+}
+button {
+  -o-transition-property: all;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  transition-property: all;
+  -o-transition-duration: 0.1s;
+  -webkit-transition-duration: 0.1s;
+  -moz-transition-duration: 0.1s;
+  transition-duration: 0.1s;
+  -o-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  -moz-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  -o-transition-delay: 1s;
+  -webkit-transition-delay: 1s;
+  -moz-transition-delay: 1s;
+  transition-delay: 1s;
+}
+button {
+  -o-transform: rotateY(45deg);
+  -webkit-transform: rotateY(45deg);
+  -moz-transform: rotateY(45deg);
+  transform: rotateY(45deg);
+}
