@@ -82,7 +82,35 @@ border-image()
  */
 
 transition()
-  vendor('transition', arguments, only: webkit moz)
+  vendor('transition', arguments)
+
+/*
+ * Vendor "transition-property" support.
+ */
+
+transition-property()
+  vendor('transition-property', arguments)
+
+/*
+ * Vendor "transition-duration" support.
+ */
+
+transition-duration()
+  vendor('transition-duration', arguments)
+
+/*
+ * Vendor "transition-timing-function" support.
+ */
+
+transition-timing-function()
+  vendor('transition-timing-function', arguments)
+
+/*
+ * Vendor "transition-delay" support.
+ */
+
+transition-delay()
+  vendor('transition-delay', arguments)
 
 /*
  * Opacity with conditional IE support.
