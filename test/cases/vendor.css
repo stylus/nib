@@ -11,6 +11,24 @@ button {
   opacity: 0.75;
   white-space: nowrap;
 }
+section {
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  box-orient: vertical;
+}
+section div {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+}
+section {
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  box-align: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  box-pack: center;
+}
 button {
   -o-transition: all 0.1s ease-in-out 1s;
   -webkit-transition: all 0.1s ease-in-out 1s;
