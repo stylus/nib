@@ -35,3 +35,9 @@ button {
   -moz-transition-delay: 1s;
   transition-delay: 1s;
 }
+button {
+  -o-transform: rotateY(45deg);
+  -webkit-transform: rotateY(45deg);
+  -moz-transform: rotateY(45deg);
+  transform: rotateY(45deg);
+}
