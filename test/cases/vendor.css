@@ -15,6 +15,9 @@ section {
   -webkit-box-orient: vertical;
   -moz-box-orient: vertical;
   box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -moz-box-direction: reverse;
+  box-direction: reverse;
 }
 section div {
   -webkit-box-flex: 1;
