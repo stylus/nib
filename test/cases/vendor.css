@@ -24,6 +24,11 @@ section div {
   -moz-box-flex: 1;
   box-flex: 1;
 }
+section div {
+  -webkit-box-flex-group: 1;
+  -moz-box-flex-group: 1;
+  box-flex-group: 1;
+}
 section {
   -webkit-box-align: center;
   -moz-box-align: center;
