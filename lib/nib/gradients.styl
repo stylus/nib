@@ -144,3 +144,13 @@ linear-gradient-image(start, stops...)
   stops = normalize-stops(stops)
   add-color-stop(grad, stop[0], stop[1]) for stop in stops
   'url(%s)' % gradient-data-uri(grad)
+  
+linear-gradient-svg(start, stops...)
+  stops = stops[0] if length(stops) == 1
+  error('gradient image size required') unless start[0] is a 'unit'
+  size = start[0]
+  start = start[1] or 'top'
+  grad = create-gradient-image(size, start)
+  stops = normalize-stops(stops)
+  add-color-stop(grad, stop[0], stop[1]) for stop in stops
+  'url(%s)' % gradient-svg-data-uri(grad)
