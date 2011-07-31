@@ -96,9 +96,7 @@ button {
   -webkit-transition: all 0.1s ease-in-out 1s;
   -moz-transition: all 0.1s ease-in-out 1s;
   transition: all 0.1s ease-in-out 1s;
-  -o-backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 button {
