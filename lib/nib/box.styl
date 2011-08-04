@@ -1,0 +1,22 @@
+/*
+ *
+ * Synopsis:
+ *
+ *   box: orient direction
+ *
+ * Examples:
+ *
+ *     box: horizontal
+ *     box: horizontal reverse
+ *
+ */
+
+box(args)
+  for prefix in vendor-prefixes
+      if official == prefix
+        {display}: box
+      else
+        {display}: unquote('-') + prefix + '-box'
+  box-orient: arguments[0]
+  if arguments[1]
+    box-direction: arguments[1]
