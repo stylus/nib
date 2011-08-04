@@ -1,4 +1,15 @@
 
+0.1.0 / 2011-08-04 
+==================
+
+  * Added `box` style mixin [podviaznikov]
+  * Added `box-flex-group` to vendor.styl [podviaznikov]
+  * Added `box-direction` support [podviaznikov]
+  * Added `backface-visibility` [podviaznikov]
+  * Added `columns` support [podviaznikov]
+  * Added animations into vendor [podviaznikov]
+  * Lowered text-indent to a moderate -99999em, since my browser (Chromium 13.0.767.1 on Linux amd64) won't hide text if text-indent is below -6990506em.
+
 0.0.8 / 2011-05-24 
 ==================
 
