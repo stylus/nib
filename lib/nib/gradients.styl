@@ -74,6 +74,21 @@ join-stops(stops, translate)
     str += translate(color, pos)
   unquote(str)
 
+
+/*
+* Build a linear gradient object with the given start position
+* and variable number of color stops.
+*/
+
+build-gradient(start, stops)
+  stops = stops[0] if length(stops) == 1
+  size = start[0]
+  start = start[1] or 'top'
+  grad = create-gradient-image(size, start)
+  stops = normalize-stops(stops)
+  add-color-stop(grad, stop[0], stop[1]) for stop in stops
+  grad
+  
 /*
  * Legacy Webkit color stop.
  */
@@ -101,33 +116,40 @@ std-stop(color, pos)
  * 
  */
 
-linear-gradient(start, stops...)
+linear-gradient(start, stops..., formats=gradient-formats)
   error('color stops required') unless length(stops)
   prop = current-property[0]
   val = current-property[1]
   stops = normalize-stops(stops)
+  
 
   // gradient image
-  if start[0] is a 'unit'
-    if has-canvas
+  if start[0] is a 'unit' 
+    if png in formats
       img = linear-gradient-image(start, stops)
       add-property(prop, replace(val, '__CALL__', img))
-    start = start[1]
+      
+    if svg in formats
+      img = linear-gradient-svg(start, stops)
+      add-property(prop, replace(val, '__CALL__', img))
+    start = start[1]  
+  
 
-  // legacy webkit
-  end = grad-point(opposite-position(start))
-  webkit-legacy = '-webkit-gradient(linear, %s, %s, %s)' % (grad-point(start) end join-stops(stops, webkit-stop))
-  add-property(prop, replace(val, '__CALL__', webkit-legacy))
+  if css in formats
+    // legacy webkit
+    end = grad-point(opposite-position(start))
+    webkit-legacy = '-webkit-gradient(linear, %s, %s, %s)' % (grad-point(start) end join-stops(stops, webkit-stop))
+    add-property(prop, replace(val, '__CALL__', webkit-legacy))
 
-  // vendor prefixed
-  stops = join-stops(stops, std-stop)
-  for prefix in vendor-prefixes
-    unless prefix == official
-      gradient = '-%s-linear-gradient(%s, %s)' % (prefix start stops)   
-      add-property(prop, replace(val, '__CALL__', gradient))
+    // vendor prefixed
+    stops = join-stops(stops, std-stop)
+    for prefix in vendor-prefixes
+      unless prefix == official
+        gradient = '-%s-linear-gradient(%s, %s)' % (prefix start stops)   
+        add-property(prop, replace(val, '__CALL__', gradient))
 
-  // standard 
-  'linear-gradient(%s, %s)' % (start stops)
+    // standard 
+    'linear-gradient(%s, %s)' % (start stops)
 
 /*
  * Create a linear gradient image with the given start position
@@ -135,22 +157,10 @@ linear-gradient(start, stops...)
  */
 
 linear-gradient-image(start, stops...)
-  error('node-canvas is required for linear-gradient-image()') unless has-canvas
-  stops = stops[0] if length(stops) == 1
   error('gradient image size required') unless start[0] is a 'unit'
-  size = start[0]
-  start = start[1] or 'top'
-  grad = create-gradient-image(size, start)
-  stops = normalize-stops(stops)
-  add-color-stop(grad, stop[0], stop[1]) for stop in stops
+  grad = build-gradient(start, stops)
   'url(%s)' % gradient-data-uri(grad)
   
 linear-gradient-svg(start, stops...)
-  stops = stops[0] if length(stops) == 1
-  error('gradient image size required') unless start[0] is a 'unit'
-  size = start[0]
-  start = start[1] or 'top'
-  grad = create-gradient-image(size, start)
-  stops = normalize-stops(stops)
-  add-color-stop(grad, stop[0], stop[1]) for stop in stops
+  grad = build-gradient(start, stops)
   'url(%s)' % gradient-svg-data-uri(grad)
