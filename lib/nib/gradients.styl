@@ -82,9 +82,13 @@ join-stops(stops, translate)
 
 build-gradient(start, stops)
   stops = stops[0] if length(stops) == 1
-  size = start[0]
-  start = start[1] or 'top'
-  grad = create-gradient-image(size, start)
+  if start[0] is a 'unit'
+    size = start[0]
+    start = start[1] or 'top'
+  else
+    start = start[0]
+  grad = create-gradient-image(start)
+  set-gradient-size(grad, size) if size is a 'unit'
   stops = normalize-stops(stops)
   add-color-stop(grad, stop[0], stop[1]) for stop in stops
   grad
@@ -122,20 +126,18 @@ linear-gradient(start, stops..., formats=gradient-formats)
   val = current-property[1]
   stops = normalize-stops(stops)
   
-
-  // gradient image
-  if start[0] is a 'unit' 
-    if png in formats
-      img = linear-gradient-image(start, stops)
-      add-property(prop, replace(val, '__CALL__', img))
-      
-    if svg in formats
-      img = linear-gradient-svg(start, stops)
-      add-property(prop, replace(val, '__CALL__', img))
-    start = start[1]  
+  // gradient png image
+  if png in formats and start[0] is a 'unit'
+    img = linear-gradient-image(start, stops)
+    add-property(prop, replace(val, '__CALL__', img)) 
   
+  // gradient svg image
+  if svg in formats
+    img = linear-gradient-svg(start, stops)
+    add-property(prop, replace(val, '__CALL__', img))
 
   if css in formats
+    start = start[1] if start[0] is a 'unit' 
     // legacy webkit
     end = grad-point(opposite-position(start))
     webkit-legacy = '-webkit-gradient(linear, %s, %s, %s)' % (grad-point(start) end join-stops(stops, webkit-stop))
