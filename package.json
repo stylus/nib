@@ -9,7 +9,7 @@
   "devDependencies": {
       "connect": "1.4.1"
     , "jade": "0.11.0"
-    , "stylus": "0.13.x"
+    , "stylus": "0.15.x"
     , "canvas": ">= 0.0.1"
   },
   "author": "TJ Holowaychuk <tj@vision-media.ca>",
