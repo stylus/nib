@@ -153,3 +153,9 @@ section {
   -moz-border-image: url("image.png") 20% stretch stretch;
   border-image: url("image.png") 20% stretch stretch;
 }
+p {
+  -o-hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
