@@ -156,7 +156,7 @@ linear-gradient-image(start, stops...)
  *    background: radial-gradient(top left, 35px 35px, red, yellow, green)
  *    background: radial-gradient(green, yellow 100px)
  */
-radial-gradient(start, size, stops...)
+radial-gradient(start, size, stops..., formats=gradient-formats)
   args = normalize-radial-gradient(start, size, stops)
   start = args[0]
   size = args[1]
@@ -167,74 +167,61 @@ radial-gradient(start, size, stops...)
   prop = current-property[0]
   val = current-property[1]
 
-  radius = -radial-gradient-radius(size, stops)
-
   if radius
     // canvas aka IE 5.5, 6, 7 & 8
-    if has-canvas
+    if has-canvas and png in formats
       img = radial-gradient-image(start, size, stops)
       add-property(prop, replace(val, '__CALL__', img))
 
     // svg aka IE 9
-    svg = radial-gradient-svg(start, size, stops)
-    add-property(prop, replace(val, '__CALL__', svg))
+    if svg in formats
+      svg = radial-gradient-svg(start, size, stops)
+      add-property(prop, replace(val, '__CALL__', svg))
 
-    // legacy webkit
-    if support-for-webkit-legacy
-      webkit-legacy = '-webkit-gradient(radial, %s, 0, %s, %s, %s)' % (start start radius join-stops(-radial-gradient-webkit-legacy-stops(stops, radius), webkit-stop))
-      add-property(prop, replace(val, '__CALL__', webkit-legacy))
+    // css
+    if css in formats
+      // webkit legacy
+      if webkit in vendor-prefixes
+        webkit-legacy = '-webkit-gradient(radial, %s, 0, %s, %s, %s)' % (start start radius join-stops(stops, webkit-stop))
+        add-property(prop, replace(val, '__CALL__', webkit-legacy))
 
-  // webkit and moz
-  // TODO use vender.styl prefix function when it is available (pull request 10)
-  mozstops = join-stops(stops, moz-stop)
-  webkit = '-webkit-radial-gradient(%s, %s, %s)' % (start size mozstops)
-  moz = '-moz-radial-gradient(%s, %s, %s)' % (start size mozstops)
-  add-property(prop, replace(val, '__CALL__', webkit))
-  add-property(prop, replace(val, '__CALL__', moz))
+  if css in formats
+    // webkit and mozilla
+    stops = join-stops(stops, std-stop)
+    for prefix in vendor-prefixes
+      unless prefix == official
+        gradient = '-%s-radial-gradient(%s, %s, %s)' % (prefix start size stops)
+        add-property(prop, replace(val, '__CALL__', gradient))
 
-  // literal
-  'radial-gradient(%s, %s, %s)' % (start size join-stops(stops, moz-stop))
+    // standard
+    'radial-gradient(%s, %s, %s)' % (start size stops)
 
 /*
  * Create a radial gradient image with the given center position
  * and variable number of color stops.
- *
- * TODO use new normalize-radial-gradient for arg handling
  */
 radial-gradient-image(start, size, stops...)
   error('node-canvas is required for radial-gradient-image()') unless has-canvas
   stops = stops[0] if length(stops) == 1
   error('color stops required') unless length(stops)
 
-  // TODO more argument error checking
-
-  stops = normalize-stops(stops)
-  radius = -radial-gradient-radius(size, stops)
-  start = -radial-gradient-start(start, radius)
-
   // create the radial gradient image
-  grad = create-radial-gradient-image(start[0], start[1], radius)
+  grad = create-radial-gradient-image(start[0], start[1], size[0], size[1], size[2], size[3])
   add-color-stop(grad, stop[0], stop[1]) for stop in stops
   'url(%s)' % gradient-data-uri(grad)
 
 /*
  * Create a radial gradient SVG with the given center position
  * and variable number of color stops.
- *
- * TODO use new normalize-radial-gradient for arg handling
  */
 radial-gradient-svg(start, size, stops...)
   stops = stops[0] if length(stops) == 1
   error('color stops required') unless length(stops)
 
-  stops = normalize-stops(stops)
-  radius = -radial-gradient-radius(size, stops)
-  start = -radial-gradient-start(start, radius)
-
   svg =  '<?xml version="1.0" encoding="utf-8"?>'
   svg += '<svg version="1.1" xmlns="http://www.w3.org/2000/svg">'
   svg += '<defs>'
-  svg += '<radialGradient id="grad" gradientUnits="userSpaceOnUse" cx="%spx" cy="%spx" r="%s">' % (start[0] start[1] radius)
+  svg += '<radialGradient id="grad" gradientUnits="userSpaceOnUse" cx="%spx" cy="%spx" r="%s">' % (start[0] start[1] size[0])
   for stop in stops
     svg += '<stop offset="%s" stop-color="%s"/>' % (stop[0] stop[1])
   svg += '</radialGradient>'
@@ -290,6 +277,10 @@ normalize-radial-gradient(start, size, stops...)
 
   error('color stops required') unless length(stops)
 
+  p(start)
+  p(size)
+  p(stops)
+
   // normalize box sizing
   if (length(size)) in (3 4)
     // explicit box sizing
@@ -332,9 +323,11 @@ normalize-radial-gradient(start, size, stops...)
     if radius-x
       // assume the radius is the box
       box-x = box-y = radius-x
-    else if unit(last(stops)[0]) is 'px'
-      // if there is absolutely no sizing info resort to final color stop
-      box-x = box-y = radius-x = radius-y = last(stops)[0]
+    else if is-color-stop(last(stops))
+      if unit(last(stops)[0]) is 'px'
+        p('HAI!')
+        // if there is absolutely no sizing info resort to final color stop
+        box-x = box-y = radius-x = radius-y = last(stops)[0]
 
   // normalize start position
   if length(start) is 1
@@ -385,86 +378,9 @@ normalize-radial-gradient(start, size, stops...)
         radius-y = -max((start-x (box-y - start-y)))
     // TODO closest-corner, farthest corner
 
-  prop = current-property[0]
-  val = current-property[1]
+  p(((start-x start-y) (radius-x radius-y box-x box-y) stops))
 
-  if radius-x
-    // canvas
-    if support-for-canvas and has-canvas
-      img = radial-gradient-image(start-x start-y, radius-x radius-y box-x box-y, stops)
-      add-property(prop, replace(val, '__CALL__', img))
-
-    // svg
-    if support-for-svg
-      svg = radial-gradient-svg(start-x start-y, radius-x radius-y, stops)
-      add-property(prop, replace(val, '__CALL__', svg))
-
-    // legacy webkit
-    /*
-    if support-for-webkit-legacy
-      webkit-legacy = '-webkit-gradient(radial, %s, 0, %s, %s, %s)' % (start start radius join-stops(-radial-gradient-webkit-legacy-stops(stops, radius), webkit-stop))
-      add-property(prop, replace(val, '__CALL__', webkit-legacy))
-    */
-
-  // vendor prefixed
-  std-stops = join-stops(stops, std-stop)
-  for prefix in vendor-prefixes
-    unless prefix == official
-      gradient = '-%s-radial-gradient(%s, %s, %s)' % (prefix start size std-stops)
-      add-property(prop, replace(val, '__CALL__', gradient))
-
-  // standard
-  'radial-gradient(%s, %s, %s)' % (start size join-stops(stops, moz-stop))
-
-/*
- * Create a radial gradient image with the given center position
- * and variable number of color stops.
- */
-radial-gradient-image(start, size, stops...)
-  error('node-canvas is required for radial-gradient-image()') unless has-canvas
-  stops = stops[0] if length(stops) == 1
-  error('color stops required') unless length(stops)
-
-  // create the radial gradient image
-  grad = create-radial-gradient-image(start[0], start[1], size[0], size[1], size[2], size[3])
-  add-color-stop(grad, stop[0], stop[1]) for stop in stops
-  'url(%s)' % gradient-data-uri(grad)
-
-/*
- * Create a radial gradient SVG with the given center position
- * and variable number of color stops.
- */
-radial-gradient-svg(start, size, stops...)
-  stops = stops[0] if length(stops) == 1
-  error('color stops required') unless length(stops)
-
-  p(start)
-  p(size)
-  p(stops)
-  p('----')
-
-  svg =  '<?xml version="1.0" encoding="utf-8"?>'
-  svg += '<svg version="1.1" xmlns="http://www.w3.org/2000/svg">'
-  svg += '<defs>'
-  svg += '<radialGradient id="grad" gradientUnits="userSpaceOnUse" cx="%s" cy="%s" r="%s">' % (start[0] start[1] size[0] size[1])
-  for stop in stops
-    svg += '<stop offset="%s" stop-color="%s"/>' % (stop[0] stop[1])
-  svg += '</radialGradient>'
-  svg += '</defs>'
-  svg += '<rect x="0" y="0" width="100%" height="100%" fill="url(#grad)" />'
-  svg += '</svg>'
-
-  'url(%s)' % gradient-data-uri-svg(svg)
-
-/*
- * Convert stops to a percentage of a given fixed radius (dividend)
- */
--radial-gradient-webkit-legacy-stops(stops, dividend)
-  stops = clone(stops)
-  for stop, i in stops
-    stop[0] = unit((stop[0] / dividend) * 100, '%')
-  stops
-
+  ((start-x start-y) (radius-x radius-y box-x box-y) stops)
 /*
  * Check if the given val is a valid radial gradient size/shape
  *
