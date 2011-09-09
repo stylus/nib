@@ -1,6 +1,6 @@
 # Nib
 
-  Stylus mixins, utilities, components, and gradient image generation. CSS is your bitch!
+  Stylus mixins, utilities, components, and gradient image generation.
 
  __NOTE__: better docs coming soon
 
