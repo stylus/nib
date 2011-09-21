@@ -1,0 +1,22 @@
+/*
+ * Overflow utility.
+ *
+ * Synopsis:
+ *
+ *   overflow: <type>
+ *
+ * Examples:
+ *
+ *     overflow: auto
+ *     overflow: hidden
+ *     overflow: ellipsis
+ *
+ */
+
+overflow(value)
+    if value == 'ellipsis'
+        overflow: hidden
+        white-space: nowrap
+        text-overflow: ellipsis
+    else
+        overflow: value
