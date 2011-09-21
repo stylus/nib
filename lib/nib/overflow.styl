@@ -17,6 +17,6 @@ overflow(value)
     if value == 'ellipsis'
         overflow: hidden
         white-space: nowrap
-        text-overflow: ellipsis
+        vendor('text-overflow', ellipsis, only: o ms official)
     else
         overflow: value
