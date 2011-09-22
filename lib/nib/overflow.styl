@@ -1,0 +1,22 @@
+/*
+ * Overflow utility. Maps to regular overflow, and adds an ellipsis value.
+ *
+ * Synopsis:
+ *
+ *   overflow: <type>
+ *
+ * Examples:
+ *
+ *     overflow: auto
+ *     overflow: hidden
+ *     overflow: ellipsis
+ *
+ */
+
+overflow()
+  if arguments[0] == ellipsis
+    overflow: hidden
+    white-space: nowrap
+    vendor('text-overflow', ellipsis, only: o ms official)
+  else
+    overflow: arguments[0]
