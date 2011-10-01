@@ -12,6 +12,31 @@
 
     <section id="content">
       <section>
+        <p>Nib is a small and powerful library for the <a href="http://learnboost.gitub.com/stylus">Stylus CSS language</a>, providing robust cross-browser CSS3 mixins to make your life as a designer easier.</p>
+        
+        <pre>
+          <code>
+body {
+  background: linear-gradient(top, white, black);
+}</code>
+        </pre>
+        
+        <pre>
+          <code>
+body {
+  background: -webkit-gradient(linear,
+    left top,
+    left bottom
+  , color-stop(0, #fff)
+  , color-stop(1, #000));
+  background: -webkit-linear-gradient(top, #fff 0%, #000 100%);
+  background: -moz-linear-gradient(top, #fff 0%, #000 100%);
+  background: linear-gradient(top, #fff 0%, #000 100%);
+}</code>
+        </pre>
+      </section>
+
+      <section>
         <h2>Installation</h2>
         
         <p>Getting started</p>
