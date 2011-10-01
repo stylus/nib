@@ -204,11 +204,27 @@ button {
 
     <section>
       <h2>Ellipsis</h2>
-      <p></p>
+      <p>The <code>overflow</code> property is augmented with a "ellipsis" value, expanding to what you see below.</p>
 
-<code><pre>.description {
+<code><pre>
+
+.description {
   overflow: ellipsis;
-}</pre></code>
+}
+
+</pre></code>
+
+yielding:
+
+<code><pre>
+
+button {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+</pre></code>
     </section>
 
     <section>
