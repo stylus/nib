@@ -10,58 +10,58 @@
       <span id="tagline">CSS3 extensions for Stylus</span>
     </header>
 
-    <section id="content">
-      <section>
-        <p>Nib is a small and powerful library for the <a href="http://learnboost.gitub.com/stylus">Stylus CSS language</a>, providing robust cross-browser CSS3 mixins to make your life as a designer easier.</p>
-        
-        <pre>
-          <code>
+    <section>
+      <p>Nib is a small and powerful library for the <a href="http://learnboost.gitub.com/stylus">Stylus CSS language</a>, providing robust cross-browser CSS3 mixins to make your life as a designer easier.</p>
+      
+      <pre>
+        <code>
 body {
-  background: linear-gradient(top, white, black);
+background: linear-gradient(top, white, black);
 }</code>
-        </pre>
-        
-        <pre>
-          <code>
+      </pre>
+      
+      <pre>
+        <code>
 body {
-  background: -webkit-gradient(linear,
-    left top,
-    left bottom
-  , color-stop(0, #fff)
-  , color-stop(1, #000));
-  background: -webkit-linear-gradient(top, #fff 0%, #000 100%);
-  background: -moz-linear-gradient(top, #fff 0%, #000 100%);
-  background: linear-gradient(top, #fff 0%, #000 100%);
+background: -webkit-gradient(linear,
+  left top,
+  left bottom
+, color-stop(0, #fff)
+, color-stop(1, #000));
+background: -webkit-linear-gradient(top, #fff 0%, #000 100%);
+background: -moz-linear-gradient(top, #fff 0%, #000 100%);
+background: linear-gradient(top, #fff 0%, #000 100%);
 }</code>
-        </pre>
-      </section>
+      </pre>
+    </section>
 
-      <section>
-        <h2>Installation</h2>
-        
-        <p>Getting started</p>
-        <pre>
-          <code>
+    <section>
+      <h2>Installation</h2>
+      
+      <p>To get started you'll first want to add nib to your <em>package.json</em> file, along with stylus. Once installed you can use Stylus and Nib with your <a href="http://senchalabs.github.com/connect">Connect</a> or <a href="http://expressjs.com">Express</a> application as shown below.</p>
+      <pre>
+        <code>
 var connect = require('connect')
-  , stylus = require('stylus')
-  , nib = require('nib');
+, stylus = require('stylus')
+, nib = require('nib');
 
-var server = connect();
+var app = connect();
 
 function compile(str, path) {
-  return stylus(str)
-    .set('filename', path)
-    .set('compress', true)
-    .use(nib());
+return stylus(str)
+  .set('filename', path)
+  .set('compress', true)
+  .use(nib());
 }
 
-server.use(stylus.middleware({
-    src: __dirname
-  , compile: compile
+app.use(stylus.middleware({
+  src: __dirname
+, compile: compile
 }));
-          </code>
-        </pre>
-      </section>
+
+app.listen(3000);
+        </code>
+      </pre>
     </section>
 
     <a href="http://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
