@@ -16,7 +16,7 @@
       <pre>
         <code>
 body {
-background: linear-gradient(top, white, black);
+  background: linear-gradient(top, white, black);
 }</code>
       </pre>
       
@@ -81,6 +81,30 @@ return stylus(str)
   .use(nib())
   .import('nib');</code>
       </pre>
+    </section>
+
+    <section>
+      <h2>Gradients</h2>
+      <p>Nib's gradient support is by far the largest feature it provides, not only is the syntax extremely similar to what you would normally write, it's more forgiving, expands to vendor equivalents, and can even produce a PNG for older browsers with <a href="http://github.com/learnboost/node-canvas">node-canvas</a>.</p>
+
+<pre><code>
+body {
+  background: linear-gradient(top, white, black);
+}
+
+</code></pre>
+
+yields:
+
+<pre><code>
+body {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #000));
+  background: -webkit-linear-gradient(top, #fff 0%, #000 100%);
+  background: -moz-linear-gradient(top, #fff 0%, #000 100%);
+  background: linear-gradient(top, #fff 0%, #000 100%);
+}
+
+</code></pre>
     </section>
 
     <section>
