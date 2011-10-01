@@ -158,6 +158,50 @@ yielding:
 </code></pre>
     </section>
 
+    <section>
+      <h2>Border radius</h2>
+      <p>Nib's <code>border-radius</code> supports both the regular syntax as well as augmenting it to make the value more expressive.</p>
+
+<pre><code>
+button {
+  border-radius: 1px 2px / 3px 4px;
+}
+
+button {
+  border-radius: 5px;
+}
+
+button {
+  border-radius: bottom 10px;
+}
+
+</code></pre>
+
+yielding:
+
+<pre><code>
+button {
+  -webkit-border-radius: 1px 2px/3px 4px;
+  -moz-border-radius: 1px 2px/3px 4px;
+  border-radius: 1px 2px/3px 4px;
+}
+button {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+button {
+  -moz-border-radius-topleft: 10px;
+  -webkit-border-top-left-radius: 10px;
+  border-top-left-radius: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+</code></pre>
+    </section>
+
     <a href="http://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
   </body>
 </html>
