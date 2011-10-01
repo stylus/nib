@@ -105,6 +105,27 @@ body {
 }
 
 </code></pre>
+
+<p>Any number of color stops may be provided:</p>
+
+<pre><code>
+body {
+  background: linear-gradient(bottom left, white, red, blue, black);
+}
+
+</code></pre>
+
+<p>Units may be placed before, or after the color:</p>
+
+<pre><code>
+body {
+  background: linear-gradient(top, #fff %60, #000);
+  background: linear-gradient(top, %60 #fff, #000);
+  background: linear-gradient(top, red 15, green 80%, white, 90% yellow);
+}
+
+</code></pre>
+
     </section>
 
     <section>
