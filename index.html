@@ -83,6 +83,54 @@ return stylus(str)
       </pre>
     </section>
 
+    <section>
+      <h2>Position mixins</h2>
+      <p>The position mixins <code>absolute</code>, <code>fixed</code>, and <code>relative</code> provide a shorthand variant to what is otherwise three CSS properties. The syntax is as follows:</p>
+
+    <pre>
+      <code>
+fixed|absolute|relative: top|bottom [n] left|right [n]</code>
+    </pre>
+
+    <p>The following example will default to (0,0):</p>
+
+    <pre>
+      <code>
+#back-to-top {
+  fixed: bottom right;
+}</code>
+    </pre>
+yielding:
+    <pre>
+      <code>
+#back-to-top {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}</code>
+    </pre>
+
+    <p>You may also specify the units:</p>
+
+    <pre>
+      <code>
+#back-to-top {
+  fixed: bottom 10px right 5px;
+}</code>
+    </pre>
+yielding:
+    <pre>
+      <code>
+#back-to-top {
+  position: fixed;
+  bottom: 10px;
+  right: 5px;
+}</code>
+    </pre>
+
+    </section>
+
+
     <a href="http://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
   </body>
 </html>
