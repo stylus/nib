@@ -38,29 +38,48 @@ background: linear-gradient(top, #fff 0%, #000 100%);
     <section>
       <h2>Installation</h2>
       
-      <p>To get started you'll first want to add nib to your <em>package.json</em> file, along with stylus. Once installed you can use Stylus and Nib with your <a href="http://senchalabs.github.com/connect">Connect</a> or <a href="http://expressjs.com">Express</a> application as shown below.</p>
+      <p>To get started you'll first want to add nib to your <em>package.json</em> file, along with stylus. Once installed you can use Stylus and Nib with your <a href="http://senchalabs.github.com/connect">Connect</a> or <a href="http://expressjs.com">Express</a> application as shown in the following snippet. The simple <code>.use(nib())</code> call is all that is required to expose itself to Stylus</p>
       <pre>
         <code>
 var connect = require('connect')
-, stylus = require('stylus')
-, nib = require('nib');
+  , stylus = require('stylus')
+  , nib = require('nib');
 
 var app = connect();
 
 function compile(str, path) {
-return stylus(str)
-  .set('filename', path)
-  .set('compress', true)
-  .use(nib());
+  return stylus(str)
+    .set('filename', path)
+    .set('compress', true)
+    .use(nib());
 }
 
 app.use(stylus.middleware({
-  src: __dirname
-, compile: compile
+    src: __dirname
+  , compile: compile
 }));
 
-app.listen(3000);
-        </code>
+app.listen(3000);</code>
+      </pre>
+      
+      <p>From within a <em>.styl</em> file you can then <strong>@import</strong> nib, or a portion of nib:</p>
+      
+      <pre>
+        <code>
+@import 'nib'
+@import 'nib/gradients'
+@import 'nib/buttons'</code>
+      </pre>
+
+      <p>Rather than manually <strong>@import</strong>-ing nib within your Stylus source you can import it via the JavaScript API as well:</p>
+      
+      <pre>
+        <code>
+return stylus(str)
+  .set('filename', path)
+  .set('compress', true)
+  .use(nib())
+  .import('nib');</code>
       </pre>
     </section>
 
