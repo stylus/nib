@@ -1,8 +1,6 @@
 # Nib
 
-  Stylus mixins, utilities, components, and gradient image generation.
-
- __NOTE__: better docs coming soon
+  Stylus mixins, utilities, components, and gradient image generation. Don't forget to check out the [documentation](http://visionmedia.github.com/nib/).
 
 ## Installation
 
