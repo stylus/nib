@@ -12,14 +12,14 @@
 
     <section>
       <p>Nib is a small and powerful library for the <a href="http://learnboost.gitub.com/stylus">Stylus CSS language</a>, providing robust cross-browser CSS3 mixins to make your life as a designer easier.</p>
-      
+
       <pre>
         <code>
 body {
   background: linear-gradient(top, white, black);
 }</code>
       </pre>
-      
+
       <pre>
         <code>
 body {
@@ -37,7 +37,7 @@ body {
 
     <section>
       <h2>Installation</h2>
-      
+
       <p>To get started you'll first want to add nib to your <em>package.json</em> file, along with stylus. Once installed you can use Stylus and Nib with your <a href="http://senchalabs.github.com/connect">Connect</a> or <a href="http://expressjs.com">Express</a> application as shown in the following snippet. The simple <code>.use(nib())</code> call is all that is required to expose itself to Stylus</p>
       <pre>
         <code>
@@ -61,9 +61,9 @@ app.use(stylus.middleware({
 
 app.listen(3000);</code>
       </pre>
-      
+
       <p>From within a <em>.styl</em> file you can then <strong>@import</strong> nib, or a portion of nib:</p>
-      
+
       <pre>
         <code>
 @import 'nib'
@@ -72,7 +72,7 @@ app.listen(3000);</code>
       </pre>
 
       <p>Rather than manually <strong>@import</strong>-ing nib within your Stylus source you can import it via the JavaScript API as well:</p>
-      
+
       <pre>
         <code>
 return stylus(str)
@@ -281,7 +281,7 @@ button {
     <section>
       <h2>Reset</h2>
       <p>Nib comes bundled with Eric Meyer's style reset support, you can choose to apply the global or any specifics that you wish. To view the definitions view <a href="https://github.com/visionmedia/nib/blob/master/lib/nib/reset.styl">reset.styl</a></p>
-      
+
       <ul>
         <li>global-reset()</li>
         <li>nested-reset()</li>
@@ -297,7 +297,7 @@ button {
     <section>
       <h2>Miscellaneous properties</h2>
       <p>The following properties follow vendor expansion much like <code>border-radius</code>, however without augmentation, as well as some aliases such as <code>whitespace</code> instead of <code>white-space</code>.</p>
-      
+
       <ul>
         <li>no-wrap == nowrap</li>
         <li>whitespace == white-space</li>
@@ -338,10 +338,11 @@ button {
         <li>animation-fill-mode</li>
         <li>border-image</li>
         <li>hyphens</li>
-        <li>hyphens</li>
+        <li>appearance</li>
       </ul>
     </section>
 
     <a href="http://github.com/visionmedia/nib"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/7afbc8b248c68eb468279e8c17986ad46549fb71/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub"></a>
   </body>
 </html>
+
