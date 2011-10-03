@@ -68,6 +68,11 @@ button {
   -moz-animation: myAnimation 1s ease;
   animation: myAnimation 1s ease;
 }
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
 section {
   -webkit-column-count: 2;
   -moz-column-count: 2;
