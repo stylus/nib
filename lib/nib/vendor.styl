@@ -293,6 +293,13 @@ hyphens()
 
 
 /*
+ * Vendor "appearance" support.
+ */
+
+appearance()
+  vendor('appearance', arguments)
+
+/*
  * Helper for border-radius().
  */
 
@@ -317,7 +324,7 @@ hyphens()
 /*
  * border-radius supporting vendor prefixes and
  * augmented behavior.
- * 
+ *
  * Examples:
  *
  *    border-radius: 2px 5px
@@ -343,3 +350,4 @@ border-radius()
           -apply-border-radius(pos)
           pos = ()
   vendor('border-radius', pos) unless augmented
+
