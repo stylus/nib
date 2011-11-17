@@ -1,4 +1,10 @@
 
+0.3.0 / 2011-11-17 
+==================
+
+  * Added support for o and ms prefixes to text-overflow helper [Ian Storm]
+  * Added "overflow: ellipsis" support [Ian Storm]
+
 0.2.0 / 2011-08-26 
 ==================
 
