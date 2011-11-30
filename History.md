@@ -1,4 +1,11 @@
 
+0.3.1 / 2011-11-30 
+==================
+
+  * Added vendor `appearance` property
+  * Updated `replace()`
+  * Fixed tests
+
 0.3.0 / 2011-11-17 
 ==================
 
