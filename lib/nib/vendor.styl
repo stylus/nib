@@ -13,8 +13,13 @@ no-wrap = unquote('nowrap')
  * or those which should be ignored.
  */
 
-vendor(prop, args, only = null, ignore = null)
-  for prefix in vendor-prefixes
+vendor(prop, args, all = false, only = null, ignore = null)
+  if all
+    prefixes = vendor-prefixes-all
+  else
+    prefixes = vendor-prefixes
+
+  for prefix in prefixes
     unless (only and !(prefix in only)) or (ignore and prefix in ignore)
       if official == prefix
         {prop}: args
@@ -96,7 +101,7 @@ background-size()
  */
 
 transform()
-  vendor('transform', arguments)
+  vendor('transform', arguments, true)
 
 /*
  * Vendor "border-image" support.
@@ -218,7 +223,7 @@ box-direction()
  */
 
 animation()
-  vendor('animation', arguments)
+  vendor('animation', arguments, true, null, o)
 
 
 /*
