@@ -1,4 +1,9 @@
 
+0.3.2 / 2012-01-09 
+==================
+
+  * Remove `<font>` from the `global-reset()` helper [TooTallNate]
+
 0.3.1 / 2011-11-30 
 ==================
 

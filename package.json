@@ -1,7 +1,7 @@
 {
   "name": "nib",
   "description": "Stylus mixins and utilities",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "repository": {
     "type": "git",
     "url": "git://github.com/visionmedia/nib.git"
