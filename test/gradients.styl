@@ -1,7 +1,8 @@
 
-@import 'nib/gradients'
+@import 'nib/gradients';
 
-#gradients tr
+#linear-gradients tr,
+#radial-gradients tr
   height: 50px
   color: white
   td
@@ -10,7 +11,10 @@
     &:first-child
       border-right: 1px solid #fff
 
-#gradients
+#radial-gradients tr
+  height: 150px
+
+#linear-gradients
   tr:nth-child(1)
     td:first-child
       background: linear-gradient(top, yellow, blue)
@@ -54,3 +58,74 @@
   tr:nth-child(9)
     td:first-child
       background: linear-gradient(50px top, red, green, yellow, blue)
+
+/*
+ * Image-free radial gradients.
+ */
+
+support-for-webkit-legacy = true
+support-for-canvas = false
+support-for-svg = false
+vendor-prefixes = webkit moz official
+
+#radial-gradients
+  //tr:nth-child(1)
+  //  td:first-child
+  //    background: radial-gradient(green, yellow 150px)
+  tr:nth-child(2)
+    td:first-child
+      background: radial-gradient(right top, red, yellow, blue 150px)
+  tr:nth-child(3)
+    td:first-child
+      background: radial-gradient(left bottom, 50px, green, yellow, blue)
+  tr:nth-child(4)
+    td:first-child
+      background: radial-gradient(red, yellow, green, blue, indigo, violet 150px)
+  tr:nth-child(5)
+    td:first-child
+      background: radial-gradient(left, circle farthest-side, green, yellow 150px)
+  tr:nth-child(6)
+    td:first-child
+      background: radial-gradient(40% 40%, circle closest-side, green, yellow 150px)
+  tr:nth-child(7)
+    td:first-child
+      background: radial-gradient(60% 60%, circle contain, yellow, green 75%, rgba(255,255,255,0) 150px)
+  tr:nth-child(8)
+    td:first-child
+      background: radial-gradient(center, 80px 40px, white, black 150px)
+
+/*
+ * Image-only radial gradients
+ */
+
+support-for-webkit-legacy = false
+support-for-canvas = true
+support-for-svg = true
+vendor-prefixes = ()
+
+#radial-gradients
+  //tr:nth-child(1)
+  //  td:last-child
+  //    background: radial-gradient(green, yellow 150px)
+  tr:nth-child(2)
+    td:last-child
+      background: radial-gradient(right top, red, yellow, blue 150px)
+  tr:nth-child(3)
+    td:last-child
+      background: radial-gradient(left bottom, 50px, green, yellow, blue)
+  tr:nth-child(4)
+    td:last-child
+      background: radial-gradient(red, yellow, green, blue, indigo, violet 150px)
+  tr:nth-child(5)
+    td:last-child
+      background: radial-gradient(left, circle farthest-side, green, yellow 150px)
+  tr:nth-child(6)
+    td:last-child
+      background: radial-gradient(40% 40%, circle closest-side, green, yellow 150px)
+  tr:nth-child(7)
+    td:last-child
+      background: radial-gradient(60% 50%, circle contain, yellow, green 75%, rgba(255,255,255,0) 150px)
+  tr:nth-child(8)
+    td:last-child
+      background: radial-gradient(center, 80px 40px, white, black 150px)
+
