@@ -1,8 +1,22 @@
 
 /*
+ * Vendor "display: box" support.
+ */
+
+display(type)
+  if box == type
+    for prefix in vendor-prefixes
+      if official == prefix
+        display: box
+      else
+        display: '-%s-box' % prefix
+  else
+    display: type
+
+/*
  * Synopsis:
  *
- *   box: orient direction
+ *   box: <orient> [direction]
  *
  * Examples:
  *
@@ -12,11 +26,7 @@
  */
 
 box(args...)
-  for prefix in vendor-prefixes
-    if official == prefix
-      display: box
-    else
-      display: '-%s-box' % prefix
+  display: box
   box-orient: args[0]
   if args[1]
     box-direction: args[1]

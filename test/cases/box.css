@@ -2,6 +2,11 @@ section {
   display: -webkit-box;
   display: -moz-box;
   display: box;
+}
+section {
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
   -webkit-box-orient: horizontal;
   -moz-box-orient: horizontal;
   box-orient: horizontal;
