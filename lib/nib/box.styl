@@ -5,11 +5,7 @@
 
 display(type)
   if box == type
-    for prefix in vendor-prefixes
-      if official == prefix
-        display: box
-      else
-        display: '-%s-box' % prefix
+    display: vendor-value(type)
   else
     display: type
 

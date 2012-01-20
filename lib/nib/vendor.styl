@@ -22,6 +22,17 @@ vendor(prop, args, only = null, ignore = null)
         {'-' + prefix + '-' + prop}: args
 
 /*
+ * Vendorize the given value.
+ */
+
+vendor-value(arg)
+  prop = current-property[0]
+  for prefix in vendor-prefixes
+    unless official == prefix
+      add-property(prop, '-%s-%s' % (prefix arg))
+  arg
+
+/*
  * Vendor "box-shadow" support.
  */
 
