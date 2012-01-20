@@ -16,7 +16,7 @@ box(args...)
     if official == prefix
       display: box
     else
-      display: unquote('-') + prefix + '-box'
+      display: '-%s-box' % prefix
   box-orient: args[0]
   if args[1]
     box-direction: args[1]
