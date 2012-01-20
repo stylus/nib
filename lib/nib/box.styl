@@ -11,12 +11,12 @@
  *
  */
 
-box(args)
+box(args...)
   for prefix in vendor-prefixes
     if official == prefix
       {display}: box
     else
       {display}: unquote('-') + prefix + '-box'
-  box-orient: arguments[0]
-  if arguments[1]
-    box-direction: arguments[1]
+  box-orient: args[0]
+  if args[1]
+    box-direction: args[1]
