@@ -50,7 +50,7 @@ server.use(stylus.middleware({
   
   ```css
   @import 'nib/gradients'
-  @import 'nib/buttons'
+  @import 'nib/overflow'
   ```
   
 to be continued....
