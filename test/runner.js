@@ -20,6 +20,8 @@ var count = 0;
 
 var failures = 0;
 
+console.log();
+
 /**
  * Test the given `test`.
  *
