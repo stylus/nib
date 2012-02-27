@@ -128,6 +128,11 @@ linear-gradient(start, stops...)
       gradient = '-%s-linear-gradient(%s, %s)' % (prefix start stops)   
       add-property(prop, replace(val, '__CALL__', gradient))
 
+  // css3pie
+  if prop == 'background'
+    gradient = 'linear-gradient(%s, %s)' % (start stops)
+    add-property('-pie-background', replace(val, '__CALL__', gradient))
+
   // standard 
   'linear-gradient(%s, %s)' % (start stops)
 
