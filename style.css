@@ -1,6 +1,5 @@
-
 body {
-  background: #cdd4dc url(images/bg.png);
+  background: #cdd4dc url(images/bg.png) fixed;
   font: 14px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-align: center;
   color: #2C2C2C;
