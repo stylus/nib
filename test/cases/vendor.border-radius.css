@@ -52,8 +52,6 @@ button {
   border-bottom-right-radius: 10px;
 }
 button {
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
