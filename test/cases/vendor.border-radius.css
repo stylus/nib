@@ -6,11 +6,15 @@ button {
 button {
   -moz-border-radius-topleft: 10px;
   -webkit-border-top-left-radius: 10px;
+  -o-border-top-left-radius: 10px;
+  -ms-border-top-left-radius: 10px;
   border-top-left-radius: 10px;
 }
 button {
   -moz-border-radius-bottomright: 5px;
   -webkit-border-bottom-right-radius: 5px;
+  -o-border-bottom-right-radius: 5px;
+  -ms-border-bottom-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 button {
