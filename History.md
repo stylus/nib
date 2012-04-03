@@ -1,4 +1,15 @@
 
+0.4.0 / 2012-04-03 
+==================
+
+  * Added `box-ordinal-group` support [panosru]
+  * Added `transform-origin` support [panosru]
+  * Added `perspective` support
+  * Added `transform-style` support
+  * Added `display: box` vendor support
+  * Removed buttons
+  * Changed: use mocha for test runner
+
 0.3.2 / 2012-01-09 
 ==================
 
