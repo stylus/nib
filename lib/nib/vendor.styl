@@ -196,14 +196,14 @@ transition-delay()
  */
 
 backface-visibility()
-  vendor('backface-visibility', arguments, only: webkit official)
+  vendor('backface-visibility', arguments, only: webkit moz ms official)
 
 /*
  * Vendor "perspective" support.
  */
 
 perspective()
-  vendor('perspective', arguments)
+  vendor('perspective', arguments, only: webkit moz ms official)
 
 
 /*
