@@ -112,8 +112,15 @@ column-fill()
  * Vendor "background-clip" support.
  */
 
-background-clip()
-  vendor('background-clip', arguments, only: webkit moz official)
+background-clip(box, args...)
+  if box in (border-box padding-box content-box)
+    box = border  if box == border-box
+    box = padding if box == padding-box
+    box = content if box == content-box
+    vendor('background-clip', box args, only: moz webkit)
+  if box == text
+    vendor('background-clip', arguments, only: webkit)
+  background-clip: arguments
 
 /*
  * Vendor "background-size" support.
