@@ -43,7 +43,7 @@ box-shadow()
  */
 
 user-select()
-  vendor('user-select', arguments, only: webkit moz official)
+  vendor('user-select', arguments, only: webkit moz ms official)
 
 /*
  * Vendor "column-count" support.
@@ -86,20 +86,41 @@ column-rule-width()
 
 column-rule-style()
   vendor('column-rule-style', arguments, only: webkit moz official)
-  
-/*
- * Vendor "background-clip" support.
- */
-
-background-clip()
-  vendor('background-clip', arguments, only: webkit moz official)
 
 /*
  * Vendor "column-width" support.
  */
 
 column-width()
-  vendor('column-width', arguments)
+  vendor('column-width', arguments, only: webkit moz official)
+
+/*
+ * Vendor "column-span" support.
+ */
+
+column-span()
+  vendor('column-span', arguments, only: webkit official)
+
+/*
+ * Vendor "column-fill" support.
+ */
+
+column-fill()
+  vendor('column-fill', arguments, only: moz)
+
+/*
+ * Vendor "background-clip" support.
+ */
+
+background-clip(box, args...)
+  if box in (border-box padding-box content-box)
+    box = border  if box == border-box
+    box = padding if box == padding-box
+    box = content if box == content-box
+    vendor('background-clip', box args, only: moz webkit)
+  if box == text
+    vendor('background-clip', arguments, only: webkit)
+  background-clip: arguments
 
 /*
  * Vendor "background-size" support.
@@ -140,49 +161,49 @@ border-image()
  */
 
 transition()
-  vendor('transition', arguments, only: webkit moz o official)
+  vendor('transition', arguments)
 
 /*
  * Vendor "transition-property" support.
  */
 
 transition-property()
-  vendor('transition-property', arguments, only: webkit moz o official)
+  vendor('transition-property', arguments)
 
 /*
  * Vendor "transition-duration" support.
  */
 
 transition-duration()
-  vendor('transition-duration', arguments, only: webkit moz o official)
+  vendor('transition-duration', arguments)
 
 /*
  * Vendor "transition-timing-function" support.
  */
 
 transition-timing-function()
-  vendor('transition-timing-function', arguments, only: webkit moz o official)
+  vendor('transition-timing-function', arguments)
 
 /*
  * Vendor "transition-delay" support.
  */
 
 transition-delay()
-  vendor('transition-delay', arguments, only: webkit moz o official)
+  vendor('transition-delay', arguments)
 
 /*
  * Vendor "backface-visibility" support.
  */
 
 backface-visibility()
-  vendor('backface-visibility', arguments, only: webkit official)
+  vendor('backface-visibility', arguments, only: webkit moz ms official)
 
 /*
  * Vendor "perspective" support.
  */
 
 perspective()
-  vendor('perspective', arguments)
+  vendor('perspective', arguments, only: webkit moz ms official)
 
 
 /*
@@ -227,14 +248,14 @@ box-flex()
  */
 
 box-flex-group()
-  vendor('box-flex-group', arguments)
+  vendor('box-flex-group', arguments, only: webkit moz official)
 
 /*
  * Vendor "box-ordinal-group" support.
  */
 
 box-ordinal-group()
-  vendor('box-ordinal-group', arguments)
+  vendor('box-ordinal-group', arguments, only: webkit moz ms official)
 
 
 /*
@@ -263,7 +284,7 @@ box-direction()
  */
 
 animation()
-  vendor('animation', arguments, only: webkit moz official)
+  vendor('animation', arguments)
 
 
 /*
@@ -271,56 +292,56 @@ animation()
  */
 
 animation-name()
-  vendor('animation-name', arguments, only: webkit moz official)
+  vendor('animation-name', arguments)
 
 /*
  * Vendor "animation-duration" support.
  */
 
 animation-duration()
-  vendor('animation-duration', arguments, only: webkit moz official)
+  vendor('animation-duration', arguments)
 
 /*
  * Vendor "animation-delay" support.
  */
 
 animation-delay()
-  vendor('animation-delay', arguments, only: webkit moz official)
+  vendor('animation-delay', arguments)
 
 /*
  * Vendor "animation-direction" support.
  */
 
 animation-direction()
-  vendor('animation-direction', arguments, only: webkit moz official)
+  vendor('animation-direction', arguments)
 
 /*
  * Vendor "animation-iteration-count" support.
  */
 
 animation-iteration-count()
-  vendor('animation-iteration-count', arguments, only: webkit moz official)
+  vendor('animation-iteration-count', arguments)
 
 /*
  * Vendor "animation-timing-function" support.
  */
 
 animation-timing-function()
-  vendor('animation-timing-function', arguments, only: webkit moz official)
+  vendor('animation-timing-function', arguments)
 
 /*
  * Vendor "animation-play-state" support.
  */
 
 animation-play-state()
-  vendor('animation-play-state', arguments, only: webkit moz official)
+  vendor('animation-play-state', arguments)
 
 /*
  * Vendor "animation-fill-mode" support.
  */
 
 animation-fill-mode()
-  vendor('animation-fill-mode', arguments, only: webkit moz official)
+  vendor('animation-fill-mode', arguments)
 
 /*
  * Vendor "border-image" support.
@@ -334,7 +355,7 @@ border-image()
  */
 
 hyphens()
-  vendor('hyphens', arguments)
+  vendor('hyphens', arguments, only: webkit moz ms official)
 
 
 /*
@@ -342,7 +363,7 @@ hyphens()
  */
 
 appearance()
-  vendor('appearance', arguments)
+  vendor('appearance', arguments, only: webkit moz)
 
 /*
  * Helper for border-radius().
