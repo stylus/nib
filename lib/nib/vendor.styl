@@ -210,10 +210,10 @@ perspective()
  * Opacity with conditional IE support.
  */
 
-opacity(n)
-  opacity: n
+opacity(n, args...)
+  opacity: n args
   if support-for-ie
-    filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=%s)' % round(n * 100)
+    filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=%s)' % round(n * 100) args
 
 /*
  * Alias the "white-space" property.
