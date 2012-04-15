@@ -1,4 +1,20 @@
 
+0.4.1 / 2012-04-15 
+==================
+
+  * There is a moz-box-flex-group actually [kizu]
+  * There were no importance for overflow [kizu]
+  * Appearance is only webkit/moz now [kizu]
+  * Still no hyphens in Opera [kizu]
+  * There would be animations in IE10 and probably (there were an experimental build of it) in Opera 12) [kizu]
+  * Updated fexbox prefixes (flex-group is only in webkit, no ordinal-group in Opera) [kizu]
+  * 3D transforms now in IE10 and in Fx, but still not in Opera [kizu]
+  * There would be transitions in IE10 [kizu]
+  * Fixed the background-clip prefixes: it have different syntax for old webkit and moz, also it have only webkit for text [kizu]
+  * Added column-span and column-fill [kizu]
+  * Correct prefixes for column-clip, moved it in place with other column- props [kizu]
+  * There would be -ms-user-select in IE10 [kizu]
+ 
 0.4.0 / 2012-04-03 
 ==================
 
