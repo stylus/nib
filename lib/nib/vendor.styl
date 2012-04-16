@@ -109,18 +109,42 @@ column-fill()
   vendor('column-fill', arguments, only: moz)
 
 /*
+ * Legacy syntax support for background-clip and background-origin
+ */
+
+legacy-bg-values(property, args)
+  legacy_args = ()
+  importance = unquote('')
+  for subargs in args
+    for arg in subargs
+      if arg in (border-box padding-box content-box)
+        arg = border  if arg == border-box
+        arg = padding if arg == padding-box
+        arg = content if arg == content-box
+      if arg != '!important'
+        push(legacy_args,arg)
+      else
+        importance = !important
+  vendor(property, unquote(join(', ',legacy_args)) importance, only: moz webkit)
+
+/*
  * Vendor "background-clip" support.
  */
 
-background-clip(box, args...)
-  if box in (border-box padding-box content-box)
-    box = border  if box == border-box
-    box = padding if box == padding-box
-    box = content if box == content-box
-    vendor('background-clip', box args, only: moz webkit)
-  if box == text
+background-clip()
+  if arguments[0] == text
     vendor('background-clip', arguments, only: webkit)
-  background-clip: arguments
+  else
+    legacy-bg-values('background-clip', arguments)
+    background-clip: arguments
+
+/*
+ * Vendor "background-origin" support.
+ */
+
+background-origin()
+  legacy-bg-values('background-origin', arguments)
+  background-origin: arguments
 
 /*
  * Vendor "background-size" support.
