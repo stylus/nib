@@ -229,6 +229,13 @@ backface-visibility()
 perspective()
   vendor('perspective', arguments, only: webkit moz ms official)
 
+/*
+ * Vendor "perspective-origin" support.
+ */
+
+perspective-origin()
+  vendor('perspective-origin', arguments, only: webkit moz ms official)
+
 
 /*
  * Opacity with conditional IE support.
@@ -374,13 +381,19 @@ animation-fill-mode()
 hyphens()
   vendor('hyphens', arguments, only: webkit moz ms official)
 
-
 /*
  * Vendor "appearance" support.
  */
 
 appearance()
   vendor('appearance', arguments, only: webkit moz)
+
+/*
+ * Vendor "tab-size" support.
+ */
+
+tab-size()
+  vendor('tab-size', arguments, only: moz o)
 
 /*
  * Helper for border-radius().
