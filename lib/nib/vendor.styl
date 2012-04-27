@@ -36,7 +36,7 @@ vendor-value(arg)
  */
 
 box-shadow()
-  vendor('box-shadow', arguments, only: webkit moz official)
+  vendor('box-shadow', arguments, only: webkit official)
 
 /*
  * Vendor "user-select" support.
@@ -151,7 +151,7 @@ background-origin()
  */
 
 background-size()
-  vendor('background-size', arguments, only: webkit moz o official)
+  vendor('background-size', arguments, only: webkit official)
 
 /*
  * Vendor "transform" support.
@@ -445,4 +445,4 @@ border-radius()
         if augmented
           -apply-border-radius(pos)
           pos = ()
-  vendor('border-radius', pos, only: webkit moz official) unless augmented
+  vendor('border-radius', pos, only: webkit official) unless augmented
