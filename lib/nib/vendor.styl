@@ -244,7 +244,13 @@ perspective-origin()
 opacity(n, args...)
   opacity: n args
   if support-for-ie
-    filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=%s)' % round(n * 100) args
+    ieValue = round(n * 100)
+    if ieValue==100
+      -ms-filter: none
+      filter: none
+    else
+      -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=%s)' % ieValue args
+      filter: 'alpha(opacity=%s)' % ieValue args
 
 /*
  * Alias the "white-space" property.
