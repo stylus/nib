@@ -249,8 +249,8 @@ opacity(n, args...)
       -ms-filter: none
       filter: none
     else
-      -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=%s)' % ieValue args
-      filter: 'alpha(opacity=%s)' % ieValue args
+      -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=%s)' % val args
+      filter: 'alpha(opacity=%s)' % val args
 
 /*
  * Alias the "white-space" property.
