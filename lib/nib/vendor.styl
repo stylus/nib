@@ -244,8 +244,8 @@ perspective-origin()
 opacity(n, args...)
   opacity: n args
   if support-for-ie
-    ieValue = round(n * 100)
-    if ieValue==100
+    val = round(n * 100)
+    if val == 100
       -ms-filter: none
       filter: none
     else
