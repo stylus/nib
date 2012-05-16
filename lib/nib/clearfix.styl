@@ -27,3 +27,23 @@ clearfix()
   &:after
     clear: both
   zoom: 1 if support-for-ie
+
+/*
+ * Synopsis:
+ *
+ *   clear: <type>
+ *
+ * Examples:
+ *
+ *     clear: fix
+ *     clear: none !important
+ *
+ */
+clear( type, args... )
+  if type == 'fix'
+    clearfix()
+  else
+    if args[0]
+      clear: type args
+    else
+      clear: type
