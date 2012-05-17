@@ -45,24 +45,27 @@ literal-join(string, literals)
   return result
 
 /*
- * Replacing one value with another
+ * Prepend matched argument with given prefix
+ * set strict to false to check as “begin with”
  */
 
-replace-args(args,argument,val)
+prepend-args(args, prefix, argument, strict = true)
   result = ()
   // Checking if there are values divided by comma
   if is-comma-list(args)
     for subargs in args
       subresult = ()
       for arg in subargs
-        arg = unquote(val) if arg == argument
+        if (arg == argument and strict) or (match('^'+s('%s',argument),''+arg) and !strict)
+          arg = s('%s%s',unquote(prefix),arg)
         push(subresult, arg)
       subresult = literal-join(' ', subresult) if length(subresult) > 1
       push(result, subresult)
     result = literal-join(', ', result)
   else
     for arg in args
-      arg = unquote(val) if arg == argument
+      if (arg == argument and strict) or (match('^'+s('%s',argument),''+arg) and !strict)
+        arg = s('%s%s',unquote(prefix),arg)
       push(result, arg)
   return result
 
@@ -81,7 +84,9 @@ vendor(prop, args, only = null, ignore = null)
         newargs = args
         // Adjusting the args if needed
         if prop in ('transition' 'transition-property')
-          newargs = replace-args(args, transform, '-' + prefix + '-transform')
+          newargs = prepend-args(args, '-' + prefix + '-', transform)
+        if prop in ('border-image')
+          newargs = prepend-args(args, '-' + prefix + '-', linear-gradient, false)
         {'-' + prefix + '-' + prop}: newargs
 
 /*
