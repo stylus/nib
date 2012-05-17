@@ -16,19 +16,6 @@ replace(expr, str, val)
   expr
 
 /*
- * Normalize gradient points.
- */
-
-grad-point(pos)
-  if length(pos) == 1
-    return left pos if pos in (top bottom)
-    return pos top if pos in (left right)
-  else if pos[0] in (top bottom)
-    pos[1] pos[0]
-  else
-    pos
-
-/*
  * Implicit color stop position.
  */
 
@@ -75,13 +62,6 @@ join-stops(stops, translate)
     color = stop[1]
     str += translate(color, pos)
   unquote(str)
-
-/*
- * Legacy Webkit color stop.
- */
-
-webkit-stop(color, pos)
-  'color-stop(%d, %s)' % (pos / 100 color)
 
 /*
  * Standard color stop.
