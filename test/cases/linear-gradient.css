@@ -1,5 +1,4 @@
 body {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #000));
   background: -webkit-linear-gradient(top, #fff 0, #000 100%);
   background: -moz-linear-gradient(top, #fff 0, #000 100%);
   background: -o-linear-gradient(top, #fff 0, #000 100%);
@@ -15,7 +14,6 @@ body {
   background: linear-gradient(top, #fff 0, #000 100%);
 }
 body {
-  background: -webkit-gradient(linear, left top, right bottom, color-stop(0, #fff), color-stop(0.25, #f00), color-stop(0.5, #00f), color-stop(1, #000));
   background: -webkit-linear-gradient(top left, #fff 0, #f00 25%, #00f 50%, #000 100%);
   background: -moz-linear-gradient(top left, #fff 0, #f00 25%, #00f 50%, #000 100%);
   background: -o-linear-gradient(top left, #fff 0, #f00 25%, #00f 50%, #000 100%);
@@ -23,7 +21,6 @@ body {
   background: linear-gradient(top left, #fff 0, #f00 25%, #00f 50%, #000 100%);
 }
 body {
-  background: -webkit-gradient(linear, right bottom, left top, color-stop(0, #fff), color-stop(0.8, #000));
   background: -webkit-linear-gradient(bottom right, #fff 0, #000 80%);
   background: -moz-linear-gradient(bottom right, #fff 0, #000 80%);
   background: -o-linear-gradient(bottom right, #fff 0, #000 80%);
@@ -31,7 +28,6 @@ body {
   background: linear-gradient(bottom right, #fff 0, #000 80%);
 }
 body {
-  background: -webkit-gradient(linear, right bottom, left top, color-stop(0, #fff), color-stop(0.8, #000));
   background: -webkit-linear-gradient(right bottom, #fff 0, #000 80%);
   background: -moz-linear-gradient(right bottom, #fff 0, #000 80%);
   background: -o-linear-gradient(right bottom, #fff 0, #000 80%);
@@ -39,7 +35,6 @@ body {
   background: linear-gradient(right bottom, #fff 0, #000 80%);
 }
 body {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #000));
   background: -webkit-linear-gradient(top, #fff 0, #000 100%);
   background: -moz-linear-gradient(top, #fff 0, #000 100%);
   background: -ms-linear-gradient(top, #fff 0, #000 100%);
@@ -47,7 +42,6 @@ body {
   background: linear-gradient(top, #fff 0, #000 100%);
 }
 body {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #000)), #fff;
   background: -webkit-linear-gradient(top, #fff 0, #000 100%), #fff;
   background: -moz-linear-gradient(top, #fff 0, #000 100%), #fff;
   background: -ms-linear-gradient(top, #fff 0, #000 100%), #fff;
