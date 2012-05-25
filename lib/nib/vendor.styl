@@ -75,7 +75,7 @@ prepend-args(args, prefix, argument, strict = true)
  * or those which should be ignored.
  */
 
-vendor(prop, args, only = null, ignore = null)
+vendor(prop, args, only = null, ignore = null, vendor-property = true)
   for prefix in vendor-prefixes
     unless (only and !(prefix in only)) or (ignore and prefix in ignore)
       if official == prefix
@@ -85,9 +85,13 @@ vendor(prop, args, only = null, ignore = null)
         // Adjusting the args if needed
         if prop in ('transition' 'transition-property')
           newargs = prepend-args(args, '-' + prefix + '-', transform)
-        if prop in ('border-image')
+        if prop in ('border-image' 'background' 'background-image' 'cursor' 'list-style' 'list-style-image')
           newargs = prepend-args(args, '-' + prefix + '-', linear-gradient, false)
-        {'-' + prefix + '-' + prop}: newargs
+        newprop = prop
+        newprop = '-' + prefix + '-' + prop if vendor-property
+        // TODO: make the adjustments for differences
+        // between the official syntax and vendor ones
+        {newprop}: newargs
 
 /*
  * Vendorize the given value.
@@ -584,3 +588,37 @@ placeholder()
         else if pair is not null && pair[0] is not null
           {pair[0]}: type(pair[1]) == 'string' ? s(pair[1]) : pair[1]
 input-placeholder = placeholder
+
+/*
+ * Vendor background support (gradients).
+ */
+
+background()
+  if match('-gradient\(', ''+arguments)
+    vendor('background', arguments, vendor-property: false)
+  else
+    background arguments
+
+background-image()
+  if match('-gradient\(', ''+arguments)
+    vendor('background-image', arguments, vendor-property: false)
+  else
+    background-image arguments
+
+cursor()
+  if match('-gradient\(', ''+arguments)
+    vendor('cursor', arguments, vendor-property: false)
+  else
+    cursor arguments
+
+list-style()
+  if match('-gradient\(', ''+arguments)
+    vendor('list-style', arguments, vendor-property: false)
+  else
+    list-style arguments
+
+list-style-image()
+  if match('-gradient\(', ''+arguments)
+    vendor('list-style-image', arguments, vendor-property: false)
+  else
+    list-style-image arguments
