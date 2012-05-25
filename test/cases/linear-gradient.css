@@ -48,3 +48,30 @@ body {
   background: -o-linear-gradient(top, #fff 0, #000 100%), #fff;
   background: linear-gradient(top, #fff 0, #000 100%), #fff;
 }
+body {
+  -webkit-border-image: -webkit-linear-gradient(top, #fff 0%, #000 100%) 20% stretch stretch;
+  -moz-border-image: -moz-linear-gradient(top, #fff 0%, #000 100%) 20% stretch stretch;
+  -o-border-image: -o-linear-gradient(top, #fff 0%, #000 100%) 20% stretch stretch;
+  border-image: linear-gradient(top, #fff 0%, #000 100%) 20% stretch stretch;
+}
+body {
+  cursor: -webkit-linear-gradient(40deg, #f00 0%, #0f0 100%);
+  cursor: -moz-linear-gradient(40deg, #f00 0%, #0f0 100%);
+  cursor: -ms-linear-gradient(40deg, #f00 0%, #0f0 100%);
+  cursor: -o-linear-gradient(40deg, #f00 0%, #0f0 100%);
+  cursor: linear-gradient(40deg, #f00 0%, #0f0 100%);
+}
+body {
+  list-style: -webkit-linear-gradient(40deg, #f00 0%, #0f0 100%);
+  list-style: -moz-linear-gradient(40deg, #f00 0%, #0f0 100%);
+  list-style: -ms-linear-gradient(40deg, #f00 0%, #0f0 100%);
+  list-style: -o-linear-gradient(40deg, #f00 0%, #0f0 100%);
+  list-style: linear-gradient(40deg, #f00 0%, #0f0 100%);
+}
+body {
+  list-style-image: -webkit-linear-gradient(40deg, #f00 0%, #0f0 100%);
+  list-style-image: -moz-linear-gradient(40deg, #f00 0%, #0f0 100%);
+  list-style-image: -ms-linear-gradient(40deg, #f00 0%, #0f0 100%);
+  list-style-image: -o-linear-gradient(40deg, #f00 0%, #0f0 100%);
+  list-style-image: linear-gradient(40deg, #f00 0%, #0f0 100%);
+}

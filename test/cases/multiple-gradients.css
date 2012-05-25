@@ -1,0 +1,28 @@
+.test1 {
+  background: -webkit-linear-gradient(top, #fff 0%, #000 100%), -webkit-linear-gradient(bottom, #000 0%, #fff 100%);
+  background: -moz-linear-gradient(top, #fff 0%, #000 100%), -moz-linear-gradient(bottom, #000 0%, #fff 100%);
+  background: -o-linear-gradient(top, #fff 0%, #000 100%), -o-linear-gradient(bottom, #000 0%, #fff 100%);
+  background: -ms-linear-gradient(top, #fff 0%, #000 100%), -ms-linear-gradient(bottom, #000 0%, #fff 100%);
+  background: linear-gradient(top, #fff 0%, #000 100%), linear-gradient(bottom, #000 0%, #fff 100%);
+}
+.test2 {
+  background: #fff -webkit-linear-gradient(top, #000 0%, #fff 100%) 0 0 no-repeat, -webkit-linear-gradient(bottom, #000 0%, #fff 100%) 10px bottom repeat-y;
+  background: #fff -moz-linear-gradient(top, #000 0%, #fff 100%) 0 0 no-repeat, -moz-linear-gradient(bottom, #000 0%, #fff 100%) 10px bottom repeat-y;
+  background: #fff -o-linear-gradient(top, #000 0%, #fff 100%) 0 0 no-repeat, -o-linear-gradient(bottom, #000 0%, #fff 100%) 10px bottom repeat-y;
+  background: #fff -ms-linear-gradient(top, #000 0%, #fff 100%) 0 0 no-repeat, -ms-linear-gradient(bottom, #000 0%, #fff 100%) 10px bottom repeat-y;
+  background: #fff linear-gradient(top, #000 0%, #fff 100%) 0 0 no-repeat, linear-gradient(bottom, #000 0%, #fff 100%) 10px bottom repeat-y;
+}
+.test3 {
+  background-image: -webkit-linear-gradient(top, #fff 0%, #000 100%), url("a.png"), -webkit-linear-gradient(bottom, #000 0%, #fff 100%);
+  background-image: -moz-linear-gradient(top, #fff 0%, #000 100%), url("a.png"), -moz-linear-gradient(bottom, #000 0%, #fff 100%);
+  background-image: -o-linear-gradient(top, #fff 0%, #000 100%), url("a.png"), -o-linear-gradient(bottom, #000 0%, #fff 100%);
+  background-image: -ms-linear-gradient(top, #fff 0%, #000 100%), url("a.png"), -ms-linear-gradient(bottom, #000 0%, #fff 100%);
+  background-image: linear-gradient(top, #fff 0%, #000 100%), url("a.png"), linear-gradient(bottom, #000 0%, #fff 100%);
+}
+.test4 {
+  background: -webkit-linear-gradient(bottom, #000 0%, #fff 100%), -webkit-linear-gradient(top, #fff 0%, #000 100%);
+  background: -moz-linear-gradient(bottom, #000 0%, #fff 100%), -moz-linear-gradient(top, #fff 0%, #000 100%);
+  background: -o-linear-gradient(bottom, #000 0%, #fff 100%), -o-linear-gradient(top, #fff 0%, #000 100%);
+  background: -ms-linear-gradient(bottom, #000 0%, #fff 100%), -ms-linear-gradient(top, #fff 0%, #000 100%);
+  background: linear-gradient(bottom, #000 0%, #fff 100%), linear-gradient(top, #fff 0%, #000 100%);
+}

@@ -1,0 +1,23 @@
+
+@import 'nib/vendor'
+@import 'nib/gradients'
+
+.test1
+  background: linear-gradient(top, white, black),
+              linear-gradient(bottom, black, white)
+
+.test2
+  background: #fff \
+  	linear-gradient(top, black, white) 0 0 no-repeat,
+    linear-gradient(bottom, black, white) 10px bottom repeat-y
+
+.test3
+  background-image: linear-gradient(top, white, black),
+              		url(a.png),
+              		linear-gradient(bottom, black, white)
+
+gradient1 = linear-gradient(top, white, black)
+gradient2 = linear-gradient(bottom, black, white)
+
+.test4
+  background: gradient2, gradient1
