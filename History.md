@@ -1,4 +1,16 @@
 
+0.5.0 / 2012-05-28 
+==================
+
+  * Added perspective-origin property
+  * Added tab-size property
+  * Updated stylus dependency, fixes #89
+  * Update opacity to clear issue with IE rendering value of 100 (to override previous semi-opaque state) and support IE5-8 in all the different varieties of life (http://www.quirksmode.org/css/opacity.html)
+  * Deprecated a couple EOL moz prefixes, removed -o-background-size
+  * Remove duplicate imports and defines (fixes #81)
+  * Refactored background-clip, added background-origin.
+  * Preserving importance for opacity
+
 0.4.1 / 2012-04-15 
 ==================
 
