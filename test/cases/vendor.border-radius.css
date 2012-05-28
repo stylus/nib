@@ -1,6 +1,5 @@
 button {
   -webkit-border-radius: 1px 2px/3px 4px;
-  -moz-border-radius: 1px 2px/3px 4px;
   border-radius: 1px 2px/3px 4px;
 }
 button {
@@ -57,6 +56,5 @@ button {
 }
 button {
   -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
   border-radius: 5px;
 }

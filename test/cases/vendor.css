@@ -1,11 +1,11 @@
 button {
   -webkit-box-shadow: 1px 1px 5px #eee;
-  -moz-box-shadow: 1px 1px 5px #eee;
   box-shadow: 1px 1px 5px #eee;
 }
 button {
   opacity: 0.5;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  filter: alpha(opacity=50);
 }
 button {
   opacity: 0.75;
