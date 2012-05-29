@@ -6,6 +6,12 @@
 display(type)
   if box == type
     display: vendor-value(type)
+  else if  inline-block == type
+  	display:-moz-inline-stack
+   	display: vendor-value(type)
+  	if support-for-ie
+  		*display:inline
+  		*zoom:1
   else
     display: type
 
