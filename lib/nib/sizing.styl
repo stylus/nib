@@ -1,0 +1,114 @@
+
+/*
+ * Box sizing utility. Convenience methods for vertical and horizontal sizing.
+ *
+ * Margin and padding utilities also allow for a pair of values that specify
+ * different sizes in both directions.
+ *
+ *
+ * Synopsis:
+ *
+ *   padding-vertical: <values>
+ *   padding-horizontal: <values>
+ *
+ *   margin-vertical: <values>
+ *   margin-horizontal: <values>
+ *
+ *   border-vertical: <values>
+ *   border-horizontal: <values>
+ *
+ *   border-width-vertical: <values>
+ *   border-width-horizontal: <values>
+ *   border-style-vertical: <values>
+ *   border-style-horizontal: <values>
+ *   border-color-vertical: <values>
+ *   border-color-horizontal: <values>
+ *
+ * Examples:
+ *
+ *     margin-horizontal: 2px
+ *     padding-veritcal: 5em 10px
+ *     border-vertical: 2px solid green
+ *
+ */
+
+
+/*
+ * Margin utilities
+ */
+margin-vertical()
+    if length(arguments) == 2
+        margin-top: arguments[0]
+        margin-bottom: arguments[1]
+    else
+        margin-top: arguments
+        margin-bottom: arguments
+
+margin-horizontal()
+    if length(arguments) == 2
+        margin-right: arguments[0]
+        margin-left: arguments[1]
+    else
+        margin-right: arguments
+        margin-left: arguments
+
+
+/*
+ * Padding utilities
+ */
+padding-vertical()
+    if length(arguments) == 2
+        padding-top: arguments[0]
+        padding-bottom: arguments[1]
+    else
+        padding-top: arguments
+        padding-bottom: arguments
+
+padding-horizontal()
+    if length(arguments) == 2
+        padding-right: arguments[0]
+        padding-left: arguments[1]
+    else
+        padding-right: arguments
+        padding-left: arguments
+
+
+/*
+ * Border utilities
+ */
+border-vertical()
+    border-top: arguments
+    border-bottom: arguments
+
+border-horizontal()
+    border-right: arguments
+    border-left: arguments
+
+
+border-vertical-width()
+    border-top-width: arguments
+    border-bottom-width: arguments
+
+border-horizontal-width()
+    border-right-width: arguments
+    border-left-width: arguments
+
+
+border-vertical-color()
+    border-top-color: arguments
+    border-bottom-color: arguments
+
+border-horizontal-color()
+    border-right-color: arguments
+    border-left-color: arguments
+
+
+border-vertical-style()
+    border-top-style: arguments
+    border-bottom-style: arguments
+
+border-horizontal-style()
+    border-right-style: arguments
+    border-left-style: arguments
+
+
