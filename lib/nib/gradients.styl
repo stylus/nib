@@ -107,6 +107,11 @@ linear-gradient(start, stops...)
   error('color stops required') unless length(stops)
   prop = current-property[0]
   val = current-property[1]
+
+  if start is a 'color'
+    unshift(stops, start)
+    start = top
+
   stops = normalize-stops(stops)
 
   // gradient image
