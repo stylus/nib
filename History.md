@@ -1,4 +1,10 @@
 
+0.6.0 / 2012-07-05 
+==================
+
+  * add support for `linear-gradient(stops...)`. Closes #110
+  * replace hide-text() w/ text-indent: 100% method
+
 0.5.0 / 2012-05-28 
 ==================
 
