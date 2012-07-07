@@ -1,6 +1,9 @@
 
 test:
-	@node test/runner.js test/cases/*.styl
+	@./node_modules/.bin/mocha \
+		--require should \
+		--ignore-leaks \
+		test/runner.js
 
 test-server:
 	@node test/server.js

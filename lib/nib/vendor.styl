@@ -1,4 +1,3 @@
-
 @import 'config'
 
 /*
@@ -22,74 +21,137 @@ vendor(prop, args, only = null, ignore = null)
         {'-' + prefix + '-' + prop}: args
 
 /*
+ * Vendorize the given value.
+ */
+
+vendor-value(arg)
+  prop = current-property[0]
+  for prefix in vendor-prefixes
+    unless official == prefix
+      add-property(prop, '-%s-%s' % (prefix arg))
+  arg
+
+/*
  * Vendor "box-shadow" support.
  */
 
 box-shadow()
-  vendor('box-shadow', arguments)
+  vendor('box-shadow', arguments, only: webkit official)
 
 /*
- * Vendor "user-size" support.
+ * Vendor "user-select" support.
  */
 
 user-select()
-  vendor('user-select', arguments)
+  vendor('user-select', arguments, only: webkit moz ms official)
 
 /*
  * Vendor "column-count" support.
  */
 
 column-count()
-  vendor('column-count', arguments)
+  vendor('column-count', arguments, only: webkit moz official)
 
 /*
  * Vendor "column-gap" support.
  */
 
 column-gap()
-  vendor('column-gap', arguments)
+  vendor('column-gap', arguments, only: webkit moz official)
 
 /*
  * Vendor "column-rule" support.
  */
 
 column-rule()
-  vendor('column-rule', arguments)
+  vendor('column-rule', arguments, only: webkit moz official)
 
 /*
  * Vendor "column-rule-color" support.
  */
 
 column-rule-color()
-  vendor('column-rule-color', arguments)
+  vendor('column-rule-color', arguments, only: webkit moz official)
 
 /*
  * Vendor "column-rule-width" support.
  */
 
 column-rule-width()
-  vendor('column-rule-width', arguments)
+  vendor('column-rule-width', arguments, only: webkit moz official)
 
 /*
  * Vendor "column-rule-style" support.
  */
 
 column-rule-style()
-  vendor('column-rule-style', arguments)
+  vendor('column-rule-style', arguments, only: webkit moz official)
 
 /*
  * Vendor "column-width" support.
  */
 
 column-width()
-  vendor('column-width', arguments)
+  vendor('column-width', arguments, only: webkit moz official)
+
+/*
+ * Vendor "column-span" support.
+ */
+
+column-span()
+  vendor('column-span', arguments, only: webkit official)
+
+/*
+ * Vendor "column-fill" support.
+ */
+
+column-fill()
+  vendor('column-fill', arguments, only: moz)
+
+/*
+ * Legacy syntax support for background-clip and background-origin
+ */
+
+legacy-bg-values(property, args)
+  legacy_args = ()
+  importance = unquote('')
+  for subargs in args
+    for arg in subargs
+      if arg in (border-box padding-box content-box)
+        arg = border  if arg == border-box
+        arg = padding if arg == padding-box
+        arg = content if arg == content-box
+      if arg != '!important'
+        push(legacy_args,arg)
+      else
+        importance = !important
+  vendor(property, unquote(join(', ',legacy_args)) importance, only: moz webkit)
+
+/*
+ * Vendor "background-clip" support.
+ */
+
+background-clip()
+  if arguments[0] == text
+    vendor('background-clip', arguments, only: webkit)
+  else
+    legacy-bg-values('background-clip', arguments)
+    background-clip: arguments
+
+/*
+ * Vendor "background-origin" support.
+ */
+
+background-origin()
+  legacy-bg-values('background-origin', arguments)
+  background-origin: arguments
 
 /*
  * Vendor "background-size" support.
  */
 
 background-size()
-  vendor('background-size', arguments)
+  vendor('background-size', arguments, only: webkit moz official)
 
 /*
  * Vendor "transform" support.
@@ -99,11 +161,24 @@ transform()
   vendor('transform', arguments)
 
 /*
+ * Vendor "transform-origin" support.
+ */
+transform-origin()
+    vendor('transform-origin', arguments)
+
+/*
+ * Vendor "transform-style" support.
+ */
+
+transform-style()
+  vendor('transform-style', arguments)
+
+/*
  * Vendor "border-image" support.
  */
 
 border-image()
-  vendor('border-image', arguments)
+  vendor('border-image', arguments, only: webkit moz o official)
 
 /*
  * Vendor "transition" support.
@@ -145,17 +220,37 @@ transition-delay()
  */
 
 backface-visibility()
-  vendor('backface-visibility', arguments)
+  vendor('backface-visibility', arguments, only: webkit moz ms official)
+
+/*
+ * Vendor "perspective" support.
+ */
+
+perspective()
+  vendor('perspective', arguments, only: webkit moz ms official)
+
+/*
+ * Vendor "perspective-origin" support.
+ */
+
+perspective-origin()
+  vendor('perspective-origin', arguments, only: webkit moz ms official)
 
 
 /*
  * Opacity with conditional IE support.
  */
 
-opacity(n)
-  opacity: n
+opacity(n, args...)
+  opacity: n args
   if support-for-ie
-    filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=%s)' % round(n * 100)
+    val = round(n * 100)
+    if val == 100
+      -ms-filter: none
+      filter: none
+    else
+      -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=%s)' % val args
+      filter: 'alpha(opacity=%s)' % val args
 
 /*
  * Alias the "white-space" property.
@@ -169,49 +264,57 @@ whitespace()
  */
 
 box-sizing()
-  vendor('box-sizing', arguments)
+  vendor('box-sizing', arguments, only: webkit moz official)
 
 /*
  * Vendor "box-orient" support.
  */
 
 box-orient()
-  vendor('box-orient', arguments)
+  vendor('box-orient', arguments, only: webkit moz ms official)
 
 /*
  * Vendor "box-flex" support.
  */
 
 box-flex()
-  vendor('box-flex', arguments)
+  vendor('box-flex', arguments, only: webkit moz ms official)
 
 /*
  * Vendor "box-flex-group" support.
  */
 
 box-flex-group()
-  vendor('box-flex-group', arguments)
+  vendor('box-flex-group', arguments, only: webkit moz official)
+
+/*
+ * Vendor "box-ordinal-group" support.
+ */
+
+box-ordinal-group()
+  vendor('box-ordinal-group', arguments, only: webkit moz ms official)
+
 
 /*
  * Vendor "box-align" support.
  */
 
 box-align()
-  vendor('box-align', arguments)
+  vendor('box-align', arguments, only: webkit moz ms official)
 
 /*
  * Vendor "box-pack" support.
  */
 
 box-pack()
-  vendor('box-pack', arguments)
+  vendor('box-pack', arguments, only: webkit moz ms official)
 
 /*
  * Vendor "box-direction" support.
  */
 
 box-direction()
-  vendor('box-direction', arguments)
+  vendor('box-direction', arguments, only: webkit moz ms official)
 
 /*
  * Vendor "animation" support.
@@ -278,11 +381,25 @@ animation-fill-mode()
   vendor('animation-fill-mode', arguments)
 
 /*
- * Vendor "border-image" support.
+ * Vendor "hyphens" support.
  */
 
-border-image()
-  vendor('border-image', arguments)
+hyphens()
+  vendor('hyphens', arguments, only: webkit moz ms official)
+
+/*
+ * Vendor "appearance" support.
+ */
+
+appearance()
+  vendor('appearance', arguments, only: webkit moz)
+
+/*
+ * Vendor "tab-size" support.
+ */
+
+tab-size()
+  vendor('tab-size', arguments, only: moz o)
 
 /*
  * Helper for border-radius().
@@ -309,7 +426,7 @@ border-image()
 /*
  * border-radius supporting vendor prefixes and
  * augmented behavior.
- * 
+ *
  * Examples:
  *
  *    border-radius: 2px 5px
@@ -334,4 +451,4 @@ border-radius()
         if augmented
           -apply-border-radius(pos)
           pos = ()
-  vendor('border-radius', pos) unless augmented
+  vendor('border-radius', pos, only: webkit official) unless augmented

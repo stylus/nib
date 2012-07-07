@@ -1,8 +1,18 @@
+
 /*
- *
+ * Vendor "display: box" support.
+ */
+
+display(type)
+  if box == type
+    display: vendor-value(type)
+  else
+    display: type
+
+/*
  * Synopsis:
  *
- *   box: orient direction
+ *   box: <orient> [direction]
  *
  * Examples:
  *
@@ -11,12 +21,8 @@
  *
  */
 
-box(args)
-  for prefix in vendor-prefixes
-      if official == prefix
-        {display}: box
-      else
-        {display}: unquote('-') + prefix + '-box'
-  box-orient: arguments[0]
-  if arguments[1]
-    box-direction: arguments[1]
+box(args...)
+  display: box
+  box-orient: args[0]
+  if args[1]
+    box-direction: args[1]

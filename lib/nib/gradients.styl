@@ -8,10 +8,12 @@
 replace(expr, str, val)
   expr = clone(expr)
   for e, i in expr
-    if str == e
-      expr[i] = val
+    if length(e) > 1
+      expr[i] = replace(e, str, val)
+    else
+      if str == e
+        expr[i] = val
   expr
-
 
 /*
  * Normalize gradient points.
@@ -105,6 +107,11 @@ linear-gradient(start, stops...)
   error('color stops required') unless length(stops)
   prop = current-property[0]
   val = current-property[1]
+
+  if start is a 'color'
+    unshift(stops, start)
+    start = top
+
   stops = normalize-stops(stops)
 
   // gradient image

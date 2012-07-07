@@ -1,8 +1,6 @@
 # Nib
 
-  Stylus mixins, utilities, components, and gradient image generation. CSS is your bitch!
-
- __NOTE__: better docs coming soon
+  Stylus mixins, utilities, components, and gradient image generation. Don't forget to check out the [documentation](http://visionmedia.github.com/nib/).
 
 ## Installation
 
@@ -52,7 +50,7 @@ server.use(stylus.middleware({
   
   ```css
   @import 'nib/gradients'
-  @import 'nib/buttons'
+  @import 'nib/overflow'
   ```
   
 to be continued....

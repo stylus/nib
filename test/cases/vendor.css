@@ -1,11 +1,11 @@
 button {
   -webkit-box-shadow: 1px 1px 5px #eee;
-  -moz-box-shadow: 1px 1px 5px #eee;
   box-shadow: 1px 1px 5px #eee;
 }
 button {
   opacity: 0.5;
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  filter: alpha(opacity=50);
 }
 button {
   opacity: 0.75;
@@ -68,6 +68,10 @@ button {
   -moz-animation: myAnimation 1s ease;
   animation: myAnimation 1s ease;
 }
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
 section {
   -webkit-column-count: 2;
   -moz-column-count: 2;
@@ -118,7 +122,6 @@ button {
   -webkit-transition: all 0.1s ease-in-out 1s;
   -moz-transition: all 0.1s ease-in-out 1s;
   transition: all 0.1s ease-in-out 1s;
-  -o-backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -152,4 +155,9 @@ section {
   -webkit-border-image: url("image.png") 20% stretch stretch;
   -moz-border-image: url("image.png") 20% stretch stretch;
   border-image: url("image.png") 20% stretch stretch;
+}
+p {
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
 }

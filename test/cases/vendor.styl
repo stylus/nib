@@ -1,6 +1,8 @@
 
 @import 'nib/vendor'
 
+vendor-prefixes = webkit moz official
+
 button
   box-shadow: 1px 1px 5px #eee
 
@@ -40,6 +42,9 @@ button
 button
   animation: myAnimation 1s ease;
 
+button
+  appearance: none;
+
 section
   column-count: 2;
   column-rule: 1px solid #bbb;
@@ -76,3 +81,6 @@ button
 
 section
   border-image: url("image.png") 20% stretch stretch;
+
+p
+  hyphens: auto

@@ -29,32 +29,6 @@ html
       .hexa #ffffff80
       .rgb rgb()
       .hex #fff
-    h2 Buttons
-    table#buttons
-      tbody
-      - var buttons = []
-      - buttons.push(['minimal', 'minimal-alternate'])
-      - buttons.push(['smooth', 'smooth-alternate'])
-      - buttons.push(['download', 'download-alternate'])
-      - buttons.push(['bold', 'bold-alternate', 'bold-alternate-2'])
-      - buttons.push(['pill'])
-      - each names in buttons
-        tr
-          td blur
-          - each name in names
-            td: a(href='#', class=name).button= name
-        tr
-          td hover
-          - each name in names
-            td: input(type='button', value=name, class=name).hover
-        tr
-          td active
-          - each name in names
-            td: button(class=name).active= name
-        tr
-          td focus
-          - each name in names
-            td: button(class=name).focus= name
     h2 Clearfix
     div#clearfix-left-only
       div

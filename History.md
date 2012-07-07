@@ -1,4 +1,67 @@
 
+0.6.0 / 2012-07-05 
+==================
+
+  * add support for `linear-gradient(stops...)`. Closes #110
+  * replace hide-text() w/ text-indent: 100% method
+
+0.5.0 / 2012-05-28 
+==================
+
+  * Added perspective-origin property
+  * Added tab-size property
+  * Updated stylus dependency, fixes #89
+  * Update opacity to clear issue with IE rendering value of 100 (to override previous semi-opaque state) and support IE5-8 in all the different varieties of life (http://www.quirksmode.org/css/opacity.html)
+  * Deprecated a couple EOL moz prefixes, removed -o-background-size
+  * Remove duplicate imports and defines (fixes #81)
+  * Refactored background-clip, added background-origin.
+  * Preserving importance for opacity
+
+0.4.1 / 2012-04-15 
+==================
+
+  * There is a moz-box-flex-group actually [kizu]
+  * There were no importance for overflow [kizu]
+  * Appearance is only webkit/moz now [kizu]
+  * Still no hyphens in Opera [kizu]
+  * There would be animations in IE10 and probably (there were an experimental build of it) in Opera 12) [kizu]
+  * Updated fexbox prefixes (flex-group is only in webkit, no ordinal-group in Opera) [kizu]
+  * 3D transforms now in IE10 and in Fx, but still not in Opera [kizu]
+  * There would be transitions in IE10 [kizu]
+  * Fixed the background-clip prefixes: it have different syntax for old webkit and moz, also it have only webkit for text [kizu]
+  * Added column-span and column-fill [kizu]
+  * Correct prefixes for column-clip, moved it in place with other column- props [kizu]
+  * There would be -ms-user-select in IE10 [kizu]
+ 
+0.4.0 / 2012-04-03 
+==================
+
+  * Added `box-ordinal-group` support [panosru]
+  * Added `transform-origin` support [panosru]
+  * Added `perspective` support
+  * Added `transform-style` support
+  * Added `display: box` vendor support
+  * Removed buttons
+  * Changed: use mocha for test runner
+
+0.3.2 / 2012-01-09 
+==================
+
+  * Remove `<font>` from the `global-reset()` helper [TooTallNate]
+
+0.3.1 / 2011-11-30 
+==================
+
+  * Added vendor `appearance` property
+  * Updated `replace()`
+  * Fixed tests
+
+0.3.0 / 2011-11-17 
+==================
+
+  * Added support for o and ms prefixes to text-overflow helper [Ian Storm]
+  * Added "overflow: ellipsis" support [Ian Storm]
+
 0.2.0 / 2011-08-26 
 ==================
 
