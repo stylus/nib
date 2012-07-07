@@ -253,6 +253,48 @@ button {
     </section>
 
     <section>
+      <h2>Responsive</h2>
+      <p>The <code>image</code> mixin allows you to define a <code>background-image</code> for both the normal image, and a doubled image for devices with a higher pixel ratio such as retina displays. This works by using a @media query to serve an "@2x" version of the file.</p>
+
+<code><pre>
+
+#logo {
+  image: '/images/branding/logo.main.png'
+}
+
+#logo {
+  image: '/images/branding/logo.main.png' 50px 100px
+}
+
+</pre></code>
+
+yields:
+
+<code><pre>
+
+#logo {
+  background-image: url("/images/branding/logo.main.png");
+}
+@media all and (-webkit-min-device-pixel-ratio: 1.5) {
+  #logo {
+    background-image: url("/images/branding/logo.main@2x.png");
+    background-size: auto auto;
+  }
+}
+#logo {
+  background-image: url("/images/branding/logo.main.png");
+}
+@media all and (-webkit-min-device-pixel-ratio: 1.5) {
+  #logo {
+    background-image: url("/images/branding/logo.main@2x.png");
+    background-size: 50px 100px;
+  }
+}
+
+</pre></code>
+    </section>
+
+    <section>
       <h2>Ellipsis</h2>
       <p>The <code>overflow</code> property is augmented with a "ellipsis" value, expanding to what you see below.</p>
 
