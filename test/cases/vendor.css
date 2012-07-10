@@ -161,3 +161,7 @@ p {
   -moz-hyphens: auto;
   hyphens: auto;
 }
+section {
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+}
