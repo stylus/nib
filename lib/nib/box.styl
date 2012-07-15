@@ -3,11 +3,11 @@
  * Vendor "display: box" support.
  */
 
-display(type)
-  if box == type
-    display: vendor-value(type)
+display(type, args...)
+  if type == box
+    display: vendor-value(type, args)
   else
-    display: type
+    display: arguments
 
 /*
  * Synopsis:
