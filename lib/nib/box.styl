@@ -6,8 +6,11 @@
 display(type)
   if box == type
     display: vendor-value(type)
-  else
+  else 
     display: type
+    if  inline-block == type and support-for-ie
+  	  *display: inline
+      *zoom: 1
 
 /*
  * Synopsis:
