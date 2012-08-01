@@ -2,3 +2,4 @@
 !test/cases/*.css
 .DS_Store
 node_modules
+*.swp
