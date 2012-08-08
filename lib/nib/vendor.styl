@@ -236,7 +236,6 @@ perspective()
 perspective-origin()
   vendor('perspective-origin', arguments, only: webkit moz ms official)
 
-
 /*
  * Opacity with conditional IE support.
  */
@@ -251,6 +250,13 @@ opacity(n, args...)
     else
       -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=%s)' % val args
       filter: 'alpha(opacity=%s)' % val args
+
+/*
+ * Vendor "text-size-adjust"
+ */
+
+text-size-adjust()
+  vendor('text-size-adjust', arguments)
 
 /*
  * Alias the "white-space" property.
