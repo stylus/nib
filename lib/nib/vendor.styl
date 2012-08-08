@@ -147,7 +147,6 @@ transition-delay()
 backface-visibility()
   vendor('backface-visibility', arguments)
 
-
 /*
  * Opacity with conditional IE support.
  */
@@ -156,6 +155,13 @@ opacity(n)
   opacity: n
   if support-for-ie
     filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=%s)' % round(n * 100)
+
+/*
+ * Vendor "text-size-adjust"
+ */
+
+text-size-adjust()
+  vendor('text-size-adjust', arguments)
 
 /*
  * Alias the "white-space" property.
