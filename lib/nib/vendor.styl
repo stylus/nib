@@ -24,10 +24,10 @@ vendor(prop, args, only = null, ignore = null)
  * Vendorize the given value.
  */
 
-vendor-value(arg)
+vendor-value(arg, only = null, ignore = null)
   prop = current-property[0]
   for prefix in vendor-prefixes
-    unless official == prefix
+    unless (only and !(prefix in only)) or (ignore and prefix in ignore) or official == prefix
       add-property(prop, '-%s-%s' % (prefix arg))
   arg
 
