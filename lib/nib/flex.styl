@@ -13,6 +13,7 @@ display(type)
  * New syntax for browsers like Google Chrome.
  * Plus a translation to the old syntax, if possible.
  */
+
 align-content()
   vendor('align-content', arguments, only: webkit official)
 
@@ -32,25 +33,25 @@ justify-content()
   vendor('justify-content', arguments, only: webkit official)
 
 align-items(align)
-  /* obsolete */
+  // obsolete
   if flex-start == align
     align = start
   else if flex-end == align
     align = end
   vendor('box-align', align, ignore: official)
   
-  /* new */
+  // new 
   vendor('align-items', arguments, only: webkit official)
 
 flex(growth)
-  /* obsolete */
+  // obsolete
   vendor('box-flex', growth)
   
-  /* new */
+  // new
   vendor('flex', arguments, only: webkit official)
 
 flex-direction(direction)
-  /* obsolete */
+  // obsolete
   if row-reverse == direction || column-reverse == direction
     vendor('box-direction', reverse, ignore: official)
   if row == direction || row-reverse == direction
@@ -58,27 +59,27 @@ flex-direction(direction)
   else if column == direction || column-reverse == direction
     vendor('box-orient', vertical, ignore: official)
   
-  /* new */
+  // new
   vendor('flex-direction', arguments, only: webkit official)
 
 flex-flow(direction)
-  /* obsolete */
+  // obsolete
   if row-reverse == direction || column-reverse == direction || wrap-reverse == direction
     vendor('box-direction', 'reverse', ignore: official)
   
-  /* new */
+  // new
   vendor('flex-flow', arguments, only: webkit official)
 
 flex-grow(growth)
-  /* obsolete */
+  // obsolete
   vendor('box-flex', growth)
   
-  /* new */
+  // new
   vendor('flex-grow', arguments, only: webkit official)
 
 order()
-  /* obsolete */
+  // obsolete
   vendor('box-ordinal-group', arguments, ignore: official)
   
-  /* new */
+  // new
   vendor('order', arguments, only: webkit official)
