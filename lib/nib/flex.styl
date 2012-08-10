@@ -43,9 +43,12 @@ align-items(align)
   // new 
   vendor('align-items', arguments, only: webkit official)
 
-flex(growth)
+flex(growth = 0, shrink = 0, base = auto)
   // obsolete
   vendor('box-flex', growth)
+  if base != auto
+    width: base
+    height: base
   
   // new
   vendor('flex', arguments, only: webkit official)
