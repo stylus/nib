@@ -56,8 +56,12 @@ flex-direction(direction)
     vendor('box-direction', reverse, ignore: official)
   if row == direction || row-reverse == direction
     vendor('box-orient', horizontal, ignore: official)
+    >*
+      height: auto !important
   else if column == direction || column-reverse == direction
     vendor('box-orient', vertical, ignore: official)
+    >*
+      width: auto !important
   
   // new
   vendor('flex-direction', arguments, only: webkit official)
