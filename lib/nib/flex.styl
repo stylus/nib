@@ -20,9 +20,6 @@ align-content()
 align-self()
   vendor('align-self', arguments, only: webkit official)
 
-flex-basis()
-  vendor('flex-basis', arguments, only: webkit official)
-
 flex-shrink()
   vendor('flex-shrink', arguments, only: webkit official)
 
@@ -43,15 +40,34 @@ align-items(align)
   // new 
   vendor('align-items', arguments, only: webkit official)
 
-flex(growth = 0, shrink = 0, base = auto)
+flex(growth, shrink = null, basis = null)
   // obsolete
-  vendor('box-flex', growth)
-  if base != auto
-    width: base
-    height: base
+  if growth == "none" // flex: none
+    vendor('box-flex', 0)
+    width: auto
+    height: auto
+  else if basis != null // flex: <'flex-grow'> <'flex-shrink'> <'flex-basis'>
+    vendor('box-flex', growth)
+    width: basis
+    height: basis
+  else if shrink != null // flex: <'flex-grow'> <'flex-shrink'> || <'flex-grow'> <'flex-basis'>
+    vendor('box-flex', growth)
+    if unit(shrink) != "" // flex: <'flex-grow'> <'flex-basis'>
+      width: basis
+      height: basis
+  else // flex: <'flew-grow'>
+    vendor('box-flex', growth)
   
   // new
   vendor('flex', arguments, only: webkit official)
+
+flex-basis(basis)
+  // obsolete
+  width: basis
+  height: basis
+  
+  // new
+  vendor('flex-basis', arguments, only: webkit official)
 
 flex-direction(direction)
   // obsolete
