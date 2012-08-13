@@ -92,6 +92,14 @@ section {
   column-gap: 2em;
 }
 button {
+  -webkit-background-origin: border, padding;
+  -moz-background-origin: border, padding;
+  background-origin: border-box, padding-box;
+  -webkit-background-clip: border, padding;
+  -moz-background-clip: border, padding;
+  background-clip: border-box, padding-box;
+}
+button {
   -o-transition: all 0.1s ease-in-out 1s;
   -webkit-transition: all 0.1s ease-in-out 1s;
   -moz-transition: all 0.1s ease-in-out 1s;

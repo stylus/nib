@@ -169,9 +169,9 @@ legacy-bg-values(property, args)
   for subargs in args
     for arg in subargs
       if arg in (border-box padding-box content-box)
-        arg = border  if arg == border-box
-        arg = padding if arg == padding-box
-        arg = content if arg == content-box
+        arg = unquote('border')  if arg == border-box
+        arg = unquote('padding') if arg == padding-box
+        arg = unquote('content') if arg == content-box
       if arg != '!important'
         push(legacy_args,arg)
       else
