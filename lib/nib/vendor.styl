@@ -7,6 +7,53 @@
 no-wrap = unquote('nowrap')
 
 /*
+ * Helper to find out is the list of arguments have commas
+ */
+
+is-comma-list()
+  return match('\), \(', ''+arguments)
+
+/*
+ * Literal joining
+ */
+
+literal-join(string, literals)
+  result = unquote('')
+  first = true
+  for args in literals
+    subresult = unquote('')
+    for arg in args
+      subresult = subresult arg
+    if first
+      result = subresult
+      first = false
+    else
+      result = s('%s%s%s', result, unquote(string), subresult)
+  return result
+
+/*
+ * Replacing one value with another
+ */
+
+replace-args(args,argument,val)
+  result = ()
+  // Checking if there are values divided by comma
+  if is-comma-list(args)
+    for subargs in args
+      subresult = ()
+      for arg in subargs
+        arg = unquote(val) if arg == argument
+        push(subresult, arg)
+      subresult = literal-join(' ', subresult) if length(subresult) > 1
+      push(result, subresult)
+    result = literal-join(', ', result)
+  else
+    for arg in args
+      arg = unquote(val) if arg == argument
+      push(result, arg)
+  return result
+
+/*
  * Vendor support for the given prop / arguments,
  * optionally specifying the only prefixes to utilize,
  * or those which should be ignored.
@@ -18,7 +65,11 @@ vendor(prop, args, only = null, ignore = null)
       if official == prefix
         {prop}: args
       else
-        {'-' + prefix + '-' + prop}: args
+        newargs = args
+        // Adjusting the args if needed
+        if prop in ('transition' 'transition-property')
+          newargs = replace-args(args, transform, '-' + prefix + '-transform')
+        {'-' + prefix + '-' + prop}: newargs
 
 /*
  * Vendorize the given value.
@@ -118,9 +169,9 @@ legacy-bg-values(property, args)
   for subargs in args
     for arg in subargs
       if arg in (border-box padding-box content-box)
-        arg = border  if arg == border-box
-        arg = padding if arg == padding-box
-        arg = content if arg == content-box
+        arg = unquote('border')  if arg == border-box
+        arg = unquote('padding') if arg == padding-box
+        arg = unquote('content') if arg == content-box
       if arg != '!important'
         push(legacy_args,arg)
       else
