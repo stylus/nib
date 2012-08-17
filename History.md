@@ -1,4 +1,11 @@
 
+0.8.0 / 2012-08-17 
+==================
+
+  * add prefixing of `transform` [kizu]
+  * add text-overflow vendor
+  * add overflow-scrolling vendor
+
 0.7.0 / 2012-07-09 
 ==================
 
