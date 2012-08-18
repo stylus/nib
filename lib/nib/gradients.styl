@@ -1,4 +1,3 @@
-
 @import 'config'
 
 /*
@@ -27,6 +26,27 @@ grad-point(pos)
     pos[1] pos[0]
   else
     pos
+
+/*
+ * Convert angle to points
+ */
+ 
+to-points(arg)
+  if arg is a 'ident'
+    return arg
+
+  angle = unit(arg, '')
+
+  if unit(arg) is 'rad'
+    angle = 180 * angle / PI
+  if angle < 0
+    angle += 360
+
+  if angle % 45 is 0
+    angles = left, bottom left, bottom, bottom right, right, top right, top, top left
+    return angles[angle/45]
+  else  
+    return arg
 
 /*
  * Implicit color stop position.
@@ -100,6 +120,8 @@ std-stop(color, pos)
  *    background: linear-gradient(bottom, red, green 50%, blue)
  *    background: linear-gradient(bottom, red, 50% green, blue)
  *    background: linear-gradient(bottom, red, 50% green, 90% white, blue)
+ *    background: linear-gradient(45deg, red, green, blue)
+ *    background: linear-gradient(0rad, red, green, blue)
  * 
  */
 
@@ -107,6 +129,8 @@ linear-gradient(start, stops...)
   error('color stops required') unless length(stops)
   prop = current-property[0]
   val = current-property[1]
+  has-angle = false
+  start = start is 0 ? 0deg : start
 
   if start is a 'color'
     unshift(stops, start)
@@ -116,18 +140,25 @@ linear-gradient(start, stops...)
 
   // gradient image
   if start[0] is a 'unit'
-    if has-canvas
+    has-angle = unit(start) is 'deg' or unit(start) is 'rad'
+
+    if has-canvas and !has-angle
       img = linear-gradient-image(start, stops)
       add-property(prop, replace(val, '__CALL__', img))
-    start = start[1]
+
+    if !has-angle
+      start = start[1]
 
   // legacy webkit
-  end = grad-point(opposite-position(start))
-  webkit-legacy = '-webkit-gradient(linear, %s, %s, %s)' % (grad-point(start) end join-stops(stops, webkit-stop))
-  add-property(prop, replace(val, '__CALL__', webkit-legacy))
+  if to-points(start) is a 'ident'
+    webkit-start = to-points(start)
+    end = grad-point(opposite-position(webkit-start))
+    webkit-legacy = '-webkit-gradient(linear, %s, %s, %s)' % (grad-point(webkit-start) end join-stops(stops, webkit-stop))
+    add-property(prop, replace(val, '__CALL__', webkit-legacy))
 
   // vendor prefixed
   stops = join-stops(stops, std-stop)
+  
   for prefix in vendor-prefixes
     unless prefix == official
       gradient = '-%s-linear-gradient(%s, %s)' % (prefix start stops)   
