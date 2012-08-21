@@ -1,4 +1,10 @@
 
+0.8.1 / 2012-08-21 
+==================
+
+  * add 'replace-text' mixin to nib/text index.styl
+  * revert "Remove obsolete FlexBox vendor-prefixes" [caseywebdev]
+
 0.8.0 / 2012-08-17 
 ==================
 
