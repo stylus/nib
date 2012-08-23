@@ -278,7 +278,10 @@ backface-visibility()
  */
 
 perspective()
-  vendor('perspective', arguments, only: webkit moz ms official)
+  if mixin
+    vendor('perspective', arguments, only: webkit moz ms official)
+  else
+    'perspective(%s)' % arguments
 
 /*
  * Vendor "perspective-origin" support.
