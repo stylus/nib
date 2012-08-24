@@ -479,23 +479,24 @@ text-overflow()
  * Helper for border-radius().
  */
 
--apply-border-radius(pos)
+-apply-border-radius(pos, importance)
   if length(pos) == 3
     // border-radius: <top | buttom> <left | right> <n>
     y = pos[0]
     x = pos[1]
-    vendor('border-radius-%s%s' % pos, pos[2], only: moz)
-    vendor('border-%s-%s-radius' % pos, pos[2], ignore: moz)
+    // We don't use moz for simple boder-radius anymore
+    // vendor('border-radius-%s%s' % pos, pos[2], only: moz)
+    vendor('border-%s-%s-radius' % pos, pos[2] importance, only: webkit official)
   else if pos[0] in (top bottom)
     // border-radius: <top | bottom> <n>
-    -apply-border-radius(pos[0] left pos[1])
-    -apply-border-radius(pos[0] right pos[1])
+    -apply-border-radius(pos[0] left pos[1], importance)
+    -apply-border-radius(pos[0] right pos[1], importance)
   else if pos[0] in (left right)
     // border-radius: <left | right> <n>
     unshift(pos, top);
-    -apply-border-radius(pos)
+    -apply-border-radius(pos, importance)
     pos[0] = bottom
-    -apply-border-radius(pos)
+    -apply-border-radius(pos, importance)
 
 /*
  * border-radius supporting vendor prefixes and
@@ -515,6 +516,8 @@ text-overflow()
 border-radius()
   pos = ()
   augmented = false
+  importance = arguments[length(arguments) - 1] == !important ? !important : unquote('')
+
   for args in arguments
     for arg in args
       if arg is a 'ident'
@@ -523,6 +526,6 @@ border-radius()
       else
         append(pos, arg)
         if augmented
-          -apply-border-radius(pos)
+          -apply-border-radius(pos, importance)
           pos = ()
   vendor('border-radius', pos, only: webkit official) unless augmented
