@@ -2,12 +2,12 @@
  * Vendor "display: flex" support with fallback to obsolete versions.
  */
 
-display(type)
+display(type, args...)
   if flex == type || inline-flex == type
-    display: vendor-value(box, only: moz ms webkit)
-    display: vendor-value(type, only: webkit official) // overwrites old webkit
+    display: vendor-value(box args, only: moz ms webkit)
+    display: vendor-value(arguments, only: webkit official) // overwrites old webkit
   else
-    display: type
+    display: arguments
 
 /*
  * New syntax for browsers like Google Chrome.
@@ -39,14 +39,14 @@ align-items(align)
   else if flex-end == align
     align = end
   vendor('box-align', align, ignore: official)
-  
-  // new 
+
+  // new
   vendor('align-items', arguments, only: webkit official)
 
 flex(growth)
   // obsolete
   vendor('box-flex', growth)
-  
+
   // new
   vendor('flex', arguments, only: webkit official)
 
@@ -58,7 +58,7 @@ flex-direction(direction)
     vendor('box-orient', horizontal, ignore: official)
   else if column == direction || column-reverse == direction
     vendor('box-orient', vertical, ignore: official)
-  
+
   // new
   vendor('flex-direction', arguments, only: webkit official)
 
@@ -66,20 +66,20 @@ flex-flow(direction)
   // obsolete
   if row-reverse == direction || column-reverse == direction || wrap-reverse == direction
     vendor('box-direction', 'reverse', ignore: official)
-  
+
   // new
   vendor('flex-flow', arguments, only: webkit official)
 
 flex-grow(growth)
   // obsolete
   vendor('box-flex', growth)
-  
+
   // new
   vendor('flex-grow', arguments, only: webkit official)
 
 order()
   // obsolete
   vendor('box-ordinal-group', arguments, ignore: official)
-  
+
   // new
   vendor('order', arguments, only: webkit official)

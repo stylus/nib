@@ -24,3 +24,11 @@ section div {
   -webkit-flex: 1 0;
   flex: 1 0;
 }
+section {
+  display: -webkit-box !important;
+  display: -moz-box !important;
+  display: -ms-box !important;
+  display: -webkit-flex !important;
+  display: box !important;
+  display: flex !important;
+}
