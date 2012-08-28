@@ -1,4 +1,9 @@
 
+0.8.2 / 2012-08-28 
+==================
+
+  * fix `!important` preservation for all mixins [kizu]
+
 0.8.1 / 2012-08-21 
 ==================
 
