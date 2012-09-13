@@ -59,7 +59,7 @@ modify-args(args, argument, prefix = '', postfix = '', replace = false, strict =
     for subargs in args
       subresult = ()
       for arg in subargs
-        if (arg == argument and strict) or (match('^'+s('%s',argument),''+arg) and !strict)
+        if (arg == argument and strict) or (match(''+s('%s',argument),''+arg) and !strict)
           arg = s('%s%s%s', prefix, replace ? replace : arg, postfix)
         push(subresult, arg) if arg != unquote('')
       subresult = literal-join(' ', subresult) if length(subresult) > 1
@@ -67,7 +67,7 @@ modify-args(args, argument, prefix = '', postfix = '', replace = false, strict =
     result = literal-join(', ', result)
   else
     for arg in args
-      if (arg == argument and strict) or (match('^'+s('%s',argument),''+arg) and !strict)
+      if (arg == argument and strict) or (match(''+s('%s',argument),''+arg) and !strict)
         arg = s('%s%s%s', prefix, replace ? replace : arg, postfix)
       push(result, arg) if arg != unquote('')
   return result
@@ -88,13 +88,19 @@ vendor(prop, args, only = null, ignore = null, vendor-property = true)
         {prop}: args
       else
         newargs = args
-        // Adjusting the args if needed
+
+        // Transforms in transitions need the prefixes
         if prop in ('transition' 'transition-property')
           newargs = modify-args(newargs, transform, '-' + prefix + '-')
+
+        // Adding prefixes for gradients
         if prop in ('border-image' 'background' 'background-image' 'cursor' 'list-style' 'list-style-image')
-          newargs = modify-args(newargs, linear-gradient, '-' + prefix + '-', strict: false)
+          newargs = modify-args(newargs, -gradient, '-' + prefix + '-', strict: false)
+
+        // Removing the `fill` from prefixed border-images
         if prop in ('border-image' 'border-image-slice')
           newargs = remove-args(newargs, fill)
+
         newprop = prop
         newprop = '-' + prefix + '-' + prop if vendor-property
         // TODO: make the adjustments for differences
