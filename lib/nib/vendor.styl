@@ -45,29 +45,35 @@ literal-join(string, literals)
   return result
 
 /*
- * Prepend matched argument with given prefix
+ * Modify matched arguments
  * set strict to false to check as “begin with”
  */
 
-prepend-args(args, prefix, argument, strict = true)
+modify-args(args, argument, prefix = '', postfix = '', replace = false, strict = true)
   result = ()
+  prefix = unquote(prefix)
+  postfix = unquote(postfix)
+
   // Checking if there are values divided by comma
   if is-comma-list(args)
     for subargs in args
       subresult = ()
       for arg in subargs
         if (arg == argument and strict) or (match('^'+s('%s',argument),''+arg) and !strict)
-          arg = s('%s%s',unquote(prefix),arg)
-        push(subresult, arg)
+          arg = s('%s%s%s', prefix, replace ? replace : arg, postfix)
+        push(subresult, arg) if arg != unquote('')
       subresult = literal-join(' ', subresult) if length(subresult) > 1
       push(result, subresult)
     result = literal-join(', ', result)
   else
     for arg in args
       if (arg == argument and strict) or (match('^'+s('%s',argument),''+arg) and !strict)
-        arg = s('%s%s',unquote(prefix),arg)
-      push(result, arg)
+        arg = s('%s%s%s', prefix, replace ? replace : arg, postfix)
+      push(result, arg) if arg != unquote('')
   return result
+
+remove-args(args, argument, strict = true)
+  return modify-args(args, argument, replace: unquote(''), strict: strict)
 
 /*
  * Vendor support for the given prop / arguments,
@@ -84,9 +90,11 @@ vendor(prop, args, only = null, ignore = null, vendor-property = true)
         newargs = args
         // Adjusting the args if needed
         if prop in ('transition' 'transition-property')
-          newargs = prepend-args(args, '-' + prefix + '-', transform)
+          newargs = modify-args(newargs, transform, '-' + prefix + '-')
         if prop in ('border-image' 'background' 'background-image' 'cursor' 'list-style' 'list-style-image')
-          newargs = prepend-args(args, '-' + prefix + '-', linear-gradient, false)
+          newargs = modify-args(newargs, linear-gradient, '-' + prefix + '-', strict: false)
+        if prop in ('border-image' 'border-image-slice')
+          newargs = remove-args(newargs, fill)
         newprop = prop
         newprop = '-' + prefix + '-' + prop if vendor-property
         // TODO: make the adjustments for differences

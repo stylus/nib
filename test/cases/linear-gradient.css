@@ -54,6 +54,12 @@ body {
   border-image: linear-gradient(top, #fff 0, #000 100%) 20% stretch stretch;
 }
 body {
+  -webkit-border-image: -webkit-linear-gradient(top, #fff 0, #000 100%) 20% stretch stretch;
+  -moz-border-image: -moz-linear-gradient(top, #fff 0, #000 100%) 20% stretch stretch;
+  -o-border-image: -o-linear-gradient(top, #fff 0, #000 100%) 20% stretch stretch;
+  border-image: linear-gradient(top, #fff 0, #000 100%) 20% fill stretch stretch;
+}
+body {
   cursor: -webkit-linear-gradient(40deg, #f00 0, #0f0 100%);
   cursor: -moz-linear-gradient(40deg, #f00 0, #0f0 100%);
   cursor: -ms-linear-gradient(40deg, #f00 0, #0f0 100%);
