@@ -51,6 +51,7 @@ literal-join(string, literals)
 
 modify-args(args, argument, prefix = '', postfix = '', replace = false, strict = true)
   result = ()
+  argument = unquote(argument) if type(argument) == 'string'
   prefix = unquote(prefix)
   postfix = unquote(postfix)
 
@@ -95,7 +96,7 @@ vendor(prop, args, only = null, ignore = null, vendor-property = true)
 
         // Adding prefixes for gradients
         if prop in ('border-image' 'background' 'background-image' 'cursor' 'list-style' 'list-style-image')
-          newargs = modify-args(newargs, -gradient, '-' + prefix + '-', strict: false)
+          newargs = modify-args(newargs, "-gradient\(", '-' + prefix + '-', strict: false)
 
         // Removing the `fill` from prefixed border-images
         if prop in ('border-image' 'border-image-slice')
