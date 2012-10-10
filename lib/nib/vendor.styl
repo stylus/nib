@@ -106,7 +106,7 @@ vendor(prop, args, only = null, ignore = null, vendor-property = true)
         newprop = '-' + prefix + '-' + prop if vendor-property
         // TODO: make the adjustments for differences
         // between the official syntax and vendor ones
-        {newprop}: newargs
+        {newprop}: vendorize(newargs)
 
 /*
  * Vendorize the given value.
