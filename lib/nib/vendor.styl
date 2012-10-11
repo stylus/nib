@@ -13,27 +13,22 @@ no-wrap = unquote('nowrap')
  */
 
 vendor(prop, args, only = null, ignore = null, vendor-property = true)
+  need_normalize = !vendor-property or prop in ('transition' 'transition-property' 'border-image' 'border-image-slice')
   for prefix in vendor-prefixes
     unless (only and !(prefix in only)) or (ignore and prefix in ignore)
       if official == prefix
-        {prop}: args
+        if need_normalize
+          {prop}: normalize(prop,('%s' % args))
+        else
+          {prop}: args
       else
-        newargs = args
-
-        // Transforms in transitions need the prefixes
-        // if prop in ('transition' 'transition-property')
-        //   newargs = modify-args(newargs, transform, '-' + prefix + '-')
-
-        // Removing the `fill` from prefixed border-images
-        // if prop in ('border-image' 'border-image-slice')
-        //   newargs = remove-args(newargs, fill)
-
         newprop = prop
         newprop = '-' + prefix + '-' + prop if vendor-property
-        // TODO: make the adjustments for differences
-        // between the official syntax and vendor ones
-        {newprop}: vendorize(prop,('%s' % args),prefix)
 
+        if need_normalize
+          {newprop}: normalize(prop,('%s' % args),prefix)
+        else
+          {newprop}: args
 /*
  * Vendorize the given value.
  */
