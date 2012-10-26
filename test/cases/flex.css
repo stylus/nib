@@ -17,9 +17,6 @@ section div {
   -moz-box-flex: 1;
   -o-box-flex: 1;
   -ms-box-flex: 1;
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  -ms-box-flex: 1;
   box-flex: 1;
   -webkit-flex: 1 0;
   flex: 1 0;
