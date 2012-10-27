@@ -45,6 +45,7 @@ button {
 button {
   -webkit-appearance: none;
   -moz-appearance: none;
+  appearance: none;
 }
 section {
   -webkit-column-count: 2;
