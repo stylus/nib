@@ -1,4 +1,3 @@
-
 @import 'config'
 
 /*
@@ -37,7 +36,7 @@ pos-in-stops(i, stops)
   if len - 1 == i
     100%
   else if i
-    unit(i / len * 100, '%')
+    unit(i / (len - 1) * 100, '%')
   else
     0%
 
