@@ -20,13 +20,6 @@ display(type, args...)
  * Plus a translation to the old syntax, if possible.
  */
 
-align-content()
-  if flex in flex-version
-    vendor('align-content', arguments, only: webkit official)
-
-align-self()
-  if flex in flex-version
-    vendor('align-self', arguments, only: webkit official)
 
 flex-basis()
   if flex in flex-version
@@ -35,23 +28,6 @@ flex-basis()
 flex-shrink()
   if flex in flex-version
     vendor('flex-shrink', arguments, only: webkit official)
-
-justify-content()
-  if flex in flex-version
-    vendor('justify-content', arguments, only: webkit official)
-
-align-items(align)
-  // obsolete
-  if box in flex-version
-    if flex-start == align
-      align = start
-    else if flex-end == align
-      align = end
-    vendor('box-align', align, ignore: official)
-
-  // new
-  if flex in flex-version
-    vendor('align-items', arguments, only: webkit official)
 
 flex(growth)
   // obsolete
@@ -128,3 +104,48 @@ order()
   // new
   if flex in flex-version
     vendor('order', arguments, only: webkit official)
+
+
+//
+// 8. Alignment
+//    - http://www.w3.org/TR/css3-flexbox/#alignment
+//
+justify-content(align)
+  // obsolete
+  if box in flex-version
+    if flex-start == align
+      align = start
+    else if flex-end == align
+      align = end
+    else if space-around == align || space-between == align
+      // WARN: space-around does not match exactly to the align pack method but this is the
+      //    closest option available.
+      align = justify
+    vendor('box-pack', align, ignore: official)
+
+  // new
+  if flex in flex-version
+    vendor('justify-content', arguments, only: webkit official)
+
+align-items(align)
+  // obsolete
+  if box in flex-version
+    if flex-start == align
+      align = start
+    else if flex-end == align
+      align = end
+    vendor('box-align', align, ignore: official)
+
+  // new
+  if flex in flex-version
+    vendor('align-items', arguments, only: webkit official)
+
+align-self()
+  // WARN: Obsolete spec does not allow for overriding alignment on individual items.
+  if flex in flex-version
+    vendor('align-self', arguments, only: webkit official)
+
+align-content()
+  // WARN: Obsolete spec does not allow for adjustment here
+  if flex in flex-version
+    vendor('align-content', arguments, only: webkit official)
