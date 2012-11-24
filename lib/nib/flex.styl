@@ -4,6 +4,10 @@
 
 flex-version ?= box flex
 
+//
+// 1. Display values
+//    - http://www.w3.org/TR/css3-flexbox/#flex-containers
+//
 display(type, args...)
   if flex == type || inline-flex == type
     display: vendor-value(box args, only: moz ms webkit) if box in flex-version
