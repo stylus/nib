@@ -11,3 +11,29 @@ section
 
 section
   display: flex !important
+
+// Obsolete property conditional rendering
+flex-version = box
+
+section
+  display: flex
+  flex-direction: row
+
+  div
+    flex: 1 0
+
+section
+  display: flex !important
+
+// New property conditional rendering
+flex-version = flex
+
+section
+  display: flex
+  flex-direction: row
+
+  div
+    flex: 1 0
+
+section
+  display: flex !important
