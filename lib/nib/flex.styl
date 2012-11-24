@@ -105,27 +105,23 @@ flex(growth)
 
   // obsolete
   if box in flex-version
-    if none == growth
+    shrink = 1
+
+    if none == growth || initial == growth
+      // Well known values
+      shrink = 0 if none == growth
       growth = 0
-    else if initial == growth
-      growth = 1
     else if is-width(growth) == true
       // Basis is defined as the first parameter
-      if 1 == length(arguments)
-        growth = 1
-      else if 2 == length(arguments)
-        growth = max(arguments[1], 1)
-      else
-        growth = max(arguments[1], arguments[2])
-    else
+      growth = arguments[1] || 0
+      shrink = arguments[2] if 3 <= length(arguments)
+    else if arguments[1] && is-width(arguments[1]) == false
+      // Growth is first and shrink is second
       shrink = arguments[1]
-      if is-width(shrink) == true || 1 == length(arguments)
-        // Basis is defined in the second parameter
-        growth = max(growth, 1)
-      else
-        growth = max(growth, shrink)
 
-    box-flex growth
+    // Since we can't make the distinction between growing and shrinking in the box model, take
+    // the one that provides the most flexibility.
+    box-flex max(growth, shrink)
 
   // new
   if flex in flex-version
