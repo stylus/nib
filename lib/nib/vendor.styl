@@ -14,6 +14,19 @@ is-comma-list()
   return match('\), \(', ''+arguments)
 
 /*
+ * Helper to find out if a given value is a width
+ */
+
+is-width(val)
+  if auto == val
+    return true
+  else if val && 'unit' == type(val)
+    // Stylus does not short circuit so we need to perform this as a distinct
+    // operation to prevent errors
+    return '' != unit(val)
+  return false
+
+/*
  * Literal joining
  */
 
