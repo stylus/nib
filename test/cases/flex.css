@@ -21,6 +21,42 @@ section div {
   -webkit-flex: 1 0;
   flex: 1 0;
 }
+flex-flow {
+  -webkit-box-direction: reverse;
+  -moz-box-direction: reverse;
+  -o-box-direction: reverse;
+  -ms-box-direction: reverse;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -o-box-orient: horizontal;
+  -ms-box-orient: horizontal;
+  -webkit-flex-flow: row-reverse;
+  flex-flow: row-reverse;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -o-box-orient: horizontal;
+  -ms-box-orient: horizontal;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -o-box-lines: multiple;
+  -ms-box-lines: multiple;
+  -webkit-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-direction: reverse;
+  -moz-box-direction: reverse;
+  -o-box-direction: reverse;
+  -ms-box-direction: reverse;
+  -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -o-box-orient: vertical;
+  -ms-box-orient: vertical;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -o-box-lines: multiple;
+  -ms-box-lines: multiple;
+  -webkit-flex-flow: wrap-reverse column-reverse;
+  flex-flow: wrap-reverse column-reverse;
+}
 section {
   display: -webkit-box !important;
   display: -moz-box !important;

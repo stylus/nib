@@ -36,10 +36,6 @@ flex-shrink()
   if flex in flex-version
     vendor('flex-shrink', arguments, only: webkit official)
 
-flex-wrap()
-  if flex in flex-version
-    vendor('flex-wrap', arguments, only: webkit official)
-
 justify-content()
   if flex in flex-version
     vendor('justify-content', arguments, only: webkit official)
@@ -66,25 +62,50 @@ flex(growth)
   if flex in flex-version
     vendor('flex', arguments, only: webkit official)
 
-flex-direction(direction)
-  // obsolete
+//
+// 5. Ordering and Orientation
+//    - http://www.w3.org/TR/css3-flexbox/#ordering-and-orientation
+//
+-flex-obsolete-direction(direction)
   if box in flex-version
     if row-reverse == direction || column-reverse == direction
       vendor('box-direction', reverse, ignore: official)
+
     if row == direction || row-reverse == direction
       vendor('box-orient', horizontal, ignore: official)
     else if column == direction || column-reverse == direction
       vendor('box-orient', vertical, ignore: official)
 
+-flex-obsolete-wrap(value)
+  if box in flex-version
+    // WARN: wrap-reverse does not have a box equivalent. This will render in different manners
+    //    on box vs. flex values.
+    if 'wrap' == value || wrap-reverse == value
+      vendor('box-lines', multiple, ignore: official)
+    else if nowrap == value
+      vendor('box-lines', single, ignore: official)
+
+flex-direction(direction)
+  // obsolete
+  -flex-obsolete-direction(direction)
+
   // new
   if flex in flex-version
     vendor('flex-direction', arguments, only: webkit official)
 
-flex-flow(direction)
+flex-wrap(wrap)
   // obsolete
-  if box in flex-version
-    if row-reverse == direction || column-reverse == direction || wrap-reverse == direction
-      vendor('box-direction', 'reverse', ignore: official)
+  -flex-obsolete-wrap(wrap)
+
+  if flex in flex-version
+    vendor('flex-wrap', arguments, only: webkit official)
+
+flex-flow()
+  // obsolete
+  -flex-obsolete-direction(arguments[0])
+  -flex-obsolete-direction(arguments[1])
+  -flex-obsolete-wrap(arguments[0])
+  -flex-obsolete-wrap(arguments[1])
 
   // new
   if flex in flex-version
