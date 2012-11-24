@@ -21,23 +21,6 @@ display(type, args...)
  */
 
 
-flex-basis()
-  if flex in flex-version
-    vendor('flex-basis', arguments, only: webkit official)
-
-flex-shrink()
-  if flex in flex-version
-    vendor('flex-shrink', arguments, only: webkit official)
-
-flex(growth)
-  // obsolete
-  if box in flex-version
-    box-flex growth
-
-  // new
-  if flex in flex-version
-    vendor('flex', arguments, only: webkit official)
-
 //
 // 5. Ordering and Orientation
 //    - http://www.w3.org/TR/css3-flexbox/#ordering-and-orientation
@@ -87,15 +70,6 @@ flex-flow()
   if flex in flex-version
     vendor('flex-flow', arguments, only: webkit official)
 
-flex-grow(growth)
-  // obsolete
-  if box in flex-version
-    vendor('box-flex', growth)
-
-  // new
-  if flex in flex-version
-    vendor('flex-grow', arguments, only: webkit official)
-
 order()
   // obsolete
   if box in flex-version
@@ -105,6 +79,57 @@ order()
   if flex in flex-version
     vendor('order', arguments, only: webkit official)
 
+
+//
+// 7. Flexibility
+//    - http://www.w3.org/TR/css3-flexbox/#flexibility
+//
+flex-grow(growth)
+  // obsolete
+  if box in flex-version
+    vendor('box-flex', growth)
+
+  // new
+  if flex in flex-version
+    vendor('flex-grow', arguments, only: webkit official)
+
+flex-basis()
+  if flex in flex-version
+    vendor('flex-basis', arguments, only: webkit official)
+
+flex-shrink()
+  if flex in flex-version
+    vendor('flex-shrink', arguments, only: webkit official)
+
+flex(growth)
+
+  // obsolete
+  if box in flex-version
+    if none == growth
+      growth = 0
+    else if initial == growth
+      growth = 1
+    else if is-width(growth) == true
+      // Basis is defined as the first parameter
+      if 1 == length(arguments)
+        growth = 1
+      else if 2 == length(arguments)
+        growth = max(arguments[1], 1)
+      else
+        growth = max(arguments[1], arguments[2])
+    else
+      shrink = arguments[1]
+      if is-width(shrink) == true || 1 == length(arguments)
+        // Basis is defined in the second parameter
+        growth = max(growth, 1)
+      else
+        growth = max(growth, shrink)
+
+    box-flex growth
+
+  // new
+  if flex in flex-version
+    vendor('flex', arguments, only: webkit official)
 
 //
 // 8. Alignment
