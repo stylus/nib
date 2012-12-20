@@ -5,7 +5,7 @@
  * adding an @2x variant.
  */
 
-image(path, w = auto, h = auto)
+image(path, w = 100%, h = auto)
   background-image: url(path)
   @media all and (-webkit-min-device-pixel-ratio: 1.5)
     ext = extname(path)
