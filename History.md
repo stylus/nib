@@ -1,4 +1,11 @@
 
+0.9.1 / 2013-01-04 
+==================
+
+  * Quote -ms-filter selector value
+  * Vendor font-smoothing property
+  * fix call stack explosion when using `flex-wrap: wrap`
+
 0.9.0 / 2012-11-24 
 ==================
 
