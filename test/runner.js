@@ -3,58 +3,37 @@
  * Module dependencies.
  */
 
-var fs = require('fs')
-  , stylus = require('../support/stylus');
+var stylus = require('stylus')
+  , nib = require('../')
+  , fs = require('fs');
 
-console.error();
+// test cases
 
-// files to test
+var cases = fs.readdirSync('test/cases').filter(function(file){
+  return ~file.indexOf('.styl');
+}).map(function(file){
+  return file.replace('.styl', '');
+});
 
-var files = process.argv.slice(2);
+describe('integration', function(){
+  cases.forEach(function(test){
+    var name = test.replace(/[-.]/g, ' ');
+    it(name, function(){
+      var path = 'test/cases/' + test + '.styl';
+      var styl = fs.readFileSync(path, 'utf8').replace(/\r/g, '');
+      var css = fs.readFileSync('test/cases/' + test + '.css', 'utf8').replace(/\r/g, '').trim();
 
-// test files in sequence
+      var style = stylus(styl)
+        .use(nib())
+        .set('filename', path)
+        .define('url', stylus.url());
 
-(function next(){
-  var file;
-  if (file = files.shift()) {
-    readFile(file, next);
-  } else {
-    console.error();
-  }
-})();
+      if (~test.indexOf('compress')) style.set('compress', true);
 
-// read test files
-
-function readFile(path, fn){
-  process.stdout.write('  \033[90m- ' + path + ':\033[0m ');
-  fs.readFile(path, 'utf8', function(err, styl){
-    if (err) throw err;
-    fs.readFile(path.replace('.styl', '.css'), 'utf8', function(err, css){
-      if (err) throw err;
-      testFile(path, styl, css, fn);
-    });
+      style.render(function(err, actual){
+        if (err) throw err;
+        actual.trim().should.equal(css);
+      });
+    })
   });
-}
-
-// perform comparison
-
-function testFile(path, styl, expected, fn) {
-  stylus(styl)
-    .set('filename', path)
-    .set('paths', [__dirname + '/../lib'])
-    .render(function(err, css){
-      if (err) throw err;
-      if (css.trim() == expected.trim()) {
-        console.error('\033[36m✓\033[0m');
-        fn();
-      } else {
-        console.error('\033[31m✘\033[0m');
-        console.error('\n  \033[90mactual:\033[0m\n');
-        console.error(css.replace(/^/gm, '  '));
-        console.error('  \033[90mexpected:\033[0m\n');
-        console.error(expected.replace(/^/gm, '  '));
-        console.error();
-        process.exit(1);
-      }
-    });
-}
+})
