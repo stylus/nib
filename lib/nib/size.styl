@@ -3,15 +3,26 @@
  * 
  * Synopsis:
  * 
- *   size: <width> <height>
+ *   size: <width> <height> | <width & height>
  * 
  * Examples:
  * 
- *     size: 10px 20px
  *     size: 100% 30px
+ *       yields:
+ *         width: 100%
+ *         height: 30px
+ * 
+ *     size: 5px
+ *       yields:
+ *         width: 5px
+ *         height: 5px
  * 
  */
 
-size(width, height)
-  width: width
-  height: height
+size()
+  if length(arguments) == 1
+    width: arguments[0]
+    height: arguments[0]
+  else
+    width: arguments[0]
+    height: arguments[1]
