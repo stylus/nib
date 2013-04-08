@@ -2,7 +2,7 @@
 test:
 	@./node_modules/.bin/mocha \
 		--require should \
-		--ignore-leaks \
+		--check-leaks \
 		test/runner.js
 
 test-server:
