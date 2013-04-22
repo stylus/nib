@@ -134,7 +134,16 @@ linear-gradient(start, stops...)
       add-property(prop, replace(val, '__CALL__', gradient))
 
   // standard 
-  'linear-gradient(%s, %s)' % (start stops)
+  if      start == top
+    start = bottom
+  else if start == bottom
+    start = top
+  else if start == left
+    start = right
+  else if start == right
+    start = left
+
+  'linear-gradient(to %s, %s)' % (start stops)
 
 /*
  * Create a linear gradient image with the given start position
