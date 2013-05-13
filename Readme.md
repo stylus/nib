@@ -2,6 +2,8 @@
 
   Stylus mixins, utilities, components, and gradient image generation. Don't forget to check out the [documentation](http://visionmedia.github.com/nib/).
 
+ __NOTE__: seeking a maintainer, please open an issue if you're interested.
+
 ## Installation
 
 ```bash
