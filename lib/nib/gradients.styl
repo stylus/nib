@@ -1,4 +1,3 @@
-
 @import 'config'
 
 /*
@@ -120,11 +119,6 @@ linear-gradient(start, stops...)
       img = linear-gradient-image(start, stops)
       add-property(prop, replace(val, '__CALL__', img))
     start = start[1]
-
-  // legacy webkit
-  end = grad-point(opposite-position(start))
-  webkit-legacy = '-webkit-gradient(linear, %s, %s, %s)' % (grad-point(start) end join-stops(stops, webkit-stop))
-  add-property(prop, replace(val, '__CALL__', webkit-legacy))
 
   // vendor prefixed
   stops = join-stops(stops, std-stop)
