@@ -31,21 +31,21 @@ display(type, args...)
 -flex-obsolete-direction(direction)
   if box in flex-version
     if row-reverse == direction || column-reverse == direction
-      vendor('box-direction', reverse, ignore: official)
+      vendor('box-direction', reverse, ignore: ms official)
 
     if row == direction || row-reverse == direction
-      vendor('box-orient', horizontal, ignore: official)
+      vendor('box-orient', horizontal, ignore: ms official)
     else if column == direction || column-reverse == direction
-      vendor('box-orient', vertical, ignore: official)
+      vendor('box-orient', vertical, ignore: ms official)
 
 -flex-obsolete-wrap(value)
   if box in flex-version
     // WARN: wrap-reverse does not have a box equivalent. This will render in different manners
     //    on box vs. flex values.
     if 'wrap' == value || wrap-reverse == value
-      vendor('box-lines', multiple, ignore: official)
+      vendor('box-lines', multiple, ignore: ms official)
     else if nowrap == value
-      vendor('box-lines', single, ignore: official)
+      vendor('box-lines', single, ignore: ms official)
 
 flex-direction(direction)
   // obsolete
@@ -53,14 +53,14 @@ flex-direction(direction)
 
   // new
   if flex in flex-version
-    vendor('flex-direction', arguments, only: webkit official)
+    vendor('flex-direction', arguments, only: webkit ms official)
 
 flex-wrap(value)
   // obsolete
   -flex-obsolete-wrap(value)
 
   if flex in flex-version
-    vendor('flex-wrap', arguments, only: webkit official)
+    vendor('flex-wrap', arguments, only: webkit ms official)
 
 flex-flow()
   // obsolete
@@ -71,7 +71,8 @@ flex-flow()
 
   // new
   if flex in flex-version
-    vendor('flex-flow', arguments, only: webkit official)
+    vendor('flex-flow', arguments, only: webkit ms official)
+
 
 order()
   // obsolete
