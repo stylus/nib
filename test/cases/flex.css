@@ -163,6 +163,14 @@ flex {
   -ms-flex: 1 2 0;
   flex: 1 2 0;
 }
+order {
+  -webkit-box-ordinal-group: 0;
+  -moz-box-ordinal-group: 0;
+  -o-box-ordinal-group: 0;
+  -ms-flex-order: 0;
+  -webkit-order: 0;
+  order: 0;
+}
 section {
   display: -webkit-box !important;
   display: -moz-box !important;

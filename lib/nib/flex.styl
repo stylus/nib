@@ -77,10 +77,11 @@ flex-flow()
 order()
   // obsolete
   if box in flex-version
-    vendor('box-ordinal-group', arguments, ignore: official)
+    vendor('box-ordinal-group', arguments, ignore: ms official)
 
   // new
   if flex in flex-version
+    vendor('flex-order', arguments, only: ms)
     vendor('order', arguments, only: webkit official)
 
 
