@@ -132,6 +132,20 @@ flex(growth)
   if flex in flex-version
     vendor('flex', arguments, only: webkit ms official)
 
+
+// converts the justification alignment
+-convert-justify(align)
+  if flex-start == align
+    return start
+  else if flex-end == align
+    return end
+  else if space-around == align
+    return distribute
+  else if space-between == align
+    return justify
+  else
+    return align
+
 //
 // 8. Alignment
 //    - http://www.w3.org/TR/css3-flexbox/#alignment
@@ -139,19 +153,12 @@ flex(growth)
 justify-content(align)
   // obsolete
   if box in flex-version
-    if flex-start == align
-      align = start
-    else if flex-end == align
-      align = end
-    else if space-around == align || space-between == align
-      // WARN: space-around does not match exactly to the align pack method but this is the
-      //    closest option available.
-      align = justify
-    vendor('box-pack', align, ignore: official)
+    vendor('box-pack', -convert-justify(align), ignore: ms official)
 
   // new
   if flex in flex-version
-    vendor('justify-content', arguments, only: webkit official)
+    vendor('justify-content', -convert-justify(align), only: ms)
+    vendor('justify-content', align, only: webkit official)
 
 // converts alignment from 'flex' to normal value
 -convert-alignment(align)
