@@ -152,17 +152,23 @@ justify-content(align)
   if flex in flex-version
     vendor('justify-content', arguments, only: webkit official)
 
+// converts alignment from 'flex' to normal value
+-convert-alignment(align)
+  if flex-start == align
+    return start
+  else if flex-end == align
+    return end
+  else
+    return align
+
 align-items(align)
   // obsolete
   if box in flex-version
-    if flex-start == align
-      align = start
-    else if flex-end == align
-      align = end
-    vendor('box-align', align, ignore: official)
+    vendor('box-align', -convert-alignment(align), ignore: ms official)
 
   // new
   if flex in flex-version
+    vendor('flex-align', -convert-alignment(align), only: ms)
     vendor('align-items', arguments, only: webkit official)
 
 align-self()

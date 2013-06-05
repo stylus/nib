@@ -89,19 +89,19 @@ align-items {
   -webkit-box-align: start;
   -moz-box-align: start;
   -o-box-align: start;
-  -ms-box-align: start;
+  -ms-flex-align: start;
   -webkit-align-items: flex-start;
   align-items: flex-start;
   -webkit-box-align: end;
   -moz-box-align: end;
   -o-box-align: end;
-  -ms-box-align: end;
+  -ms-flex-align: end;
   -webkit-align-items: flex-end;
   align-items: flex-end;
   -webkit-box-align: center;
   -moz-box-align: center;
   -o-box-align: center;
-  -ms-box-align: center;
+  -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
 }
