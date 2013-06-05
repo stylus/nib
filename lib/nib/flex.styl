@@ -124,11 +124,11 @@ flex(growth)
 
     // Since we can't make the distinction between growing and shrinking in the box model, take
     // the one that provides the most flexibility.
-    box-flex max(growth, shrink)
+    vendor('box-flex', max(growth, shrink), ignore: ms)
 
   // new
   if flex in flex-version
-    vendor('flex', arguments, only: webkit official)
+    vendor('flex', arguments, only: webkit ms official)
 
 //
 // 8. Alignment

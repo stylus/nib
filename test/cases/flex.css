@@ -16,9 +16,9 @@ section div {
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   -o-box-flex: 1;
-  -ms-box-flex: 1;
   box-flex: 1;
   -webkit-flex: 1 0;
+  -ms-flex: 1 0;
   flex: 1 0;
 }
 flex-flow {
@@ -113,58 +113,58 @@ flex {
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   -o-box-flex: 1;
-  -ms-box-flex: 1;
   box-flex: 1;
   -webkit-flex: 0 auto;
+  -ms-flex: 0 auto;
   flex: 0 auto;
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   -o-box-flex: 1;
-  -ms-box-flex: 1;
   box-flex: 1;
   -webkit-flex: auto 0;
+  -ms-flex: auto 0;
   flex: auto 0;
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   -o-box-flex: 1;
-  -ms-box-flex: 1;
   box-flex: 1;
   -webkit-flex: initial;
+  -ms-flex: initial;
   flex: initial;
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   -o-box-flex: 1;
-  -ms-box-flex: 1;
   box-flex: 1;
   -webkit-flex: auto;
+  -ms-flex: auto;
   flex: auto;
   -webkit-box-flex: 0;
   -moz-box-flex: 0;
   -o-box-flex: 0;
-  -ms-box-flex: 0;
   box-flex: 0;
   -webkit-flex: none;
+  -ms-flex: none;
   flex: none;
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   -o-box-flex: 1;
-  -ms-box-flex: 1;
   box-flex: 1;
   -webkit-flex: 1;
+  -ms-flex: 1;
   flex: 1;
   -webkit-box-flex: 0;
   -moz-box-flex: 0;
   -o-box-flex: 0;
-  -ms-box-flex: 0;
   box-flex: 0;
   -webkit-flex: 0px 0 0;
+  -ms-flex: 0px 0 0;
   flex: 0px 0 0;
   -webkit-box-flex: 2;
   -moz-box-flex: 2;
   -o-box-flex: 2;
-  -ms-box-flex: 2;
   box-flex: 2;
   -webkit-flex: 1 2 0;
+  -ms-flex: 1 2 0;
   flex: 1 2 0;
 }
 section {
@@ -189,7 +189,6 @@ section div {
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   -o-box-flex: 1;
-  -ms-box-flex: 1;
   box-flex: 1;
 }
 section {
@@ -206,6 +205,7 @@ section {
 }
 section div {
   -webkit-flex: 1 0;
+  -ms-flex: 1 0;
   flex: 1 0;
 }
 section {
