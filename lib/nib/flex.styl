@@ -157,7 +157,7 @@ justify-content(align)
 
   // new
   if flex in flex-version
-    vendor('justify-content', -convert-justify(align), only: ms)
+    vendor('flex-pack', -convert-justify(align), only: ms)
     vendor('justify-content', align, only: webkit official)
 
 // converts alignment from 'flex' to normal value
