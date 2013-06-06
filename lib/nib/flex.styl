@@ -160,6 +160,12 @@ justify-content(align)
     vendor('flex-pack', -convert-justify(align), only: ms)
     vendor('justify-content', align, only: webkit official)
 
+align-content(align)
+  // WARN: Obsolete spec does not allow for adjustment here
+  if flex in flex-version
+    vendor('flex-line-pack', -convert-justify(align), only: ms)
+    vendor('align-content', align, only: webkit official)
+
 // converts alignment from 'flex' to normal value
 -convert-alignment(align)
   if flex-start == align
@@ -184,7 +190,3 @@ align-self()
   if flex in flex-version
     vendor('align-self', arguments, only: webkit official)
 
-align-content()
-  // WARN: Obsolete spec does not allow for adjustment here
-  if flex in flex-version
-    vendor('align-content', arguments, only: webkit official)
