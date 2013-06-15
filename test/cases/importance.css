@@ -115,6 +115,7 @@
   word-break: normal !important;
   -moz-tab-size: 4 !important;
   -o-tab-size: 4 !important;
+  tab-size: 4 !important;
   -webkit-hyphens: manual !important;
   -moz-hyphens: manual !important;
   -ms-hyphens: manual !important;
