@@ -9,7 +9,7 @@
   "devDependencies": {
       "connect": "1.x"
     , "jade": "0.22.0"
-    , "stylus": "0.28.x"
+    , "stylus": "0.31.x"
     , "mocha": "*"
     , "should": "*"
     , "canvas": "*"
