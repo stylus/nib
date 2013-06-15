@@ -1,6 +1,3 @@
-
-require.paths.unshift(__dirname + '/../support');
-
 /**
  * Module dependencies.
  */
