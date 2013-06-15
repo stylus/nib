@@ -7,83 +7,28 @@
 no-wrap = unquote('nowrap')
 
 /*
- * Helper to find out is the list of arguments have commas
- */
-
-is-comma-list()
-  return match('\), \(', ''+arguments)
-
-/*
- * Helper to find out if a given value is a width
- */
-
-is-width(val)
-  if auto == val
-    return true
-  else if val && 'unit' == type(val)
-    // Stylus does not short circuit so we need to perform this as a distinct
-    // operation to prevent errors
-    return '' != unit(val)
-  return false
-
-/*
- * Literal joining
- */
-
-literal-join(string, literals)
-  result = unquote('')
-  first = true
-  for args in literals
-    subresult = unquote('')
-    for arg in args
-      subresult = subresult arg
-    if first
-      result = subresult
-      first = false
-    else
-      result = s('%s%s%s', result, unquote(string), subresult)
-  return result
-
-/*
- * Replacing one value with another
- */
-
-replace-args(args,argument,val)
-  result = ()
-  // Checking if there are values divided by comma
-  if is-comma-list(args)
-    for subargs in args
-      subresult = ()
-      for arg in subargs
-        arg = unquote(val) if arg == argument
-        push(subresult, arg)
-      subresult = literal-join(' ', subresult) if length(subresult) > 1
-      push(result, subresult)
-    result = literal-join(', ', result)
-  else
-    for arg in args
-      arg = unquote(val) if arg == argument
-      push(result, arg)
-  return result
-
-/*
  * Vendor support for the given prop / arguments,
  * optionally specifying the only prefixes to utilize,
  * or those which should be ignored.
  */
 
-vendor(prop, args, only = null, ignore = null)
+vendor(prop, args, only = null, ignore = null, vendor-property = true)
+  need_normalize = !vendor-property or prop in ('transition' 'transition-property' 'border-image' 'border-image-slice')
   for prefix in vendor-prefixes
     unless (only and !(prefix in only)) or (ignore and prefix in ignore)
       if official == prefix
-        {prop}: args
+        if need_normalize
+          {prop}: normalize(prop,('%s' % args))
+        else
+          {prop}: args
       else
-        newargs = args
-        // Adjusting the args if needed
-        if prop in ('transition' 'transition-property')
-          newargs = replace-args(args, transform, '-' + prefix + '-transform')
-        {'-' + prefix + '-' + prop}: newargs
+        newprop = prop
+        newprop = '-' + prefix + '-' + prop if vendor-property
 
+        if need_normalize
+          {newprop}: normalize(prop,('%s' % args),prefix)
+        else
+          {newprop}: args
 /*
  * Vendorize the given value.
  */
@@ -579,3 +524,37 @@ placeholder()
         else if pair is not null && pair[0] is not null
           {pair[0]}: type(pair[1]) == 'string' ? s(pair[1]) : pair[1]
 input-placeholder = placeholder
+
+/*
+ * Vendor background support (gradients).
+ */
+
+background()
+  if match('-gradient\(', ''+arguments)
+    vendor('background', arguments, vendor-property: false)
+  else
+    background arguments
+
+background-image()
+  if match('-gradient\(', ''+arguments)
+    vendor('background-image', arguments, vendor-property: false)
+  else
+    background-image arguments
+
+cursor()
+  if match('-gradient\(', ''+arguments)
+    vendor('cursor', arguments, vendor-property: false)
+  else
+    cursor arguments
+
+list-style()
+  if match('-gradient\(', ''+arguments)
+    vendor('list-style', arguments, vendor-property: false)
+  else
+    list-style arguments
+
+list-style-image()
+  if match('-gradient\(', ''+arguments)
+    vendor('list-style-image', arguments, vendor-property: false)
+  else
+    list-style-image arguments
