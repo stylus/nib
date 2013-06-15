@@ -315,8 +315,8 @@ opacity(n, args...)
       -ms-filter: none
       filter: none
     else
-      filter: 'alpha(opacity=%s)' % val args
       -ms-filter: '"progid:DXImageTransform.Microsoft.Alpha(Opacity=%s)"' % val args
+      filter: 'alpha(opacity=%s)' % val args
 
 /*
  * Vendor "text-size-adjust"
