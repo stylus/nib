@@ -9,12 +9,16 @@
   "devDependencies": {
       "connect": "1.x"
     , "jade": "0.22.0"
-    , "stylus": "0.28.x"
+    , "stylus": "0.31.x"
     , "mocha": "*"
     , "should": "*"
     , "canvas": "*"
   },
   "author": "TJ Holowaychuk <tj@vision-media.ca>",
   "main": "lib/nib.js",
-  "engines": { "node": "*" }
+  "engines": { "node": "*" },
+  "scripts": {
+    "test": "mocha",
+    "test-server": "node test/server.js"
+  }
 }
