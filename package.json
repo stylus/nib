@@ -6,10 +6,12 @@
     "type": "git",
     "url": "git://github.com/visionmedia/nib.git"
   },
+  "dependencies" : {
+    "stylus": "0.31.x"
+  },
   "devDependencies": {
       "connect": "1.x"
     , "jade": "0.22.0"
-    , "stylus": "0.31.x"
     , "mocha": "*"
     , "should": "*"
     , "canvas": "*"
