@@ -1,10 +1,21 @@
 #login {
-  position: absolute;
-  bottom: 0;
-  right: 0;
+    position: absolute;
+    bottom: 0;
 }
+
 #login {
-  position: absolute;
-  top: 5px;
-  left: 10px;
+    position: absolute;
+    top: 5px;
+    left: 10px;
 }
+
+#login {
+    position: absolute;
+    top: 0;
+}
+
+#login {
+    position: absolute;
+    top: 5px;
+}
+
