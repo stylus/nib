@@ -21,4 +21,6 @@ image(path, w = auto, h = auto, min_pixel_ratio = 1.5)
     ext = extname(path)
     path = pathjoin(dirname(path), basename(path, ext) + '@2x' + ext)
     background-image: url(path)
+    if w in (cover contain) and h == auto
+        h = null
     background-size: w h
