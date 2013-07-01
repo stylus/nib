@@ -554,3 +554,38 @@ border-radius()
           -apply-border-radius(pos, importance)
           pos = ()
   vendor('border-radius', pos, only: webkit official) unless augmented
+
+/**
+ * Vendor input-placeholder/placeholder support.
+ *
+ * Examples:
+ *    // Default placeholder
+ *    placeholder-body()
+ *      color #333
+ *      font-weight normal
+ *    body
+ *      placeholder(placeholder-body)
+ *
+ *    // Red placeholder
+ *    placeholder-red()
+ *      color #f33
+ *    .placeholder-red
+ *      placeholder(placeholder-red)
+ *
+ *    // Textarea placeholder
+ *    placeholder-textarea()
+ *      font-style italic
+ *    textarea
+ *      placeholder(placeholder-textarea)
+ *
+ */
+input-placeholder(fn)  
+  &::-webkit-input-placeholder // WebKit browsers
+    fn()
+  &:-moz-placeholder // Mozilla Firefox 4 to 18
+    fn()
+  &::-moz-placeholder // Mozilla Firefox 19+
+    fn()
+  &:-ms-input-placeholder // Internet Explorer 10+
+    fn()
+placeholder = input-placeholder
