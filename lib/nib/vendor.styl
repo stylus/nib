@@ -559,33 +559,30 @@ border-radius()
  * Vendor input-placeholder/placeholder support.
  *
  * Examples:
- *    // Default placeholder
- *    placeholder-body()
- *      color #333
- *      font-weight normal
+ *    // Default syntax
  *    body
- *      placeholder(placeholder-body)
+ *      placeholder(color #333, font-weight normal)
  *
- *    // Red placeholder
- *    placeholder-red()
- *      color #f33
+ *    // The comma is important
  *    .placeholder-red
- *      placeholder(placeholder-red)
- *
- *    // Textarea placeholder
- *    placeholder-textarea()
- *      font-style italic
+ *      placeholder(color red,)
+ *    
+ *    // We can pass a function
+ *    green-placeholder()
+ *      color green
+ *    .placeholder-green
+ *      placeholder(green-placeholder)
+ *    
+ *    // We can pass a hash
  *    textarea
- *      placeholder(placeholder-textarea)
- *
+ *      placeholder((font-style italic) (font-weight bold) (padding '4px 10px'))
  */
-input-placeholder(fn)  
-  &::-webkit-input-placeholder // WebKit browsers
-    fn()
-  &:-moz-placeholder // Mozilla Firefox 4 to 18
-    fn()
-  &::-moz-placeholder // Mozilla Firefox 19+
-    fn()
-  &:-ms-input-placeholder // Internet Explorer 10+
-    fn()
-placeholder = input-placeholder
+placeholder()
+  for v in ':-webkit-input' '-moz' ':-moz' '-ms-input'
+    &:{v}-placeholder
+      for pair in arguments
+        if typeof(pair) == 'function'
+          pair()
+        else if pair is not null && pair[0] is not null
+          {pair[0]}: type(pair[1]) == 'string' ? s(pair[1]) : pair[1]
+input-placeholder = placeholder
