@@ -554,3 +554,35 @@ border-radius()
           -apply-border-radius(pos, importance)
           pos = ()
   vendor('border-radius', pos, only: webkit official) unless augmented
+
+/**
+ * Vendor input-placeholder/placeholder support.
+ *
+ * Examples:
+ *    // Default syntax
+ *    body
+ *      placeholder(color #333, font-weight normal)
+ *
+ *    // The comma is important
+ *    .placeholder-red
+ *      placeholder(color red,)
+ *    
+ *    // We can pass a function
+ *    green-placeholder()
+ *      color green
+ *    .placeholder-green
+ *      placeholder(green-placeholder)
+ *    
+ *    // We can pass a hash
+ *    textarea
+ *      placeholder((font-style italic) (font-weight bold) (padding '4px 10px'))
+ */
+placeholder()
+  for v in ':-webkit-input' '-moz' ':-moz' '-ms-input'
+    &:{v}-placeholder
+      for pair in arguments
+        if typeof(pair) == 'function'
+          pair()
+        else if pair is not null && pair[0] is not null
+          {pair[0]}: type(pair[1]) == 'string' ? s(pair[1]) : pair[1]
+input-placeholder = placeholder
