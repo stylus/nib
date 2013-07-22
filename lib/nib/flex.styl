@@ -10,8 +10,11 @@ flex-version ?= box flex
 //
 display(type, args...)
   if flex == type || inline-flex == type
-    display: vendor-value(box args, only: moz ms webkit) if box in flex-version
-    display: vendor-value(arguments, only: webkit official) if flex in flex-version // overwrites old webkit
+    if box in flex-version
+      display: -ms-flexbox args
+      display: vendor-value(box args, only: moz webkit)
+    if flex in flex-version
+      display: vendor-value(arguments, only: webkit official) // overwrites old webkit
   else
     display: arguments
 
@@ -28,21 +31,21 @@ display(type, args...)
 -flex-obsolete-direction(direction)
   if box in flex-version
     if row-reverse == direction || column-reverse == direction
-      vendor('box-direction', reverse, ignore: official)
+      vendor('box-direction', reverse, ignore: ms official)
 
     if row == direction || row-reverse == direction
-      vendor('box-orient', horizontal, ignore: official)
+      vendor('box-orient', horizontal, ignore: ms official)
     else if column == direction || column-reverse == direction
-      vendor('box-orient', vertical, ignore: official)
+      vendor('box-orient', vertical, ignore: ms official)
 
 -flex-obsolete-wrap(value)
   if box in flex-version
     // WARN: wrap-reverse does not have a box equivalent. This will render in different manners
     //    on box vs. flex values.
     if 'wrap' == value || wrap-reverse == value
-      vendor('box-lines', multiple, ignore: official)
+      vendor('box-lines', multiple, ignore: ms official)
     else if nowrap == value
-      vendor('box-lines', single, ignore: official)
+      vendor('box-lines', single, ignore: ms official)
 
 flex-direction(direction)
   // obsolete
@@ -50,14 +53,14 @@ flex-direction(direction)
 
   // new
   if flex in flex-version
-    vendor('flex-direction', arguments, only: webkit official)
+    vendor('flex-direction', arguments, only: webkit ms official)
 
 flex-wrap(value)
   // obsolete
   -flex-obsolete-wrap(value)
 
   if flex in flex-version
-    vendor('flex-wrap', arguments, only: webkit official)
+    vendor('flex-wrap', arguments, only: webkit ms official)
 
 flex-flow()
   // obsolete
@@ -68,15 +71,17 @@ flex-flow()
 
   // new
   if flex in flex-version
-    vendor('flex-flow', arguments, only: webkit official)
+    vendor('flex-flow', arguments, only: webkit ms official)
+
 
 order()
   // obsolete
   if box in flex-version
-    vendor('box-ordinal-group', arguments, ignore: official)
+    vendor('box-ordinal-group', arguments, ignore: ms official)
 
   // new
   if flex in flex-version
+    vendor('flex-order', arguments, only: ms)
     vendor('order', arguments, only: webkit official)
 
 
@@ -121,11 +126,25 @@ flex(growth)
 
     // Since we can't make the distinction between growing and shrinking in the box model, take
     // the one that provides the most flexibility.
-    box-flex max(growth, shrink)
+    vendor('box-flex', max(growth, shrink), ignore: ms)
 
   // new
   if flex in flex-version
-    vendor('flex', arguments, only: webkit official)
+    vendor('flex', arguments, only: webkit ms official)
+
+
+// converts the justification alignment
+-convert-justify(align)
+  if flex-start == align
+    return start
+  else if flex-end == align
+    return end
+  else if space-around == align
+    return distribute
+  else if space-between == align
+    return justify
+  else
+    return align
 
 //
 // 8. Alignment
@@ -134,39 +153,40 @@ flex(growth)
 justify-content(align)
   // obsolete
   if box in flex-version
-    if flex-start == align
-      align = start
-    else if flex-end == align
-      align = end
-    else if space-around == align || space-between == align
-      // WARN: space-around does not match exactly to the align pack method but this is the
-      //    closest option available.
-      align = justify
-    vendor('box-pack', align, ignore: official)
+    vendor('box-pack', -convert-justify(align), ignore: ms official)
 
   // new
   if flex in flex-version
-    vendor('justify-content', arguments, only: webkit official)
+    vendor('flex-pack', -convert-justify(align), only: ms)
+    vendor('justify-content', align, only: webkit official)
+
+align-content(align)
+  // WARN: Obsolete spec does not allow for adjustment here
+  if flex in flex-version
+    vendor('flex-line-pack', -convert-justify(align), only: ms)
+    vendor('align-content', align, only: webkit official)
+
+// converts alignment from 'flex' to normal value
+-convert-alignment(align)
+  if flex-start == align
+    return start
+  else if flex-end == align
+    return end
+  else
+    return align
 
 align-items(align)
   // obsolete
   if box in flex-version
-    if flex-start == align
-      align = start
-    else if flex-end == align
-      align = end
-    vendor('box-align', align, ignore: official)
+    vendor('box-align', -convert-alignment(align), ignore: ms official)
 
   // new
   if flex in flex-version
+    vendor('flex-align', -convert-alignment(align), only: ms)
     vendor('align-items', arguments, only: webkit official)
 
-align-self()
+align-self(align)
   // WARN: Obsolete spec does not allow for overriding alignment on individual items.
   if flex in flex-version
-    vendor('align-self', arguments, only: webkit official)
-
-align-content()
-  // WARN: Obsolete spec does not allow for adjustment here
-  if flex in flex-version
-    vendor('align-content', arguments, only: webkit official)
+    vendor('align-self', align, only: webkit official)
+    vendor('flex-item-align', -convert-alignment(align), only: ms)
