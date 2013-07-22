@@ -189,4 +189,4 @@ align-self()
   // WARN: Obsolete spec does not allow for overriding alignment on individual items.
   if flex in flex-version
     vendor('align-self', arguments, only: webkit official)
-
+    vendor('flex-item-align', -convert-alignment(align), only: ms)
