@@ -72,13 +72,13 @@ to be continued....
  Run the automated test cases:
  
  ```bash
-    $ make test
+    $ npm test
  ```
  
  For visual testing run the test server:
  
  ```bash
-    $ make test-server
+    $ npm run-script test-server
  ```
  
  Then visit `localhost:3000` in your browser.
