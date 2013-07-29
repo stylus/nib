@@ -85,8 +85,12 @@ to be continued....
 
 ## Contributors
 
-  - TJ Holowaychuk
-  - Isaac Johnston
+I would love more contributors. And if you have helped out, you are awesome! I want to give a huge thanks to these people:
+
+  - [TJ Holowaychuk](https://github.com/visionmedia) (Original Creator)
+  - [Sean Lang](https://github.com/slang800) (Current Maintainer)
+  - [Isaac Johnston](https://github.com/superstructor)
+  - [Everyone Else](https://github.com/visionmedia/nib/contributors)
 
 ## License 
 
