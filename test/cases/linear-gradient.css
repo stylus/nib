@@ -1,5 +1,11 @@
 body {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #000));
+  background: -webkit-linear-gradient(#fff, #000 100%);
+  background: -moz-linear-gradient(#fff, #000 100%);
+  background: -o-linear-gradient(#fff, #000 100%);
+  background: -ms-linear-gradient(#fff, #000 100%);
+  background: linear-gradient(#fff, #000 100%);
+}
+body {
   background: -webkit-linear-gradient(top, #fff 0, #000 100%);
   background: -moz-linear-gradient(top, #fff 0, #000 100%);
   background: -o-linear-gradient(top, #fff 0, #000 100%);
@@ -7,15 +13,6 @@ body {
   background: linear-gradient(top, #fff 0, #000 100%);
 }
 body {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #000));
-  background: -webkit-linear-gradient(top, #fff 0, #000 100%);
-  background: -moz-linear-gradient(top, #fff 0, #000 100%);
-  background: -o-linear-gradient(top, #fff 0, #000 100%);
-  background: -ms-linear-gradient(top, #fff 0, #000 100%);
-  background: linear-gradient(top, #fff 0, #000 100%);
-}
-body {
-  background: -webkit-gradient(linear, left top, right bottom, color-stop(0, #fff), color-stop(0.25, #f00), color-stop(0.5, #00f), color-stop(1, #000));
   background: -webkit-linear-gradient(top left, #fff 0, #f00 25%, #00f 50%, #000 100%);
   background: -moz-linear-gradient(top left, #fff 0, #f00 25%, #00f 50%, #000 100%);
   background: -o-linear-gradient(top left, #fff 0, #f00 25%, #00f 50%, #000 100%);
@@ -23,7 +20,6 @@ body {
   background: linear-gradient(top left, #fff 0, #f00 25%, #00f 50%, #000 100%);
 }
 body {
-  background: -webkit-gradient(linear, right bottom, left top, color-stop(0, #fff), color-stop(0.8, #000));
   background: -webkit-linear-gradient(bottom right, #fff 0, #000 80%);
   background: -moz-linear-gradient(bottom right, #fff 0, #000 80%);
   background: -o-linear-gradient(bottom right, #fff 0, #000 80%);
@@ -31,7 +27,6 @@ body {
   background: linear-gradient(bottom right, #fff 0, #000 80%);
 }
 body {
-  background: -webkit-gradient(linear, right bottom, left top, color-stop(0, #fff), color-stop(0.8, #000));
   background: -webkit-linear-gradient(right bottom, #fff 0, #000 80%);
   background: -moz-linear-gradient(right bottom, #fff 0, #000 80%);
   background: -o-linear-gradient(right bottom, #fff 0, #000 80%);
@@ -39,7 +34,6 @@ body {
   background: linear-gradient(right bottom, #fff 0, #000 80%);
 }
 body {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #000));
   background: -webkit-linear-gradient(top, #fff 0, #000 100%);
   background: -moz-linear-gradient(top, #fff 0, #000 100%);
   background: -ms-linear-gradient(top, #fff 0, #000 100%);
@@ -47,10 +41,36 @@ body {
   background: linear-gradient(top, #fff 0, #000 100%);
 }
 body {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #000)), #fff;
   background: -webkit-linear-gradient(top, #fff 0, #000 100%), #fff;
   background: -moz-linear-gradient(top, #fff 0, #000 100%), #fff;
   background: -ms-linear-gradient(top, #fff 0, #000 100%), #fff;
   background: -o-linear-gradient(top, #fff 0, #000 100%), #fff;
   background: linear-gradient(top, #fff 0, #000 100%), #fff;
+}
+body {
+  -webkit-border-image: -webkit-linear-gradient(top, #fff 0, #000 100%) 20% stretch stretch;
+  -moz-border-image: -moz-linear-gradient(top, #fff 0, #000 100%) 20% stretch stretch;
+  -o-border-image: -o-linear-gradient(top, #fff 0, #000 100%) 20% stretch stretch;
+  border-image: linear-gradient(top, #fff 0, #000 100%) 20% stretch stretch;
+}
+body {
+  cursor: -webkit-linear-gradient(40deg, #f00 0, #0f0 100%);
+  cursor: -moz-linear-gradient(40deg, #f00 0, #0f0 100%);
+  cursor: -ms-linear-gradient(40deg, #f00 0, #0f0 100%);
+  cursor: -o-linear-gradient(40deg, #f00 0, #0f0 100%);
+  cursor: linear-gradient(40deg, #f00 0, #0f0 100%);
+}
+body {
+  list-style: -webkit-linear-gradient(40deg, #f00 0, #0f0 100%);
+  list-style: -moz-linear-gradient(40deg, #f00 0, #0f0 100%);
+  list-style: -ms-linear-gradient(40deg, #f00 0, #0f0 100%);
+  list-style: -o-linear-gradient(40deg, #f00 0, #0f0 100%);
+  list-style: linear-gradient(40deg, #f00 0, #0f0 100%);
+}
+body {
+  list-style-image: -webkit-linear-gradient(40deg, #f00 0, #0f0 100%);
+  list-style-image: -moz-linear-gradient(40deg, #f00 0, #0f0 100%);
+  list-style-image: -ms-linear-gradient(40deg, #f00 0, #0f0 100%);
+  list-style-image: -o-linear-gradient(40deg, #f00 0, #0f0 100%);
+  list-style-image: linear-gradient(40deg, #f00 0, #0f0 100%);
 }
