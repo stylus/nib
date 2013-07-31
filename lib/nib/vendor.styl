@@ -8,9 +8,21 @@ use('../nodes/vendor-helpers.js')
 no-wrap = unquote('nowrap')
 
 /*
- * Vendor support for the given prop / arguments,
- * optionally specifying the only prefixes to utilize,
- * or those which should be ignored.
+ * Helper to find out if a given value is a width
+ */
+
+is-width(val)
+  if auto == val
+    return true
+  else if val && 'unit' == type(val)
+    // Stylus does not short circuit so we need to perform this as a distinct
+    // operation to prevent errors
+    return '' != unit(val)
+  return false
+
+/*
+ * Vendor support for the given prop / arguments, optionally specifying the
+ * only prefixes to utilize, or those which should be ignored.
  */
 
 vendor(prop, args, only = null, ignore = null, vendor-property = true)
