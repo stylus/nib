@@ -95,9 +95,7 @@ linear-gradient(start, stops...)
   //       add-property(prop, replace(val, '__CALL__', img))
   //     start = start[1]
 
-  stops = normalize-stops(stops)
-  stops = join-stops(stops, std-stop)
-  'linear-gradient(%s, %s)' % (start stops)
+  unquote('linear-gradient(' + join(', ',arguments) + ')')
 
 /*
  * Create a linear gradient image with the given start position
