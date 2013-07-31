@@ -1,3 +1,4 @@
+use('../nodes/vendor-helpers.js')
 @import 'config'
 
 /*
@@ -5,13 +6,6 @@
  */
 
 no-wrap = unquote('nowrap')
-
-/*
- * Helper to find out is the list of arguments have commas
- */
-
-is-comma-list()
-  return match('\), \(', ''+arguments)
 
 /*
  * Helper to find out if a given value is a width
@@ -27,87 +21,27 @@ is-width(val)
   return false
 
 /*
- * Literal joining
- */
-
-literal-join(string, literals)
-  result = unquote('')
-  first = true
-  for args in literals
-    subresult = unquote('')
-    for arg in args
-      subresult = subresult arg
-    if first
-      result = subresult
-      first = false
-    else
-      result = s('%s%s%s', result, unquote(string), subresult)
-  return result
-
-/*
- * Modify matched arguments
- * set strict to false to check as “begin with”
- */
-
-modify-args(args, argument, prefix = '', postfix = '', replace = false, strict = true)
-  result = ()
-  argument = unquote(argument) if type(argument) == 'string'
-  prefix = unquote(prefix)
-  postfix = unquote(postfix)
-
-  // Checking if there are values divided by comma
-  if is-comma-list(args)
-    for subargs in args
-      subresult = ()
-      for arg in subargs
-        if (arg == argument and strict) or (match(''+s('%s',argument),''+arg) and !strict)
-          arg = s('%s%s%s', prefix, replace ? replace : arg, postfix)
-        push(subresult, arg) if arg != unquote('')
-      subresult = literal-join(' ', subresult) if length(subresult) > 1
-      push(result, subresult)
-    result = literal-join(', ', result)
-  else
-    for arg in args
-      if (arg == argument and strict) or (match(''+s('%s',argument),''+arg) and !strict)
-        arg = s('%s%s%s', prefix, replace ? replace : arg, postfix)
-      push(result, arg) if arg != unquote('')
-  return result
-
-remove-args(args, argument, strict = true)
-  return modify-args(args, argument, replace: unquote(''), strict: strict)
-
-/*
- * Vendor support for the given prop / arguments,
- * optionally specifying the only prefixes to utilize,
- * or those which should be ignored.
+ * Vendor support for the given prop / arguments, optionally specifying the
+ * only prefixes to utilize, or those which should be ignored.
  */
 
 vendor(prop, args, only = null, ignore = null, vendor-property = true)
+  need_normalize = !vendor-property or prop in ('transition' 'transition-property' 'border-image' 'border-image-slice')
   for prefix in vendor-prefixes
     unless (only and !(prefix in only)) or (ignore and prefix in ignore)
       if official == prefix
-        {prop}: args
+        if need_normalize
+          {prop}: normalize(prop,('%s' % args))
+        else
+          {prop}: args
       else
-        newargs = args
-
-        // Transforms in transitions need the prefixes
-        if prop in ('transition' 'transition-property')
-          newargs = modify-args(newargs, transform, '-' + prefix + '-')
-
-        // Adding prefixes for gradients
-        if prop in ('border-image' 'background' 'background-image' 'cursor' 'list-style' 'list-style-image')
-          newargs = modify-args(newargs, "-gradient\(", '-' + prefix + '-', strict: false)
-
-        // Removing the `fill` from prefixed border-images
-        if prop in ('border-image' 'border-image-slice')
-          newargs = remove-args(newargs, fill)
-
         newprop = prop
         newprop = '-' + prefix + '-' + prop if vendor-property
-        // TODO: make the adjustments for differences
-        // between the official syntax and vendor ones
-        {newprop}: newargs
 
+        if need_normalize
+          {newprop}: normalize(prop,('%s' % args),prefix)
+        else
+          {newprop}: args
 /*
  * Vendorize the given value.
  */
@@ -583,13 +517,13 @@ border-radius()
  *    // The comma is important
  *    .placeholder-red
  *      placeholder(color red,)
- *    
+ *
  *    // We can pass a function
  *    green-placeholder()
  *      color green
  *    .placeholder-green
  *      placeholder(green-placeholder)
- *    
+ *
  *    // We can pass a hash
  *    textarea
  *      placeholder((font-style italic) (font-weight bold) (padding '4px 10px'))
