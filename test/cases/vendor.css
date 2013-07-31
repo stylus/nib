@@ -150,6 +150,12 @@ section {
   -moz-border-image: url("image.png") 20% stretch stretch;
   border-image: url("image.png") 20% stretch stretch;
 }
+section {
+  -o-border-image: url("image.png") 20% stretch stretch;
+  -webkit-border-image: url("image.png") 20% stretch stretch;
+  -moz-border-image: url("image.png") 20% stretch stretch;
+  border-image: url("image.png") 20% fill stretch stretch;
+}
 p {
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
