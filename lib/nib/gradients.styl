@@ -2,20 +2,6 @@
 @import 'config'
 
 /*
- * Replace the given str with val in the expr.
- */
-
-replace(expr, str, val)
-  expr = clone(expr)
-  for e, i in expr
-    if length(e) > 1
-      expr[i] = replace(e, str, val)
-    else
-      if str == e
-        expr[i] = val
-  expr
-
-/*
  * Implicit color stop position.
  */
 
@@ -85,15 +71,6 @@ std-stop(color, pos)
 
 linear-gradient(start, stops...)
   error('color stops required') unless length(stops)
-  // if current-property
-  //   if start is a 'color'
-  //     unshift(stops, start)
-  //     start = top
-  //   if start[0] is a 'unit'
-  //     if has-canvas
-  //       img = linear-gradient-image(start, stops)
-  //       add-property(prop, replace(val, '__CALL__', img))
-  //     start = start[1]
 
   unquote('linear-gradient(' + join(', ',arguments) + ')')
 
