@@ -21,6 +21,14 @@ section div {
   -ms-flex: 1 0;
   flex: 1 0;
 }
+section {
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-box;
+  display: inline-flex;
+}
 flex-flow {
   -webkit-box-direction: reverse;
   -moz-box-direction: reverse;
@@ -197,6 +205,14 @@ section {
   display: flex !important;
 }
 section {
+  display: -webkit-inline-box !important;
+  display: -moz-inline-box !important;
+  display: -webkit-inline-flex !important;
+  display: -ms-inline-flexbox !important;
+  display: inline-box !important;
+  display: inline-flex !important;
+}
+section {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -212,10 +228,22 @@ section div {
   box-flex: 1;
 }
 section {
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-box;
+}
+section {
   display: -webkit-box !important;
   display: -moz-box !important;
   display: -ms-flexbox !important;
   display: box !important;
+}
+section {
+  display: -webkit-inline-box !important;
+  display: -moz-inline-box !important;
+  display: -ms-inline-flexbox !important;
+  display: inline-box !important;
 }
 section {
   display: -webkit-flex;
@@ -230,6 +258,14 @@ section div {
   flex: 1 0;
 }
 section {
+  display: -webkit-inline-flex;
+  display: inline-flex;
+}
+section {
   display: -webkit-flex !important;
   display: flex !important;
+}
+section {
+  display: -webkit-inline-flex !important;
+  display: inline-flex !important;
 }

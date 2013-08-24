@@ -11,8 +11,12 @@ flex-version ?= box flex
 display(type, args...)
   if flex == type || inline-flex == type
     if box in flex-version
-      display: -ms-flexbox args
-      display: vendor-value(box args, only: moz webkit)
+      if flex == type
+        display: -ms-flexbox args
+        display: vendor-value(box args, only: moz webkit)
+      else
+        display: -ms-inline-flexbox args
+        display: vendor-value(inline-box args, only: moz webkit)
     if flex in flex-version
       display: vendor-value(arguments, only: webkit official) // overwrites old webkit
   else
