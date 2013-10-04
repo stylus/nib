@@ -1,0 +1,59 @@
+#fixed-0 {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+#fixed-1 {
+  position: fixed;
+  top: 5px;
+  left: auto;
+}
+#fixed-2 {
+  position: fixed;
+  bottom: 0;
+  left: 10px;
+}
+#fixed-3 {
+  position: fixed;
+  bottom: 10px;
+  right: 0;
+}
+#fixed-4 {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+#fixed-5 {
+  position: fixed;
+  bottom: 0;
+  right: 5px;
+  left: 5px;
+}
+#fixed-6 {
+  position: fixed;
+  bottom: 10px;
+  right: 5px;
+  left: 5px;
+}
+#fixed-7 {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+#fixed-8 {
+  position: fixed;
+  top: 0;
+  bottom: auto;
+  right: 0;
+  left: 5px;
+}
+#fixed-9 {
+  position: fixed;
+  top: auto;
+  bottom: 10px;
+  right: inherit;
+  left: 5px;
+}
