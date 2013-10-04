@@ -34,6 +34,6 @@ describe('integration', function(){
         if (err) throw err;
         actual.trim().should.equal(css);
       });
-    })
+    });
   });
-})
+});

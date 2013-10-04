@@ -1,10 +1,63 @@
 // helper
 
+-type(prop)
+
+  type  = 'ident'
+  types = 'auto' 'inherit'
+
+  if prop is a 'unit'
+    type = 'unit'
+
+  if prop in types
+    type = 'unit'
+
+  return type
+
+-keys(props)
+
+  props = arguments if length(arguments) > 1
+  keys  = ()
+
+  for prop in props
+    if -type(prop) is 'ident'
+      push(keys, prop)
+
+  return keys
+
+-vals(props)
+
+  props  = arguments if length(arguments) > 1
+  vals   = ()
+  length = length(props)
+
+  for prop, i in props
+
+    type = -type(prop)
+
+    if type is 'unit'
+      push(vals, prop)
+    else
+      if previous is defined
+        unless -type(previous) is 'unit'
+          push(vals,0)
+
+      if (i+1) == length
+        push(vals,0)
+
+    previous = prop
+
+  return vals
+
 -pos(type, args)
-  i = 0
+
+  keys = -keys(args)
+  vals = -vals(args)
+
   position: unquote(type)
-  {args[i]}: args[i + 1] is a 'unit' ? args[i += 1] : 0
-  {args[i += 1]}: args[i + 1] is a 'unit' ? args[i += 1] : 0
+
+  for key, i in keys
+    {key}: vals[i];
+
 
 /*
  * Position utility.
