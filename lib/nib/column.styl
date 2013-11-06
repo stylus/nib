@@ -1,0 +1,12 @@
+/*
+ * Prevent column break within an element.
+ *
+ * More info:
+ *   - http://www.w3.org/TR/css3-multicol/#break-inside
+ *   - http://stackoverflow.com/questions/7785374/how-to-prevent-column-break-within-an-element
+ */
+avoid-column-break()
+  vendor("column-break-inside", avoid, only: webkit)
+  page-break-inside: avoid // for firefox
+  overflow: hidden // fix for firefox
+  break-inside: avoid-column
