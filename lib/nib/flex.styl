@@ -134,7 +134,14 @@ flex(growth)
 
   // new
   if flex in flex-version
-    vendor('flex', arguments, only: webkit ms official)
+    vendor('flex', arguments, only: webkit)
+
+    // "flex: auto" should be translated to "-ms-flex: 1 1 auto" because "-ms-flex: auto" is interpreted as
+    // "-ms-flex: 1 0 auto" by IE 10.
+    ms-arg = (arguments[0] == 'auto' && length(arguments) == 1) ? ('%s %s %s' % (1 1 auto)) : arguments
+    vendor('flex', ms-arg, only: ms)
+
+    vendor('flex', arguments, only: official)
 
 
 // converts the justification alignment

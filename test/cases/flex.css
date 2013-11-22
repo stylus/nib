@@ -157,7 +157,7 @@ flex {
   -o-box-flex: 1;
   box-flex: 1;
   -webkit-flex: auto;
-  -ms-flex: auto;
+  -ms-flex: 1 1 auto;
   flex: auto;
   -webkit-box-flex: 0;
   -moz-box-flex: 0;
