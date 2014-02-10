@@ -265,14 +265,14 @@ perspective-origin()
  * Inline-block with conditional IE support.
  */
 
-display( _mode )
-  if _mode == 'inline-block'
-    display inline-block
+display(mode, args...)
+  if mode == 'inline-block'
+    display inline-block args
     if support-for-ie
       zoom 1
-      *display inline
+      *display inline args
   else
-    display _mode
+    display mode args
 
 /*
  * Opacity with conditional IE support.
