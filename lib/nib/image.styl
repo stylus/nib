@@ -18,8 +18,20 @@ image(path, w = auto, h = auto, min_pixel_ratio = 1.5)
   s = s + '(min-resolution:' + unit(min_pixel_ratio, dppx) + ')'
 
   @media s
+    is-url = match('^(?:https?:)?\/\/', path)
+    protocol = ''
+    if is-url
+      parts = split('//', path)
+      protocol = parts[0]
+      path = parts[1]
+      if protocol
+        protocol = protocol + '//'
+      else
+        protocol = '//'
     ext = extname(path)
     path = pathjoin(dirname(path), basename(path, ext) + '@2x' + ext)
+    if protocol
+      path = protocol + path
     background-image: url(path)
     if w in (cover contain) and h == auto
         h = null
