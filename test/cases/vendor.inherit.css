@@ -1,0 +1,167 @@
+button {
+  -webkit-box-shadow: inherit;
+  box-shadow: inherit;
+}
+button {
+  opacity: inherit;
+  -ms-filter: inherit;
+  filter: inherit;
+}
+button {
+  opacity: inherit;
+  white-space: inherit;
+}
+button {
+  -webkit-animation-name: inherit;
+  -moz-animation-name: inherit;
+  animation-name: inherit;
+  -webkit-animation-delay: inherit;
+  -moz-animation-delay: inherit;
+  animation-delay: inherit;
+  -webkit-animation-duration: inherit;
+  -moz-animation-duration: inherit;
+  animation-duration: inherit;
+  -webkit-animation-iteration-count: inherit;
+  -moz-animation-iteration-count: inherit;
+  animation-iteration-count: inherit;
+  -webkit-animation-direction: inherit;
+  -moz-animation-direction: inherit;
+  animation-direction: inherit;
+  -webkit-animation-fill-mode: inherit;
+  -moz-animation-fill-mode: inherit;
+  animation-fill-mode: inherit;
+  -webkit-animation-play-state: inherit;
+  -moz-animation-play-state: inherit;
+  animation-play-state: inherit;
+  -webkit-animation-timing-function: inherit;
+  -moz-animation-timing-function: inherit;
+  animation-timing-function: inherit;
+}
+button {
+  -webkit-animation: inherit;
+  -moz-animation: inherit;
+  animation: inherit;
+}
+button {
+  -webkit-appearance: inherit;
+  -moz-appearance: inherit;
+  appearance: inherit;
+}
+section {
+  -webkit-column-count: inherit;
+  -moz-column-count: inherit;
+  column-count: inherit;
+  -webkit-column-rule: inherit;
+  -moz-column-rule: inherit;
+  column-rule: inherit;
+  -webkit-column-gap: inherit;
+  -moz-column-gap: inherit;
+  column-gap: inherit;
+}
+section {
+  -webkit-column-count: inherit;
+  -moz-column-count: inherit;
+  column-count: inherit;
+  -webkit-column-rule-width: inherit;
+  -moz-column-rule-width: inherit;
+  column-rule-width: inherit;
+  -webkit-column-rule-style: inherit;
+  -moz-column-rule-style: inherit;
+  column-rule-style: inherit;
+  -webkit-column-rule-color: inherit;
+  -moz-column-rule-color: inherit;
+  column-rule-color: inherit;
+  -webkit-column-width: inherit;
+  -moz-column-width: inherit;
+  column-width: inherit;
+}
+section {
+  -webkit-column-count: inherit;
+  -moz-column-count: inherit;
+  column-count: inherit;
+  -webkit-column-rule-width: inherit;
+  -moz-column-rule-width: inherit;
+  column-rule-width: inherit;
+  -webkit-column-rule-style: inherit;
+  -moz-column-rule-style: inherit;
+  column-rule-style: inherit;
+  -webkit-column-rule-color: inherit;
+  -moz-column-rule-color: inherit;
+  column-rule-color: inherit;
+  -webkit-column-gap: inherit;
+  -moz-column-gap: inherit;
+  column-gap: inherit;
+}
+button {
+  -webkit-background-origin: inherit;
+  -moz-background-origin: inherit;
+  background-origin: inherit;
+  -webkit-background-clip: inherit;
+  -moz-background-clip: inherit;
+  background-clip: inherit;
+}
+button {
+  -o-transition: inherit;
+  -webkit-transition: inherit;
+  -moz-transition: inherit;
+  transition: inherit;
+  -webkit-backface-visibility: inherit;
+  -moz-backface-visibility: inherit;
+  backface-visibility: inherit;
+}
+button {
+  -o-transition-property: inherit;
+  -webkit-transition-property: inherit;
+  -moz-transition-property: inherit;
+  transition-property: inherit;
+  -o-transition-duration: inherit;
+  -webkit-transition-duration: inherit;
+  -moz-transition-duration: inherit;
+  transition-duration: inherit;
+  -o-transition-timing-function: inherit;
+  -webkit-transition-timing-function: inherit;
+  -moz-transition-timing-function: inherit;
+  transition-timing-function: inherit;
+  -o-transition-delay: inherit;
+  -webkit-transition-delay: inherit;
+  -moz-transition-delay: inherit;
+  transition-delay: inherit;
+}
+button {
+  -o-transform: inherit;
+  -webkit-transform: inherit;
+  -moz-transform: inherit;
+  transform: inherit;
+}
+button {
+  -o-transform: inherit;
+  -webkit-transform: inherit;
+  -moz-transform: inherit;
+  transform: inherit;
+}
+button {
+  -webkit-perspective: inherit;
+  -moz-perspective: inherit;
+  perspective: inherit;
+}
+section {
+  -o-border-image: inherit;
+  -webkit-border-image: inherit;
+  -moz-border-image: inherit;
+  border-image: inherit;
+}
+section {
+  -o-border-image: inherit;
+  -webkit-border-image: inherit;
+  -moz-border-image: inherit;
+  border-image: inherit;
+}
+p {
+  -webkit-hyphens: inherit;
+  -moz-hyphens: inherit;
+  hyphens: inherit;
+}
+section {
+  -webkit-overflow-scrolling: inherit;
+  overflow-scrolling: inherit;
+}
