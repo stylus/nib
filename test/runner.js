@@ -3,9 +3,9 @@
  * Module dependencies.
  */
 
-var stylus = require('stylus')
-  , nib = require('../')
-  , fs = require('fs');
+var stylus = require('stylus'),
+    nib = require('../'),
+    fs = require('fs');
 
 // test cases
 
@@ -34,6 +34,6 @@ describe('integration', function(){
         if (err) throw err;
         actual.trim().should.equal(css);
       });
-    })
+    });
   });
-})
+});
