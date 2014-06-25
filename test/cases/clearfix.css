@@ -9,3 +9,20 @@
 #clearfix:after {
   clear: both;
 }
+#clear {
+  zoom: 1;
+}
+#clear:before,
+#clear:after {
+  content: "";
+  display: table;
+}
+#clear:after {
+  clear: both;
+}
+#clear-none {
+  clear: none;
+}
+#clear-right {
+  clear: right !important;
+}
