@@ -1,27 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>nib - CSS3 extensions for Stylus</title>
-    <link rel="stylesheet" href="style.css">
+    <title>nib - Mixins for Stylus</title>
+    <link rel="stylesheet" href="index.css">
+    <meta name="viewport" content="width=device-width">
+    <script src="lib/highlight.min.js"></script>
   </head>
   <body>
     <header>
-      <h1>Nib</h1>
-      <span id="tagline">CSS3 extensions for Stylus</span>
+      <h1><a href="/">nib</a></h1>
+      <span id="tagline">Mixins for Stylus</span>
     </header>
 
-    <section>
-      <p>Nib is a small and powerful library for the <a href="http://learnboost.github.com/stylus">Stylus CSS language</a>, providing robust cross-browser CSS3 mixins to make your life as a designer easier.</p>
-      <pre>
-        <code>
-body {
-  background: linear-gradient(top, white, black);
-}</code>
-      </pre>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#installation">Installation</a>
+      <a href="/docs">Documentation</a>
+    </nav>
 
-      <pre>
-        <code>
-body {
+    <section id="about">
+      <h2>What is it?</h2>
+      <p>Nib is a powerful library for the <a href="http://learnboost.github.com/stylus">Stylus CSS language</a> that provides robust cross-browser CSS3 mixins to make your life as a designer easier.</p>
+      <p>For example, here is nib's easy gradient mixin:</p>
+
+      <div class="code-switcher">
+
+        <pre class="code-before"><code class="nib">body
+  background linear-gradient(top, white, black)</code></pre>
+
+        <pre class="code-after"><code class="css">body {
   background: -webkit-gradient(linear,
     left top,
     left bottom,
@@ -30,17 +37,22 @@ body {
   background: -webkit-linear-gradient(top, #fff 0%, #000 100%);
   background: -moz-linear-gradient(top, #fff 0%, #000 100%);
   background: linear-gradient(top, #fff 0%, #000 100%);
-}</code>
-      </pre>
+}</code></pre>
+
+      </div>
     </section>
 
-    <section>
+    <section id="installation">
       <h2>Installation</h2>
 
+      <h3>With Grunt</h3>
+
+      <p>The <a href="https://github.com/gruntjs/grunt-contrib-stylus">grunt-contrib-stylus</a> plugin for <a href="http://gruntjs.com/">Grunt</a> comes bundled with nib. No extra work necessary!</p>
+
+      <h3>With Node.js</h3>
+
       <p>To get started you'll first want to add nib to your <em>package.json</em> file, along with stylus. Once installed you can use Stylus and Nib with your <a href="http://senchalabs.github.com/connect">Connect</a> or <a href="http://expressjs.com">Express</a> application as shown in the following snippet. The simple <code>.use(nib())</code> call is all that is required to expose itself to Stylus</p>
-      <pre>
-        <code>
-var connect = require('connect')
+      <pre><code class="javascript">var connect = require('connect')
   , stylus = require('stylus')
   , nib = require('nib');
 
@@ -58,332 +70,32 @@ app.use(stylus.middleware({
   , compile: compile
 }));
 
-app.listen(3000);</code>
-      </pre>
+app.listen(3000);</code></pre>
 
       <p>From within a <em>.styl</em> file you can then <strong>@import</strong> nib, or a portion of nib:</p>
 
-      <pre>
-        <code>
-@import 'nib'
+      <pre><code class="nib">@import 'nib'
 @import 'nib/gradients'
-@import 'nib/buttons'</code>
-      </pre>
+@import 'nib/buttons'</code></pre>
 
       <p>Rather than manually <strong>@import</strong>-ing nib within your Stylus source you can import it via the JavaScript API as well:</p>
 
-      <pre>
-        <code>
-return stylus(str)
+      <pre><code class="javascript">return stylus(str)
   .set('filename', path)
   .set('compress', true)
   .use(nib())
-  .import('nib');</code>
-      </pre>
+  .import('nib');</code></pre>
     </section>
 
-    <section>
-      <h2>Gradients</h2>
-      <p>Nib's gradient support is by far the largest feature it provides, not only is the syntax extremely similar to what you would normally write, it's more forgiving, expands to vendor equivalents, and can even produce a PNG for older browsers with <a href="http://github.com/learnboost/node-canvas">node-canvas</a>.</p>
-
-<pre><code>
-body {
-  background: linear-gradient(top, white, black);
-}
-
-</code></pre>
-
-yields:
-
-<pre><code>
-body {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #fff), color-stop(1, #000));
-  background: -webkit-linear-gradient(top, #fff 0%, #000 100%);
-  background: -moz-linear-gradient(top, #fff 0%, #000 100%);
-  background: linear-gradient(top, #fff 0%, #000 100%);
-}
-
-</code></pre>
-
-<img class="grad" src="http://f.cl.ly/items/1q25061X2Q2U0p472L02/Screenshot.png" />
-
-<p>Any number of color stops may be provided:</p>
-
-<pre><code>
-body {
-  background: linear-gradient(bottom left, white, red, blue, black);
-}
-
-</code></pre>
-
-<img class="grad" src="http://f.cl.ly/items/2I0k3D0A2y0n3i443g2W/Screenshot.png" />
-
-<p>Units may be placed before, or after the color:</p>
-
-<pre><code>
-body {
-  background: linear-gradient(left, 80% red, #000);
-  background: linear-gradient(top, #eee, 90% white, 10% black);
-}
-
-</code></pre>
-
-<img class="grad" src="http://f.cl.ly/items/2B1U3m0t2T1B420I3C3I/Screenshot.png" />
-<img class="grad" src="http://f.cl.ly/items/1T1P1x0n1X3k132o3V0F/Screenshot.png" />
-
+    <section id="about">
+      <h2>Learn more</h2>
+      <p>Check out the <a href="/docs">documentation</a>!</p>
     </section>
 
-    <section>
-      <h2>Position mixins</h2>
-      <p>The position mixins <code>absolute</code>, <code>fixed</code>, and <code>relative</code> provide a shorthand variant to what is otherwise three CSS properties. The syntax is as follows:</p>
+    <a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
 
-    <pre>
-      <code>
-fixed|absolute|relative: top|bottom [n] left|right [n]</code>
-    </pre>
-
-    <p>The following example will default to (0,0):</p>
-
-    <pre>
-      <code>
-#back-to-top {
-  fixed: bottom right;
-}</code>
-    </pre>
-yielding:
-    <pre>
-      <code>
-#back-to-top {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-}</code>
-    </pre>
-
-    <p>You may also specify the units:</p>
-
-    <pre>
-      <code>
-#back-to-top {
-  fixed: bottom 10px right 5px;
-}</code>
-    </pre>
-yielding:
-    <pre>
-      <code>
-#back-to-top {
-  position: fixed;
-  bottom: 10px;
-  right: 5px;
-}</code>
-    </pre>
-
-    </section>
-
-    <section>
-      <h2>Clearfix</h2>
-      <p>The clearfix mixin currently takes no arguments, so it may be called as shown below:</p>
-
-<pre><code>
-.clearfix {
-  clearfix();
-}
-
-</code></pre>
-
-yielding:
-<pre><code>
-.clearfix {
-  zoom: 1;
-}
-.clearfix:before,
-.clearfix:after {
-  content: "";
-  display: table;
-}
-.clearfix:after {
-  clear: both;
-}
-
-</code></pre>
-    </section>
-
-    <section>
-      <h2>Border radius</h2>
-      <p>Nib's <code>border-radius</code> supports both the regular syntax as well as augmenting it to make the value more expressive.</p>
-
-<pre><code>
-button {
-  border-radius: 1px 2px / 3px 4px;
-}
-
-button {
-  border-radius: 5px;
-}
-
-button {
-  border-radius: bottom 10px;
-}
-
-</code></pre>
-
-yielding:
-
-<pre><code>
-button {
-  -webkit-border-radius: 1px 2px/3px 4px;
-  -moz-border-radius: 1px 2px/3px 4px;
-  border-radius: 1px 2px/3px 4px;
-}
-button {
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-}
-button {
-  -moz-border-radius-topleft: 10px;
-  -webkit-border-top-left-radius: 10px;
-  border-top-left-radius: 10px;
-  -moz-border-radius-bottomright: 10px;
-  -webkit-border-bottom-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-</code></pre>
-    </section>
-
-    <section>
-      <h2>Responsive</h2>
-      <p>The <code>image</code> mixin allows you to define a <code>background-image</code> for both the normal image, and a doubled image for devices with a higher pixel ratio such as retina displays. This works by using a @media query to serve an "@2x" version of the file.</p>
-
-<code><pre>
-
-#logo {
-  image: '/images/branding/logo.main.png'
-}
-
-#logo {
-  image: '/images/branding/logo.main.png' 50px 100px
-}
-
-</pre></code>
-
-yields:
-
-<code><pre>
-
-#logo {
-  background-image: url("/images/branding/logo.main.png");
-}
-@media all and (-webkit-min-device-pixel-ratio: 1.5) {
-  #logo {
-    background-image: url("/images/branding/logo.main@2x.png");
-    background-size: auto auto;
-  }
-}
-#logo {
-  background-image: url("/images/branding/logo.main.png");
-}
-@media all and (-webkit-min-device-pixel-ratio: 1.5) {
-  #logo {
-    background-image: url("/images/branding/logo.main@2x.png");
-    background-size: 50px 100px;
-  }
-}
-
-</pre></code>
-    </section>
-
-    <section>
-      <h2>Ellipsis</h2>
-      <p>The <code>overflow</code> property is augmented with a "ellipsis" value, expanding to what you see below.</p>
-
-<code><pre>
-
-button {
-  overflow: ellipsis;
-}
-
-</pre></code>
-
-yielding:
-
-<code><pre>
-
-button {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-</pre></code>
-    </section>
-
-    <section>
-      <h2>Reset</h2>
-      <p>Nib comes bundled with Eric Meyer's style reset support, you can choose to apply the global or any specifics that you wish. To view the definitions view <a href="https://github.com/visionmedia/nib/blob/master/lib/nib/reset.styl">reset.styl</a></p>
-
-      <ul>
-        <li>global-reset()</li>
-        <li>nested-reset()</li>
-        <li>reset-font()</li>
-        <li>reset-box-model()</li>
-        <li>reset-body()</li>
-        <li>reset-table()</li>
-        <li>reset-table-cell()</li>
-        <li>reset-html5()</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Miscellaneous properties</h2>
-      <p>The following properties follow vendor expansion much like <code>border-radius</code>, however without augmentation, as well as some aliases such as <code>whitespace</code> instead of <code>white-space</code>.</p>
-
-      <ul>
-        <li>no-wrap == nowrap</li>
-        <li>whitespace == white-space</li>
-        <li>box-shadow</li>
-        <li>user-select</li>
-        <li>column-count</li>
-        <li>column-gap</li>
-        <li>column-rule</li>
-        <li>column-rule-color</li>
-        <li>column-rule-width</li>
-        <li>column-rule-style</li>
-        <li>column-width</li>
-        <li>background-size</li>
-        <li>transform</li>
-        <li>border-image</li>
-        <li>transition</li>
-        <li>transition-property</li>
-        <li>transition-duration</li>
-        <li>transition-timing-function</li>
-        <li>transition-delay</li>
-        <li>backface-visibility</li>
-        <li>opacity</li>
-        <li>box-sizing</li>
-        <li>box-orient</li>
-        <li>box-flex</li>
-        <li>box-flex-group</li>
-        <li>box-align</li>
-        <li>box-pack</li>
-        <li>box-direction</li>
-        <li>animation</li>
-        <li>animation-name</li>
-        <li>animation-duration</li>
-        <li>animation-delay</li>
-        <li>animation-direction</li>
-        <li>animation-iteration-count</li>
-        <li>animation-timing-function</li>
-        <li>animation-play-state</li>
-        <li>animation-fill-mode</li>
-        <li>border-image</li>
-        <li>hyphens</li>
-        <li>appearance</li>
-      </ul>
-    </section>
-
-    <a href="http://github.com/visionmedia/nib"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="app.js"></script>
   </body>
 </html>
 

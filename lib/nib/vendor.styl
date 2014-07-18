@@ -1,3 +1,4 @@
+use('../nodes/vendor-helpers.js')
 @import 'config'
 
 /*
@@ -7,27 +8,48 @@
 no-wrap = unquote('nowrap')
 
 /*
- * Vendor support for the given prop / arguments,
- * optionally specifying the only prefixes to utilize,
- * or those which should be ignored.
+ * Helper to find out if a given value is a width
  */
 
-vendor(prop, args, only = null, ignore = null)
+is-width(val)
+  if auto == val
+    return true
+  else if val && 'unit' == type(val)
+    // Stylus does not short circuit so we need to perform this as a distinct
+    // operation to prevent errors
+    return '' != unit(val)
+  return false
+
+/*
+ * Vendor support for the given prop / arguments, optionally specifying the
+ * only prefixes to utilize, or those which should be ignored.
+ */
+
+vendor(prop, args, only = null, ignore = null, vendor-property = true)
+  need_normalize = !vendor-property or prop in ('transition' 'transition-property' 'border-image' 'border-image-slice')
   for prefix in vendor-prefixes
     unless (only and !(prefix in only)) or (ignore and prefix in ignore)
       if official == prefix
-        {prop}: args
+        if need_normalize
+          {prop}: normalize(prop,('%s' % args))
+        else
+          {prop}: args
       else
-        {'-' + prefix + '-' + prop}: args
+        newprop = prop
+        newprop = '-' + prefix + '-' + prop if vendor-property
 
+        if need_normalize
+          {newprop}: normalize(prop,('%s' % args),prefix)
+        else
+          {newprop}: args
 /*
  * Vendorize the given value.
  */
 
-vendor-value(arg)
+vendor-value(arg, only = null, ignore = null)
   prop = current-property[0]
   for prefix in vendor-prefixes
-    unless official == prefix
+    unless (only and !(prefix in only)) or (ignore and prefix in ignore) or official == prefix
       add-property(prop, '-%s-%s' % (prefix arg))
   arg
 
@@ -118,9 +140,9 @@ legacy-bg-values(property, args)
   for subargs in args
     for arg in subargs
       if arg in (border-box padding-box content-box)
-        arg = border  if arg == border-box
-        arg = padding if arg == padding-box
-        arg = content if arg == content-box
+        arg = unquote('border')  if arg == border-box
+        arg = unquote('padding') if arg == padding-box
+        arg = unquote('content') if arg == content-box
       if arg != '!important'
         push(legacy_args,arg)
       else
@@ -227,7 +249,10 @@ backface-visibility()
  */
 
 perspective()
-  vendor('perspective', arguments, only: webkit moz ms official)
+  if mixin
+    vendor('perspective', arguments, only: webkit moz ms official)
+  else
+    'perspective(%s)' % arguments
 
 /*
  * Vendor "perspective-origin" support.
@@ -235,7 +260,6 @@ perspective()
 
 perspective-origin()
   vendor('perspective-origin', arguments, only: webkit moz ms official)
-
 
 /*
  * Opacity with conditional IE support.
@@ -249,8 +273,15 @@ opacity(n, args...)
       -ms-filter: none
       filter: none
     else
-      -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=%s)' % val args
+      -ms-filter: '"progid:DXImageTransform.Microsoft.Alpha(Opacity=%s)"' % val args
       filter: 'alpha(opacity=%s)' % val args
+
+/*
+ * Vendor "text-size-adjust"
+ */
+
+text-size-adjust()
+  vendor('text-size-adjust', arguments)
 
 /*
  * Alias the "white-space" property.
@@ -271,14 +302,7 @@ box-sizing()
  */
 
 box-orient()
-  vendor('box-orient', arguments, only: webkit moz ms official)
-
-/*
- * Vendor "box-flex" support.
- */
-
-box-flex()
-  vendor('box-flex', arguments, only: webkit moz ms official)
+  vendor('box-orient', arguments, only: webkit moz official)
 
 /*
  * Vendor "box-flex-group" support.
@@ -392,36 +416,63 @@ hyphens()
  */
 
 appearance()
-  vendor('appearance', arguments, only: webkit moz)
+  vendor('appearance', arguments, only: webkit moz official)
 
 /*
  * Vendor "tab-size" support.
  */
 
 tab-size()
-  vendor('tab-size', arguments, only: moz o)
+  vendor('tab-size', arguments, only: moz o official)
+
+/*
+ * Vendor "overflow-scrolling" support.
+ */
+
+overflow-scrolling()
+  vendor('overflow-scrolling', arguments, only: webkit official)
+
+/*
+ * Vendor "text-overflow" support, , -o- for opera 9.* - 10.*
+ */
+
+text-overflow()
+  vendor('text-overflow', arguments, only: official o)
+
+/*
+ * Vendor "text-size-adjust" support.
+ */
+text-size-adjust()
+  vendor('text-size-adjust', arguments, only: official webkit ms)
+
+/*
+ * Vendor "font-smoothing" support, webkit only.
+ */
+font-smoothing()
+  vendor('font-smoothing', arguments, only: webkit)
 
 /*
  * Helper for border-radius().
  */
 
--apply-border-radius(pos)
+-apply-border-radius(pos, importance)
   if length(pos) == 3
     // border-radius: <top | buttom> <left | right> <n>
     y = pos[0]
     x = pos[1]
-    vendor('border-radius-%s%s' % pos, pos[2], only: moz)
-    vendor('border-%s-%s-radius' % pos, pos[2], ignore: moz)
+    // We don't use moz for simple boder-radius anymore
+    // vendor('border-radius-%s%s' % pos, pos[2], only: moz)
+    vendor('border-%s-%s-radius' % pos, pos[2] importance, only: webkit official)
   else if pos[0] in (top bottom)
     // border-radius: <top | bottom> <n>
-    -apply-border-radius(pos[0] left pos[1])
-    -apply-border-radius(pos[0] right pos[1])
+    -apply-border-radius(pos[0] left pos[1], importance)
+    -apply-border-radius(pos[0] right pos[1], importance)
   else if pos[0] in (left right)
     // border-radius: <left | right> <n>
     unshift(pos, top);
-    -apply-border-radius(pos)
+    -apply-border-radius(pos, importance)
     pos[0] = bottom
-    -apply-border-radius(pos)
+    -apply-border-radius(pos, importance)
 
 /*
  * border-radius supporting vendor prefixes and
@@ -441,6 +492,8 @@ tab-size()
 border-radius()
   pos = ()
   augmented = false
+  importance = arguments[length(arguments) - 1] == !important ? !important : unquote('')
+
   for args in arguments
     for arg in args
       if arg is a 'ident'
@@ -449,6 +502,72 @@ border-radius()
       else
         append(pos, arg)
         if augmented
-          -apply-border-radius(pos)
+          -apply-border-radius(pos, importance)
           pos = ()
   vendor('border-radius', pos, only: webkit official) unless augmented
+
+/**
+ * Vendor input-placeholder/placeholder support.
+ *
+ * Examples:
+ *    // Default syntax
+ *    body
+ *      placeholder(color #333, font-weight normal)
+ *
+ *    // The comma is important
+ *    .placeholder-red
+ *      placeholder(color red,)
+ *
+ *    // We can pass a function
+ *    green-placeholder()
+ *      color green
+ *    .placeholder-green
+ *      placeholder(green-placeholder)
+ *
+ *    // We can pass a hash
+ *    textarea
+ *      placeholder((font-style italic) (font-weight bold) (padding '4px 10px'))
+ */
+placeholder()
+  for v in ':-webkit-input' '-moz' ':-moz' '-ms-input'
+    &:{v}-placeholder
+      for pair in arguments
+        if typeof(pair) == 'function'
+          pair()
+        else if pair is not null && pair[0] is not null
+          {pair[0]}: type(pair[1]) == 'string' ? s(pair[1]) : pair[1]
+input-placeholder = placeholder
+
+/*
+ * Vendor background support (gradients).
+ */
+
+background()
+  if match('-gradient\(', ''+arguments)
+    vendor('background', arguments, vendor-property: false)
+  else
+    background arguments
+
+background-image()
+  if match('-gradient\(', ''+arguments)
+    vendor('background-image', arguments, vendor-property: false)
+  else
+    background-image arguments
+
+cursor()
+  if match('-gradient\(', ''+arguments)
+    vendor('cursor', arguments, vendor-property: false)
+  else
+    cursor arguments
+
+list-style()
+  if match('-gradient\(', ''+arguments)
+    vendor('list-style', arguments, vendor-property: false)
+  else
+    list-style arguments
+
+list-style-image()
+  if match('-gradient\(', ''+arguments)
+    vendor('list-style-image', arguments, vendor-property: false)
+  else
+    list-style-image arguments

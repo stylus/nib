@@ -1,2 +1,235 @@
-
 @import 'lib/nib/'
+
+global-reset()
+
+width = 650px
+link-color = #42B41E
+code-bg = #ebebeb
+
+@font-face
+  font-family LibreBaskerville-Italic
+  src url('fonts/LibreBaskerville-Italic')
+
+*
+  box-sizing border-box
+
+body
+  background #333 url('images/bg.png')
+  font 14px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif
+  text-align center
+  color #444444
+
+a
+  color link-color
+  text-decoration none
+
+a:hover
+  background link-color
+  color white
+
+header
+  margin 0 0 2.8em
+
+#tagline
+  font-size 1.2em
+  letter-spacing 1px
+  color #E7E7E7
+
+h1
+  margin .18em 0 -.2em
+  font-size 6em
+  font-style italic
+  font-family LibreBaskerville-Italic
+  text-shadow -2px 2px 0 black
+
+  a
+    color white
+
+  a:hover
+    color white
+    background transparent
+
+h2
+  color #2B2B2B
+  font-size: 2em
+  margin .2em 0
+
+h3
+  font-size 1.4em
+  margin .5em 0
+  color #575757
+
+section
+  margin 20px auto
+  padding 10px
+  max-width width
+  text-align left
+  background white
+
+nav
+  display block
+  margin 0 auto 10px
+  padding 0
+  font-size 1.3em
+  background white
+  overflow hidden
+
+  a
+    display inline-block
+    padding .4em
+    margin 0
+
+  a:first-child
+    border-radius 3px 0 0 3px
+
+  a:last-child
+    border-radius 0 3px 3px 0
+
+p
+  margin 1em 0
+
+code
+  font-family Monaco, "Lucida Console", monospace
+
+code:before
+  float right
+  font-size 1.5em
+  font-style italic
+  font-family LibreBaskerville-Italic
+  color #c4c4c4
+
+code.css:before
+  content 'css'
+
+code.nib:before
+  content 'stylus + nib'
+
+code.javascript:before
+  content 'javascript'
+
+p code
+  padding 3px 5px
+  border 1px solid #ddd
+  border-radius 2px
+  color #535353
+
+pre
+  margin 0 0 .5rem
+  padding .5rem 1rem
+  background code-bg
+  border-radius 5px
+  box-shadow inset 0 0 5px #ccc
+  overflow auto
+
+.code-switcher
+  background code-bg
+  overflow auto
+  margin 1em 0
+  border-radius 5px
+  box-shadow inset 0 0 5px #ccc
+
+  code:before
+    content ''
+
+  pre
+    background white
+    border-radius 0 5px 5px 5px
+    box-shadow none
+    margin 0 .5rem .5rem
+
+  .code-switcher-button
+    display inline-block
+    font-size 1.4em
+    padding 0 .4em
+    margin .5rem 0 0 .5rem
+    border none
+    border-radius 5px 5px 0 0
+    cursor pointer
+    color link-color
+    font-family LibreBaskerville-Italic
+    font-style italic
+
+  .code-switcher-button:hover:not(.selected)
+    background link-color
+    color white
+
+  .selected
+    background white
+    color black
+
+ul
+  margin 1em 0 1em 0
+
+  ul
+    margin 0 0 0 1em
+
+@media screen and (min-width:width)
+
+  p
+    font-size 16px
+
+  nav
+    display inline-block
+
+    a
+      padding .4em .6em
+
+  section
+    padding 10px 30px
+
+  nav, section
+    border-radius 3px
+
+  .two-col
+    column-count: 2;
+    column-gap: 1em;
+
+  #container
+    max-width 900px
+    margin 0 auto
+    position relative
+
+    #sidebar-right
+      margin 0 10px 0 180px
+
+      section
+        margin 20px 0
+        max-width none
+
+    #toc
+      position absolute
+      left 10px
+      margin 0
+      padding 10px
+
+      ul
+        margin 0
+
+        ul
+          margin 0 0 0 1em
+
+    #toc.stuck
+      position fixed
+      margin 0
+      top 10px
+
+// examples of things
+
+.shadow-stroke
+  font-size 2em
+  color white
+  shadow-stroke(red)
+
+// highlight.js custom style
+
+.css .hljs-id, .css .hljs-class, .css .hljs-tag, .css .hljs-pseudo, .javascript .hljs-keyword
+  color #285BCA
+
+.css .hljs-rules
+  color #999999
+
+.css .hljs-attribute, .css .hljs-value
+  color #3C3C3C
+
+.hljs-number, .hljs-string
+  color #9359C9
