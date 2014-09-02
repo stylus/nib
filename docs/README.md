@@ -298,7 +298,6 @@ Here is the full list of properties for which Nib provides transparent mixins:
 - animation-timing-function
 - animation-play-state
 - animation-fill-mode
-- border-image
 - hyphens
 - appearance
 
