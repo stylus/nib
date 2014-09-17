@@ -9,14 +9,11 @@ body
 
 ```css
 body {
-  background: -webkit-gradient(linear,
-    left top,
-    left bottom,
-    color-stop(0, #fff),
-    color-stop(1, #000));
-  background: -webkit-linear-gradient(top, #fff 0%, #000 100%);
-  background: -moz-linear-gradient(top, #fff 0%, #000 100%);
-  background: linear-gradient(top, #fff 0%, #000 100%);
+  background: -webkit-linear-gradient(top, #fff, #000);
+  background: -moz-linear-gradient(top, #fff, #000);
+  background: -o-linear-gradient(top, #fff, #000);
+  background: -ms-linear-gradient(top, #fff, #000);
+  background: linear-gradient(to bottom, #fff, #000);
 }
 ```
 
