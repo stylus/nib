@@ -4,7 +4,7 @@ Nib's gradient support is by far the largest feature it provides. Not only is th
 
 ```stylus
 body
-  background linear-gradient(top, white, black)</code></pre>
+  background linear-gradient(top, white, black)
 ```
 
 ```css
@@ -33,7 +33,7 @@ Units may be placed before or after the color:
 ```stylus
 body
   background linear-gradient(left, 80% red, #000)
-  background linear-gradient(top, #eee, 90% white, 10% black)</code></pre>
+  background linear-gradient(top, #eee, 90% white, 10% black)
 ```
 
 ![](http://f.cl.ly/items/2B1U3m0t2T1B420I3C3I/Screenshot.png)
@@ -112,7 +112,7 @@ button
     border-radius 5px
 
   button
-    border-radius bottom 10px`</pre>
+    border-radius bottom 10px
 ```
 
 ```css
