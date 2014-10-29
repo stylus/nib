@@ -1,8 +1,8 @@
-[![Build Status](https://travis-ci.org/visionmedia/nib.png?branch=master)](https://travis-ci.org/visionmedia/nib)
+[![Build Status](https://travis-ci.org/tj/nib.png?branch=master)](https://travis-ci.org/visionmedia/nib)
 
 # Nib
 
-  Stylus mixins, utilities, components, and gradient image generation. Don't forget to check out the [documentation](http://visionmedia.github.com/nib/).
+  Stylus mixins, utilities, components, and gradient image generation. Don't forget to check out the [documentation](http://tj.github.com/nib/).
 
 ## Installation
 
