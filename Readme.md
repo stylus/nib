@@ -53,9 +53,10 @@ server.use(stylus.middleware({
   ```css
   @import 'nib/gradients'
   @import 'nib/overflow'
+  @import 'nib/normalize'
   ```
 
-to be continued....
+_To be continued..._
 
 ## More Information
 

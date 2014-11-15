@@ -185,16 +185,38 @@ button {
 ```
 
 ## Reset
-Nib comes bundled with Eric Meyer's style reset support, you can choose to apply the global or any specifics that you wish. To view the definitions view [reset.styl](https://github.com/visionmedia/nib/blob/master/lib/nib/reset.styl)
+Nib comes bundled with [Eric Meyer's style reset](eric-meyer) and [Nicolas Gallagher's _Normalize_](normalize) support and, you can choose to apply the global or any specifics that you wish. To view the definitions view [`reset.styl`](https://github.com/tj/nib/blob/master/lib/nib/reset.styl).
 
-- global-reset()
-- nested-reset()
-- reset-font()
-- reset-box-model()
-- reset-body()
-- reset-table()
-- reset-table-cell()
-- reset-html5()
+[eric-meyer]: http://meyerweb.com/eric/tools/css/reset/
+[normalize]: https://github.com/necolas/normalize.css
+
+> CSS Reset
+
+- `global-reset()`
+- `nested-reset()`
+- `reset-font()`
+- `reset-box-model()`
+- `reset-body()`
+- `reset-table()`
+- `reset-table-cell()`
+- `reset-html5()`
+
+> Normalize
+
+- `normalize-html5()`
+- `normalize-base()`
+- `normalize-links()`
+- `normalize-text()`
+- `normalize-embed()`
+- `normalize-groups()`
+- `normalize-forms()`
+- `normalize-tables()`
+- `normalize-css()`
+
+[Read more][normalize-about] about Normalize or see the original CSS [here][normalize-css].
+
+[normalize-about]: http://nicolasgallagher.com/about-normalize-css/
+[normalize-css]: https://github.com/necolas/normalize.css/blob/master/normalize.css
 
 ## Border
 This shorthand lets you create a border by just specifying a color, with defaults for width and style.
