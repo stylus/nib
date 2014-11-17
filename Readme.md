@@ -2,7 +2,7 @@
 
 # Nib
 
-  Stylus mixins, utilities, components, and gradient image generation. Don't forget to check out the [documentation](http://tj.github.com/nib/).
+  Stylus mixins, utilities, components, and gradient image generation. Don't forget to check out the [documentation](http://tj.github.io/nib/).
 
 ## Installation
 
@@ -87,7 +87,7 @@ to be continued....
 
 I would love more contributors. And if you have helped out, you are awesome! I want to give a huge thanks to these people:
 
-  - [TJ Holowaychuk](https://github.com/visionmedia) (Original Creator)
+  - [TJ Holowaychuk](https://github.com/tj) (Original Creator)
   - [Sean Lang](https://github.com/slang800) (Current Maintainer)
   - [Isaac Johnston](https://github.com/superstructor)
-  - [Everyone Else](https://github.com/visionmedia/nib/contributors)
+  - [Everyone Else](https://github.com/tj/nib/contributors)
