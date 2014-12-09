@@ -76,11 +76,18 @@ body {
   background: linear-gradient(to left top, rgba(0,0,0,0.5) 80%, #000);
 }
 body {
-  background: -webkit-linear-gradient(right bottom, hsla(0,0,0,0.5) 80.5%, #000);
-  background: -moz-linear-gradient(right bottom, hsla(0,0,0,0.5) 80.5%, #000);
-  background: -o-linear-gradient(right bottom, hsla(0,0,0,0.5) 80.5%, #000);
-  background: -ms-linear-gradient(right bottom, hsla(0,0,0,0.5) 80.5%, #000);
-  background: linear-gradient(to left top, hsla(0,0,0,0.5) 80.5%, #000);
+  background: -webkit-linear-gradient(right bottom, hsla(0,0%,0%,0.5) 80.5%, #000);
+  background: -moz-linear-gradient(right bottom, hsla(0,0%,0%,0.5) 80.5%, #000);
+  background: -o-linear-gradient(right bottom, hsla(0,0%,0%,0.5) 80.5%, #000);
+  background: -ms-linear-gradient(right bottom, hsla(0,0%,0%,0.5) 80.5%, #000);
+  background: linear-gradient(to left top, hsla(0,0%,0%,0.5) 80.5%, #000);
+}
+body {
+  background: -webkit-linear-gradient(right bottom, hsla(0,0%,0%,0.5) 80.5%, #000);
+  background: -moz-linear-gradient(right bottom, hsla(0,0%,0%,0.5) 80.5%, #000);
+  background: -o-linear-gradient(right bottom, hsla(0,0%,0%,0.5) 80.5%, #000);
+  background: -ms-linear-gradient(right bottom, hsla(0,0%,0%,0.5) 80.5%, #000);
+  background: linear-gradient(to left top, hsla(0,0%,0%,0.5) 80.5%, #000);
 }
 body {
   background: -webkit-linear-gradient(right bottom, #fff 20px, #000);
