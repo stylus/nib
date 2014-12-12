@@ -274,8 +274,8 @@ opacity(n, args...)
     else
       val = round(n * 100)
       if val == 100
-        -ms-filter: none
-        filter: none
+        -ms-filter: none args
+        filter: none args
       else
         -ms-filter: '"progid:DXImageTransform.Microsoft.Alpha(Opacity=%s)"' % val args
         filter: 'alpha(opacity=%s)' % val args
