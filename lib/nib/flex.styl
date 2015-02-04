@@ -100,14 +100,17 @@ flex-grow(growth)
 
   // new
   if flex in flex-version
+    vendor('flex-positive', arguments, only: ms)
     vendor('flex-grow', arguments, only: webkit official)
 
 flex-basis()
   if flex in flex-version
+    vendor('flex-preferred-size', arguments, only: ms)
     vendor('flex-basis', arguments, only: webkit official)
 
 flex-shrink()
   if flex in flex-version
+    vendor('flex-negative', arguments, only: ms)
     vendor('flex-shrink', arguments, only: webkit official)
 
 flex(growth)
