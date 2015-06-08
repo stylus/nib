@@ -13,7 +13,7 @@
 
 image(path, w = auto, h = auto, min_pixel_ratio=1.5 2 3)
   background-image: url(path)
-  for i in 0..length(min_pixel_ratio) - 1
+  for i in 0...length(min_pixel_ratio)
     s = 'all and (-webkit-min-device-pixel-ratio:' + min_pixel_ratio[i] + '),'
     s = s + '(min--moz-device-pixel-ratio:' + min_pixel_ratio[i] + '),'
     s = s + '(-o-min-device-pixel-ratio:' + min_pixel_ratio[i] + '/1),'
