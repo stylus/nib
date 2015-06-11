@@ -455,60 +455,6 @@ text-size-adjust()
 font-smoothing()
   vendor('font-smoothing', arguments, only: webkit)
 
-/*
- * Helper for border-radius().
- */
-
--apply-border-radius(pos, importance)
-  if length(pos) == 3
-    // border-radius: <top | buttom> <left | right> <n>
-    y = pos[0]
-    x = pos[1]
-    // We don't use moz for simple boder-radius anymore
-    // vendor('border-radius-%s%s' % pos, pos[2], only: moz)
-    vendor('border-%s-%s-radius' % pos, pos[2] importance, only: webkit official)
-  else if pos[0] in (top bottom)
-    // border-radius: <top | bottom> <n>
-    -apply-border-radius(pos[0] left pos[1], importance)
-    -apply-border-radius(pos[0] right pos[1], importance)
-  else if pos[0] in (left right)
-    // border-radius: <left | right> <n>
-    unshift(pos, top);
-    -apply-border-radius(pos, importance)
-    pos[0] = bottom
-    -apply-border-radius(pos, importance)
-
-/*
- * border-radius supporting vendor prefixes and
- * augmented behavior.
- *
- * Examples:
- *
- *    border-radius: 2px 5px
- *    border-radius: top 5px bottom 10px
- *    border-radius: left 5px
- *    border-radius: top left 5px
- *    border-radius: top left 10px bottom right 5px
- *    border-radius: top left 10px, bottom right 5px
- *
- */
-
-border-radius()
-  pos = ()
-  augmented = false
-  importance = arguments[length(arguments) - 1] == !important ? !important : unquote('')
-
-  for args in arguments
-    for arg in args
-      if arg is a 'ident'
-        append(pos, arg)
-        augmented = true
-      else
-        append(pos, arg)
-        if augmented
-          -apply-border-radius(pos, importance)
-          pos = ()
-  vendor('border-radius', pos, only: webkit official) unless augmented
 
 /**
  * Vendor input-placeholder/placeholder support.
