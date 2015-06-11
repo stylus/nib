@@ -4,12 +4,12 @@
 
 -apply-border-radius(pos, importance)
   if length(pos) == 3
-    // border-radius: <top | buttom> <left | right> <n>
+    // border-radius: <top | bottom> <left | right> <n>
     y = pos[0]
     x = pos[1]
     // We don't use vendor for boder-radius anymore
     // vendor('border-radius-%s%s' % pos, pos[2], only: webkit official)
-    'border-%s-%s-radius' % pos, pos[2] importance
+    {'border-%s-%s-radius' % pos}: pos[2] importance
   else if pos[0] in (top bottom)
     // border-radius: <top | bottom> <n>
     -apply-border-radius(pos[0] left pos[1], importance)
