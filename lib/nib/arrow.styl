@@ -1,0 +1,34 @@
+// common helper
+-arrow(size)
+  font: 0/0 undef
+  width: 0
+  height: 0
+  border: size solid transparent
+
+  _border-color: magenta if support-for-ie
+  _filter: chroma(color=magenta) if support-for-ie
+
+
+/*
+ * Generate an arrow (base on border)
+ */
+
+arrow-up(size = 4px, color = #000)
+  -arrow(size)
+  border-top: none
+  border-bottom-color: color
+
+arrow-down(size = 4px, color = #000)
+  -arrow(size)
+  border-bottom: none
+  border-top-color: color
+
+arrow-left(size = 4px, color = #000)
+  -arrow(size)
+  border-left: none
+  border-right-color: color
+
+arrow-right(size = 4px, color = #000)
+  -arrow(size)
+  border-right: none
+  border-left-color: color
