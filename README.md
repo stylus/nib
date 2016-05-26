@@ -22,22 +22,21 @@ Below is an example of how to utilize nib and stylus with the connect framework 
 
 ```javascript
 var connect = require('connect')
-  , stylus = require('stylus')
-  , nib = require('nib');
+var stylus = require('stylus')
+var nib = require('nib')
+var server = connect()
 
-var server = connect();
-
-function compile(str, path) {
+function compile (str, path) {
   return stylus(str)
     .set('filename', path)
     .set('compress', true)
-    .use(nib());
+    .use(nib())
 }
 
 server.use(stylus.middleware({
-    src: __dirname
-  , compile: compile
-}));
+  src: __dirname,
+  compile: compile
+}))
 ```
 
 ## Stylus API
