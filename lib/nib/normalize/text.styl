@@ -1,16 +1,22 @@
 // Based in Nicolas Gallagher's git.io/normalize
 normalize-text()
   abbr[title] // + style not present in IE 8~11, Safari, and Chrome.
-    border-bottom 1px dotted
+    border-bottom none
+    text-decoration underline
+    text-decoration underline dotted
 
   dfn // + style not present in Safari and Chrome.
     font-style italic
 
   mark // + style not present in IE 8/9.
-    background #ff0; color #000
-
+    background #ff0
+    color #000
+  
+  b, strong // Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+    font-weight inherit
+    
   b, strong // Fix `font-weight: bolder` in FF 4+, Safari, and Chrome.
-    font-weight bold
+    font-weight bolder
 
   h1 // `h1` inside `section` and `article` fix for FF 4+, Safari & Chrome.
     font-size 2em

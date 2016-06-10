@@ -3,11 +3,13 @@ normalize-forms()
   // Known limitation: Chrome and Safari on OS X allow very limited
   // styling of `select`, unless a `border` property is set.
   button, input, optgroup, select, textarea
-    color  inherit // Correct color not being inherited.
     font   inherit // Correct font properties not being inherited.
     margin 0 // Fix margins in FF 4+, Safari, and Chrome.
-
-  button // Fix `overflow` set to `hidden` in IE 8/9/10/11.
+    
+  optgroup // Don't inherit the `font-weight` applied above.
+    font-weight bold
+    
+  button, input // Fix `overflow` set to `hidden` in IE 8/9/10/11.
     overflow visible
 
   button, select // Consistent text-transform across browsers.
@@ -15,55 +17,70 @@ normalize-forms()
 
   // Fix WebKit bug in Android 4.0, inability to style clickable `input` in
   // iOS and improve usability and consistency of cursor style.
-  button, html input[type='button'], input[type='reset'], input[type='submit']
-    cursor pointer
+  button, 
+  html [type='button'], 
+  [type='reset'], 
+  [type='submit']
     -webkit-appearance button
 
-  // Reset default cursor for disabled elements.
-  button[disabled], html input[disabled]
-    cursor default
-
-  // Remove inner padding and border in FF 4+.
-  button::-moz-focus-inner, input::-moz-focus-inner
-    border  0
+  // Remove inner padding and border in FF 4+.button::-moz-focus-inner,
+  button::-moz-focus-inner,
+  [type="button"]::-moz-focus-inner,
+  [type="reset"]::-moz-focus-inner,
+  [type="submit"]::-moz-focus-inner 
+    border-style none
     padding 0
 
-  input // Reset line-height again FF 4+ UA stylsheet.
-    line-height normal
-
-  // Fix box sizing and excess padding in IE 8~10
-  input[type='checkbox'], input[type='radio']
-    box-sizing border-box
-    padding    0
-
-  // Fix the cursor style for Chrome's increment/decrement buttons.
-  input[type='number']::-webkit-inner-spin-button,
-  input[type='number']::-webkit-outer-spin-button
-    height auto
-
-  // Consistent appearance and box-sizing in Safari and Chrome.
-  input[type='search']
-    -webkit-appearance  textfield
-    -moz-box-sizing     content-box
-    -webkit-box-sizing  content-box
-    box-sizing          content-box
-
-  // No inner padding and search cancel button in Safari and Chrome on OS X.
-  input[type='search']::-webkit-search-cancel-button,
-  input[type='search']::-webkit-search-decoration
-    -webkit-appearance none
-
+  button:-moz-focusring,
+  [type="button"]:-moz-focusring,
+  [type="reset"]:-moz-focusring,
+  [type="submit"]:-moz-focusring
+    outline 1px dotted ButtonText
+    
   fieldset // Consistent border, margin, and padding.
     border  1px solid #c0c0c0
     margin  0 2px
     padding 0.35em 0.625em 0.75em
 
   legend // Hack to correct `color` not being inherited in IE 8/9/10/11.
-    border  0
+    box-sizing border-box
+    color inherit
+    display table
+    max-width 100%
     padding 0
+    white-space normal
 
   textarea // Remove default vertical scrollbar in IE 8~11.
     overflow auto
+    
+  input // Reset line-height again FF 4+ UA stylsheet.
+    line-height normal
 
-  optgroup // Don't inherit the `font-weight` applied above.
-    font-weight bold
+  // Fix box sizing and excess padding in IE 8~10
+  [type='checkbox'], [type='radio']
+    box-sizing border-box
+    padding    0
+
+  // Fix the cursor style for Chrome's increment/decrement buttons.
+  [type='number']::-webkit-inner-spin-button,
+  [type='number']::-webkit-outer-spin-button
+    height auto
+
+  // Consistent appearance and box-sizing in Safari and Chrome.
+  input[type='search']
+    -webkit-appearance  textfield
+    outline-offset -2px
+    
+  // No inner padding and search cancel button in Safari and Chrome on OS X.
+  [type='search']::-webkit-search-cancel-button,
+  [type='search']::-webkit-search-decoration
+    -webkit-appearance none
+    
+  // Correct the text style of placeholders in Chrome, Edge, and Safari.
+  ::-webkit-input-placeholder 
+    color inherit
+    opacity 0.54
+
+  ::-webkit-file-upload-button
+    -webkit-appearance button
+    font inerit

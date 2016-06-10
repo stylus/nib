@@ -4,12 +4,9 @@ normalize-groups()
     margin 1em 40px
 
   hr // Consistency between FF and others.
-    -moz-box-sizing content-box
     box-sizing      content-box
     height          0
-
-  pre // Contain overflow and wrap words.
-    overflow auto
+    overflow visible
 
   // Hack to fix odd `em`-unit font size rendering in all browsers.
   code, kbd, pre, samp
