@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>nib - Mixins for Stylus</title>
+    <link rel="stylesheet" href="index.css">
+    <meta name="viewport" content="width=device-width">
+    <script src="lib/highlight.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1><a href="/">nib</a></h1>
+      <span id="tagline">Mixins for Stylus</span>
+    </header>
+
+    <nav>
+      <a href="#about">About</a>
+      <a href="#installation">Installation</a>
+      <a href="/docs">Documentation</a>
+    </nav>
+
+    <section id="about">
+      <h2>What is it?</h2>
+      <p>Nib is a powerful library for the <a href="http://learnboost.github.com/stylus">Stylus CSS language</a> that provides robust cross-browser CSS3 mixins to make your life as a designer easier.</p>
+      <p>For example, here is nib's easy gradient mixin:</p>
+
+      <div class="code-switcher">
+
+        <pre class="code-before"><code class="nib">body
+  background linear-gradient(top, white, black)</code></pre>
+
+        <pre class="code-after"><code class="css">body {
+  background: -webkit-gradient(linear,
+    left top,
+    left bottom,
+    color-stop(0, #fff),
+    color-stop(1, #000));
+  background: -webkit-linear-gradient(top, #fff 0%, #000 100%);
+  background: -moz-linear-gradient(top, #fff 0%, #000 100%);
+  background: linear-gradient(top, #fff 0%, #000 100%);
+}</code></pre>
+
+      </div>
+    </section>
+
+    <section id="installation">
+      <h2>Installation</h2>
+
+      <h3>With Grunt</h3>
+
+      <p>The <a href="https://github.com/gruntjs/grunt-contrib-stylus">grunt-contrib-stylus</a> plugin for <a href="http://gruntjs.com/">Grunt</a> comes bundled with nib. No extra work necessary!</p>
+
+      <h3>With Node.js</h3>
+
+      <p>To get started you'll first want to add nib to your <em>package.json</em> file, along with stylus. Once installed you can use Stylus and Nib with your <a href="http://senchalabs.github.com/connect">Connect</a> or <a href="http://expressjs.com">Express</a> application as shown in the following snippet. The simple <code>.use(nib())</code> call is all that is required to expose itself to Stylus</p>
+      <pre><code class="javascript">var connect = require('connect')
+  , stylus = require('stylus')
+  , nib = require('nib');
+
+var app = connect();
+
+function compile(str, path) {
+  return stylus(str)
+    .set('filename', path)
+    .set('compress', true)
+    .use(nib());
+}
+
+app.use(stylus.middleware({
+    src: __dirname
+  , compile: compile
+}));
+
+app.listen(3000);</code></pre>
+
+      <p>From within a <em>.styl</em> file you can then <strong>@import</strong> nib, or a portion of nib:</p>
+
+      <pre><code class="nib">@import 'nib'
+@import 'nib/gradients'
+@import 'nib/buttons'</code></pre>
+
+      <p>Rather than manually <strong>@import</strong>-ing nib within your Stylus source you can import it via the JavaScript API as well:</p>
+
+      <pre><code class="javascript">return stylus(str)
+  .set('filename', path)
+  .set('compress', true)
+  .use(nib())
+  .import('nib');</code></pre>
+    </section>
+
+    <section id="about">
+      <h2>Learn more</h2>
+      <p>Check out the <a href="/docs">documentation</a>!</p>
+    </section>
+
+    <a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="app.js"></script>
+  </body>
+</html>
+
