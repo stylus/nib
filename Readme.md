@@ -1,8 +1,8 @@
-[![Build Status](https://travis-ci.org/tj/nib.png?branch=master)](https://travis-ci.org/tj/nib)
+[![Build Status](https://travis-ci.org/stylus/nib.png?branch=master)](https://travis-ci.org/stylus/nib)
 
 # Nib
 
-  Stylus mixins, utilities, components, and gradient image generation. Don't forget to check out the [documentation](http://tj.github.io/nib/).
+  Stylus mixins, utilities, components, and gradient image generation. Don't forget to check out the [documentation](http://stylus.github.io/nib/).
 
 ## Installation
 
