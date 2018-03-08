@@ -2,7 +2,7 @@
 
 # Nib
 
-  Stylus mixins, utilities, components, and gradient image generation. Don't forget to check out the [documentation](http://tj.github.io/nib/).
+  Stylus mixins, utilities, components, and gradient image generation. Don't forget to check out the [documentation](http://stylus.github.io/nib/).
 
 ## Installation
 
