@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/tj/nib.png?branch=master)](https://travis-ci.org/stylus/nib)
+[![Build Status](https://travis-ci.org/stylus/nib.svg?branch=master)](https://travis-ci.org/stylus/nib)
 
 # Nib
 
