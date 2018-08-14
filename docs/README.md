@@ -1,6 +1,6 @@
 # Mixins
 ## Gradient
-Nib's gradient support is by far the largest feature it provides. Not only is the syntax extremely similar to what you would normally write, it's more forgiving, expands to vendor equivalents, and can even produce a PNG for older browsers with [node-canvas](http://github.com/learnboost/node-canvas).
+Nib's gradient support is by far the largest feature it provides. Not only is the syntax extremely intuitive&mdash;it's more forgiving, expands to vendor equivalents, and can even produce a PNG for older browsers with [`node-canvas`](http://github.com/learnboost/node-canvas).
 
 ```stylus
 body
@@ -41,13 +41,15 @@ body
 
 ## Position
 
-The position mixins `absolute`, `fixed`, and `relative` provide a shorthand variant to what is otherwise three CSS properties. The syntax is as follows:
+The position mixins `absolute`, `fixed`, and `relative` provide a shorthand variant to what is otherwise _three_ CSS properties. 
+
+The syntax is as follows:
 
 ```
 fixed|absolute|relative: top|bottom [n] left|right [n]
 ```
 
-The following example will default to (0,0):
+The following example will default to `(0,0)`:
 
 ```stylus
 #back-to-top
@@ -78,9 +80,9 @@ You may also specify the units:
 ```
 
 ## Clearfix
-Clearfixing causes containers to expand to contain floated contents. A simple example is shown [here](http://learnlayout.com/clearfix.html).
+<dfn>Clearfixing</dfn> causes containers to expand to contain floated contents. A simple example is shown [here](http://learnlayout.com/clearfix.html).
 
-The clearfix mixin takes no arguments and expands to a form that provides extremely robust browser support.
+The `clearfix` mixin takes no arguments, and expands to a form that provides extremely robust browser support.
 
 ```stylus
 .clearfix
@@ -102,7 +104,7 @@ The clearfix mixin takes no arguments and expands to a form that provides extrem
 ```
 
 ## Border Radius
-Nib's `border-radius` supports both the regular syntax as well as augmenting it to make the value more expressive.
+Nib's `border-radius` supports both the regular syntax, as well as an augmented syntax that allows for a more expressive value.
 
 ```stylus
 button
@@ -129,7 +131,7 @@ button {
 ```
 
 ## Responsive Images
-The `image` mixin allows you to define a `background-image` for both the normal image, and a doubled image for devices with a higher pixel ratio such as retina displays. This works by using a @media query to serve an "@2x" version of the file.
+The `image` mixin allows you to define a `background-image` for both the normal image, and a doubled image for devices with a higher pixel ratio such as retina displays. This works by using a `@media` query to serve an "`@2x`" version of the file.
 
 ```stylus
 #logo
@@ -161,7 +163,7 @@ The `image` mixin allows you to define a `background-image` for both the normal 
 ```
 
 ## Ellipsis
-The `overflow` property is augmented with a "ellipsis" value, expanding to what you see below.
+The `overflow` property is augmented with an "`ellipsis`" value, expanding to what you see below.
 
 ```stylus
 button
@@ -177,12 +179,18 @@ button {
 ```
 
 ## Reset
-Nib comes bundled with [Eric Meyer's style reset](eric-meyer) and [Nicolas Gallagher's _Normalize_](normalize) support and, you can choose to apply the global or any specifics that you wish. To view the definitions view [`reset.styl`](https://github.com/tj/nib/blob/master/lib/nib/reset.styl).
+Nib comes bundled with [Eric Meyer's _Reset_](eric-meyer) and [Nicolas Gallagher's _Normalize_](normalize) support. You can choose to use either one, or both of them.  
+
+As a bonus, Nib allows you to import specific parts from either file. This provides you with fantastic control to get the _exact_ set of resets and normalizations that you want.
+
+You can see the style definitions in  [`reset.styl`](https://github.com/tj/nib/blob/master/lib/nib/reset.styl).
 
 [eric-meyer]: http://meyerweb.com/eric/tools/css/reset/
 [normalize]: https://github.com/necolas/normalize.css
 
-> CSS Reset
+You can import specific groups of resets and normalizations using these functions:
+
+### CSS Reset
 
 - `global-reset()`
 - `nested-reset()`
@@ -193,7 +201,7 @@ Nib comes bundled with [Eric Meyer's style reset](eric-meyer) and [Nicolas Galla
 - `reset-table-cell()`
 - `reset-html5()`
 
-> Normalize
+### Normalize
 
 - `normalize-html5()`
 - `normalize-base()`
@@ -205,7 +213,7 @@ Nib comes bundled with [Eric Meyer's style reset](eric-meyer) and [Nicolas Galla
 - `normalize-tables()`
 - `normalize-css()`
 
-[Read more][normalize-about] about Normalize or see the original CSS [here][normalize-css].
+[Read more][normalize-about] about Normalize, or check out the original CSS [here][normalize-css].
 
 [normalize-about]: http://nicolasgallagher.com/about-normalize-css/
 [normalize-css]: https://github.com/necolas/normalize.css/blob/master/normalize.css
@@ -225,7 +233,7 @@ This shorthand lets you create a border by just specifying a color, with default
 ```
 
 ## Shadow Stroke
-Creates a text outline using text-shadow.
+Creates a text outline using `text-shadow`.
 
 ```stylus
 .foo
@@ -239,7 +247,7 @@ Creates a text outline using text-shadow.
 ```
 
 ## Size
-This shorthand lets you set width and height in one go.
+This shorthand lets you set `width` and `height` in one go.
 
 ```stylus
 .foo
@@ -254,7 +262,7 @@ This shorthand lets you set width and height in one go.
 ```
 
 ## Transparent Mixins
-These mixins expand vendor prefixes but do not modify the behavior of the property.
+These mixins expand vendor prefixes, but do not modify the behavior of the property.
 
 For example:
 
@@ -273,49 +281,49 @@ For example:
 
 Here is the full list of properties for which Nib provides transparent mixins:
 
-- box-shadow
-- radial-gradient
-- user-select
-- column-count
-- column-gap
-- column-rule
-- column-rule-color
-- column-rule-width
-- column-rule-style
-- column-width
-- background-size
-- transform
-- border-image
-- transition
-- transition-property
-- transition-duration
-- transition-timing-function
-- transition-delay
-- backface-visibility
-- opacity
-- box-sizing
-- box-orient
-- box-flex
-- box-flex-group
-- box-align
-- box-pack
-- box-direction
-- animation
-- animation-name
-- animation-duration
-- animation-delay
-- animation-direction
-- animation-iteration-count
-- animation-timing-function
-- animation-play-state
-- animation-fill-mode
-- hyphens
-- appearance
+- `box-shadow`
+- `radial-gradient`
+- `user-select`
+- `column-count`
+- `column-gap`
+- `column-rule`
+- `column-rule-color`
+- `column-rule-width`
+- `column-rule-style`
+- `column-width`
+- `background-size`
+- `transform`
+- `border-image`
+- `transition`
+- `transition-property`
+- `transition-duration`
+- `transition-timing-function`
+- `transition-delay`
+- `backface-visibility`
+- `opacity`
+- `box-sizing`
+- `box-orient`
+- `box-flex`
+- `box-flex-group`
+- `box-align`
+- `box-pack`
+- `box-direction`
+- `animation`
+- `animation-name`
+- `animation-duration`
+- `animation-delay`
+- `animation-direction`
+- `animation-iteration-count`
+- `animation-timing-function`
+- `animation-play-state`
+- `animation-fill-mode`
+- `hyphens`
+- `appearance`
 
 # Aliases
 These aliases are provided purely for convenience.
 
-official    | aliases
------------ | ----------
-nowrap      | no-wrap  
-white-space | whitespace
+official      | aliases
+------------- | ------------
+`nowrap`      | `no-wrap`
+`white-space` | `whitespace`
