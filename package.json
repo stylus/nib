@@ -8,7 +8,7 @@
     "url": "git://github.com/visionmedia/nib.git"
   },
   "dependencies": {
-    "stylus": "0.54.5"
+    "stylus": "^0.54.8"
   },
   "devDependencies": {
     "connect": "1.x",
