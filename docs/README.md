@@ -283,7 +283,6 @@ Here is the full list of properties for which Nib provides transparent mixins:
 - column-rule-width
 - column-rule-style
 - column-width
-- background-size
 - transform
 - border-image
 - transition

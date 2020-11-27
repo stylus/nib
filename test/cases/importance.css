@@ -77,8 +77,6 @@
   -webkit-background-origin: padding !important;
   -moz-background-origin: padding !important;
   background-origin: padding-box !important;
-  -webkit-background-size: 0 !important;
-  -moz-background-size: 0 !important;
   background-size: 0 !important;
   background: none !important;
   -webkit-box-shadow: 0 1px 0 #000 !important;
