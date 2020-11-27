@@ -3,6 +3,7 @@
  */
 var stylus = require('stylus'),
     nib = require('../'),
+    should = require('should'),
     fs = require('fs');
 
 /**
@@ -32,11 +33,13 @@ describe('integration', function(){
         .set('filename', path)
         .define('url', stylus.url());
 
-      if (~test.indexOf('compress')) style.set('compress', true);
+      if (~test.indexOf('compress')) {
+        style.set('compress', true);
+      }
 
       style.render(function(err, actual){
         if (err) throw err;
-        actual.trim().should.equal(css);
+        should.equal(actual.trim(), css);
       });
     });
   });

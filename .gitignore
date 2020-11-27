@@ -1,3 +1,4 @@
+.idea
 *.css
 !test/cases/*.css
 .DS_Store
