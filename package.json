@@ -5,12 +5,13 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/visionmedia/nib.git"
+    "url": "git://github.com/stylus/nib.git"
   },
-  "dependencies": {
-    "stylus": "^0.54.8"
+  "peerDependencies": {
+    "stylus": "*"
   },
   "devDependencies": {
+    "stylus": ">= 0.55.0",
     "connect": "1.x",
     "jade": "0.22.0",
     "mocha": "*",
@@ -22,7 +23,7 @@
     "node": "*"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "mocha test/runner.js",
     "test-server": "node test/server.js"
   }
 }
