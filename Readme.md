@@ -1,8 +1,6 @@
-[![Build Status](https://travis-ci.org/stylus/nib.svg?branch=master)](https://travis-ci.org/stylus/nib)
+# Nib [![npm](https://img.shields.io/npm/v/nib)](https://www.npmjs.com/package/nib) [![build status](https://github.com/stylus/nib/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/stylus/nib/actions/workflows/ci.yml)
 
-# Nib
-
-  Stylus mixins, utilities, components, and gradient image generation. Don't forget to check out the [documentation](http://stylus.github.io/nib/).
+  Stylus mixins, utilities, components, and gradient image generation. Don't forget to check out the [documentation](http://stylus.github.io/nib).
 
 ## Installation
 
