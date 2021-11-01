@@ -246,6 +246,13 @@ section {
   display: inline-box !important;
 }
 section {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  -o-box-flex: 1;
+  -ms-box-flex: 1;
+  box-flex: 1;
+}
+section {
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: row;
@@ -268,4 +275,19 @@ section {
 section {
   display: -webkit-inline-flex !important;
   display: inline-flex !important;
+}
+section {
+  -ms-flex-positive: 1;
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+}
+section {
+  -ms-flex-negative: 0;
+  -webkit-flex-shrink: 0;
+  flex-shrink: 0;
+}
+section {
+  -ms-flex-preferred-size: 50%;
+  -webkit-flex-basis: 50%;
+  flex-basis: 50%;
 }
