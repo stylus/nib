@@ -514,3 +514,10 @@ list-style-image()
     vendor('list-style-image', arguments, vendor-property: false)
   else
     list-style-image arguments
+
+/*
+ * Vendor clip-path support.
+ */
+
+ clip-path()
+   vendor('clip-path', arguments, only: webkit official)
