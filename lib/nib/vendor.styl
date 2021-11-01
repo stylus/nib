@@ -255,6 +255,19 @@ perspective-origin()
   vendor('perspective-origin', arguments, only: webkit moz ms official)
 
 /*
+ * Inline-block with conditional IE support.
+ */
+
+display(mode, args...)
+  if mode == 'inline-block'
+    display inline-block args
+    if support-for-ie
+      zoom 1
+      *display inline args
+  else
+    display mode args
+
+/*
  * Opacity with conditional IE support.
  */
 
