@@ -131,6 +131,16 @@ column-fill()
   vendor('column-fill', arguments, only: moz official)
 
 /*
+ * Vendor "break-inside" support. -github.com/acdidjazz
+ */
+
+break-inside()
+  vendor('break-inside', arguments, only: webkit moz official)
+  vendor('column-break-inside', arguments, only: webkit moz official)
+
+
+
+/*
  * Legacy syntax support for background-clip and background-origin
  */
 
