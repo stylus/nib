@@ -6,8 +6,18 @@
  * github.com/LearnBoost/stylus/issues/1038 ... refactor when those are closed
  */
 
+// We need this due to some weird scoping rule in Stylus. The @media selector
+// does not inherit its parent scope at all.
+nib-image--background-size(w = auto, h = auto)
+  if w in (cover contain) and h == auto
+    background-size: w null
+  else if w != auto or h != auto
+    background-size: w h
+
 image(path, w = auto, h = auto, min_pixel_ratio = 1.5)
+
   background-image: url(path)
+  nib-image--background-size w h
 
   s = 'all and (-webkit-min-device-pixel-ratio:' + min_pixel_ratio + '),'
   s = s + '(min--moz-device-pixel-ratio:' + min_pixel_ratio + '),'
@@ -20,6 +30,4 @@ image(path, w = auto, h = auto, min_pixel_ratio = 1.5)
     ext = extname(path)
     path = pathjoin(dirname(path), basename(path, ext) + '@2x' + ext)
     background-image: url(path)
-    if w in (cover contain) and h == auto
-        h = null
-    background-size: w h
+    nib-image--background-size w h
