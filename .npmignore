@@ -1,2 +1,4 @@
 node_modules
 test
+.github
+CHANGELOG.md
