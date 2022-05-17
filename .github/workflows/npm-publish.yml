@@ -1,0 +1,20 @@
+name: npm-publish
+on:
+  workflow_dispatch:
+jobs:
+  npm-publish:
+    name: npm-publish
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@main
+    - name: Set up Node.js
+      uses: actions/setup-node@main
+      with:
+        node-version: 16
+        registry-url: https://registry.npmjs.org
+    - name: Publish
+      run: |
+        npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
