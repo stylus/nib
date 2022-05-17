@@ -1,0 +1,9 @@
+{
+  "require": "chai",
+  "reporter": "spec",
+  "diff": true,
+  "color": true,
+  "exit": true,
+  "extension": [".js"],
+  "file": ["test/runner.js"]
+}

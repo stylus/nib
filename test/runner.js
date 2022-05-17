@@ -3,7 +3,7 @@
  */
 var stylus = require('stylus'),
     nib = require('../'),
-    should = require('should'),
+    expect = require('chai').expect,
     fs = require('fs');
 
 /**
@@ -39,7 +39,7 @@ describe('integration', function(){
 
       style.render(function(err, actual){
         if (err) throw err;
-        should.equal(actual.trim(), css);
+        expect(actual.trim()).equal(css);
       });
     });
   });
