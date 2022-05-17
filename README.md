@@ -1,4 +1,4 @@
-# Nib [![npm](https://img.shields.io/npm/v/nib)](https://www.npmjs.com/package/nib) [![build status](https://github.com/stylus/nib/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/stylus/nib/actions/workflows/ci.yml)
+# Nib [![npm](https://img.shields.io/npm/v/nib)](https://www.npmjs.com/package/nib) [![npm](https://img.shields.io/npm/dm/nib.svg?sanitize=true)](https://www.npmjs.com/package/nib)  [![build status](https://github.com/stylus/nib/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/stylus/nib/actions?query=branch%3Amain)
 
   Stylus mixins, utilities, components, and gradient image generation. Don't forget to check out the [documentation](http://stylus.github.io/nib).
 
@@ -87,6 +87,7 @@ _To be continued..._
 I would love more contributors. And if you have helped out, you are awesome! I want to give a huge thanks to these people:
 
   - [TJ Holowaychuk](https://github.com/tj) (Original Creator)
-  - [Sean Lang](https://github.com/slang800) (Current Maintainer)
+  - [Sean Lang](https://github.com/notslang) (Previous Maintainer)
+  - [iChenLei](https://github.com/iChenLei) (Current Maintainer)
   - [Isaac Johnston](https://github.com/superstructor)
   - [Everyone Else](https://github.com/tj/nib/contributors)
