@@ -1,2 +1,8 @@
 node_modules
 test
+.github
+CHANGELOG.md
+.mocharc.json
+.editorconfig
+.npmignore
+.gitignore
