@@ -17,7 +17,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         # Latest four Nodejs LTS version
-        node: [10, 12, 14, 16]
+        node: [12, 14, 16, 18]
     runs-on: ${{ matrix.os }}
     steps:
      # Pull repo to test machine

@@ -3,8 +3,9 @@
  */
 
 var stylus = require('stylus'),
+    serveStatic = require('serve-static'),
     connect = require('connect'),
-    jade = require('jade'),
+    pug = require('pug'),
     nib = require('../');
 
 /**
@@ -26,10 +27,10 @@ server.use(stylus.middleware({
   , compile: compile
 }));
 
-server.use(connect.static(__dirname + '/public'));
+server.use(serveStatic(__dirname + '/public'));
 
 server.use(function(req, res){
-  jade.renderFile(__dirname + '/index.jade', function(err, str){
+  pug.renderFile(__dirname + '/index.pug', function(err, str){
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.end(str);
   });

@@ -11,11 +11,12 @@
     "stylus": "*"
   },
   "devDependencies": {
-    "stylus": ">= 0.55.0",
-    "connect": "1.x",
-    "jade": "0.22.0",
-    "mocha": "*",
-    "should": "*"
+    "chai": "^4.3.6",
+    "connect": "^3.7.0",
+    "mocha": "^10.0.0",
+    "pug": "^3.0.2",
+    "serve-static": "^1.15.0",
+    "stylus": "^0.57.0"
   },
   "author": "TJ Holowaychuk <tj@vision-media.ca>",
   "main": "lib/nib.js",
@@ -23,7 +24,7 @@
     "node": "*"
   },
   "scripts": {
-    "test": "mocha test/runner.js",
+    "test": "mocha",
     "test-server": "node test/server.js"
   }
 }
